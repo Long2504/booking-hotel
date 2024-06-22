@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //init db
 MySqlDB;
-
+checkOverload();
 //init routes
 
 

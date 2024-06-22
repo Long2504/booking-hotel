@@ -24,6 +24,9 @@ class MySqlDB {
             await this.sequelize.sync();
             await this.sequelize.authenticate();
             console.log("Connection has been established successfully.");
+            console.log(
+                `Number of active connections: ${await this.getNumberOfConnections()}`
+            );
         } catch (error) {
             console.error("Unable to connect to the database:", error);
         }
@@ -40,6 +43,21 @@ class MySqlDB {
             MySqlDB.instance = new MySqlDB();
         }
         return MySqlDB.instance;
+    }
+
+    async getNumberOfConnections() {
+        try {
+            const [results, _] = await this.sequelize.query(
+                "SELECT COUNT(*) as count FROM INFORMATION_SCHEMA.PROCESSLIST"
+            );
+            const numberOfConnections = results[0].count;
+            return numberOfConnections;
+        } catch (error) {
+            console.error(
+                "Unable to connect to the database or retrieve connections:",
+                error
+            );
+        }
     }
 }
 const DbMySql = MySqlDB.getInstance();
