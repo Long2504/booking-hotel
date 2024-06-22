@@ -3,6 +3,8 @@ import morgan from "morgan";
 import helmet from "helmet";
 import compression from "compression";
 import MySqlDB from "./dbs/init.mysqldb.js";
+import { checkOverload } from "./helper/check.connect.js";
+import router from "./routes/index.route.js";
 const app = express();
 
 //init middlewares
@@ -16,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 MySqlDB;
 checkOverload();
 //init routes
-
+app.use("/api", router);
 
 //handle errors
 app.use((req, res, next) => {
