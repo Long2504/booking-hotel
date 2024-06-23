@@ -38,6 +38,7 @@ class BaseModel extends Model {
         );
         super.init(mergeAttributes, mergeOptions);
     }
+    static associate() {}
 }
 
 

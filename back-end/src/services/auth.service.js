@@ -1,11 +1,13 @@
+import bcrypt from "bcryptjs";
+import { Op, literal } from "sequelize";
+
 import User from "../models/user.model.js";
 import BaseService from "./base.service.js";
-
-import bcrypt from "bcryptjs";
 import KeyTokenService from "./keyToken.service.js";
 import { createTokenPair } from "../helper/auth.helper.js";
 import { BadRequestError, UnauthorizedError } from "../utils/error.response.js";
 import { getInfoData } from "../utils/index.utils.js";
+import UserModel from "../models/user.model.js";
 
 const { randomBytes } = await import("node:crypto");
 
@@ -124,6 +126,83 @@ class AuthService extends BaseService {
 
     async signOut({ id }) {
         return await KeyTokenService.removeById(id);
+    }
+
+    async handlerRefreshToken({ refreshToken }) {
+        /**
+         * 1. check refresh token used
+         * 2. get keyToken by refreshToken
+         * 3. create new token
+         * 4. update key token, refreshTokenUsed
+         * 5. return data
+         */
+
+        //1
+        const foundToken = await KeyTokenService.get({
+            where: {
+                [Op.and]: [
+                    literal(
+                        `JSON_CONTAINS(refresh_token_used, '["${refreshToken}"]')`
+                    ),
+                ],
+            },
+        });
+        if (foundToken) {
+            await KeyTokenService.removeById(foundToken.id);
+            throw new UnauthorizedError(
+                "Some thing went wrong happened!!! Pls login"
+            );
+        }
+        //2
+        const holderToken = await KeyTokenService.get({
+            where: {
+                refreshToken,
+            },
+            attributes: [
+                "id",
+                "publicKey",
+                "privateKey",
+                "refreshToken",
+                "refreshTokenUsed",
+            ],
+            include: [
+                {
+                    model: UserModel,
+                    as: "user",
+                    attributes: ["id", "email"],
+                },
+            ],
+        });
+        if (!holderToken) {
+            throw new UnauthorizedError("User not registered");
+        }
+        const {
+            id,
+            user: { id: userId, email },
+            privateKey,
+            publicKey,
+            refreshTokenUsed,
+        } = holderToken;
+        //3
+        const tokens = createTokenPair(
+            {
+                userId,
+                email,
+            },
+            privateKey,
+            publicKey
+        );
+        //4
+        refreshTokenUsed.push(refreshToken);
+        await KeyTokenService.updateById(id, {
+            refreshToken: tokens.refreshToken,
+            refreshTokenUsed,
+        });
+        //5
+        return {
+            user: holderToken.user,
+            tokens,
+        };
     }
 }
 

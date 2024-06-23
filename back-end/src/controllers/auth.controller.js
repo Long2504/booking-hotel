@@ -22,6 +22,13 @@ class AuthController {
             metaData: await AuthService.signOut(req.keyStore),
         }).send(res);
     };
+
+    static handlerRefreshToken = async (req, res) => {
+        new SuccessResponse({
+            message: "Refresh token success",
+            metaData: await AuthService.handlerRefreshToken(req.body),
+        }).send(res);
+    };
 }
 
 export default AuthController;
