@@ -2,7 +2,7 @@
 
 
 #### signup
-POST {{url_dev}}/signup
+POST {{url_dev}}/sign-up
 Content-Type: application/json
 
 {
@@ -11,10 +11,22 @@ Content-Type: application/json
 }
 
 #### signin
-POST {{url_dev}}/signin
+POST {{url_dev}}/sign-in
 Content-Type: application/json
 
 {
     "email" : "long@gmail.com",
     "password": "12345678"
 }
+
+
+
+### get refresh token
+
+POST {{url_dev}}/refresh-token
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiMGRhYThhYi0yNDE3LTRlNDgtODUyZS1hMWFmODMyZGVmOGMiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MTY0MTY0LCJleHAiOjE3MTk3Njg5NjR9.kBNRSmNAzZllLUfvswmLu0vWhIm4sTDr3SNSjcbKNiE"
+}
+
