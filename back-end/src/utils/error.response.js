@@ -49,4 +49,26 @@ class BadRequestError extends ErrorResponse {
     }
 }
 
-export { ConflictRequestError, BadRequestError };
+class UnauthorizedError extends ErrorResponse {
+    constructor(
+        message = ReasonStatusCode.UNAUTHORIZED,
+        statusCode = StatusCode.UNAUTHORIZED
+    ) {
+        super(message, statusCode);
+    }
+}
+
+class NotFoundError extends ErrorResponse {
+    constructor(
+        message = ReasonStatusCode.NOT_FOUND,
+        statusCode = StatusCode.NOT_FOUND
+    ) {
+        super(message, statusCode);
+    }
+}
+export {
+    ConflictRequestError,
+    BadRequestError,
+    UnauthorizedError,
+    NotFoundError,
+};
