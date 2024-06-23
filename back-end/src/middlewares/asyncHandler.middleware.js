@@ -3,6 +3,8 @@ import jwt from "jsonwebtoken";
 import keyTokenService from "../services/keyToken.service.js";
 import { NotFoundError, UnauthorizedError } from "../utils/error.response.js";
 import { HEADER } from "../middlewares/constant.middleware.js";
+import { token } from "morgan";
+import { verifyToken } from "../helper/auth.helper.js";
 const asyncHandler = (fn) => {
     return (req, res, next) => fn(req, res, next).catch(next);
 };
@@ -30,16 +32,13 @@ const authentication = asyncHandler(async (req, res, next) => {
 
     //4
     const { publicKey } = keyStore;
-    const decode = jwt.verify(accessToken, publicKey, function (err, decoded) {
-        if (err.message === "jwt expired")
-            throw new UnauthorizedError("Token expired");
-        if (err) throw new UnauthorizedError("Invalid token");
-        return decoded;
-    });
+    const decode = verifyToken(accessToken, publicKey);
     if (userId !== decode.userId)
         throw new UnauthorizedError("Invalid request");
     req.keyStore = keyStore.toJSON();
 
     next();
 });
+
+
 export { asyncHandler, authentication };

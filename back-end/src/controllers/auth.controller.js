@@ -29,6 +29,13 @@ class AuthController {
             metaData: await AuthService.handlerRefreshToken(req.body),
         }).send(res);
     };
+
+    static handlerAccessToken = async (req, res) => {
+        new SuccessResponse({
+            message: "Access token success",
+            metaData: await AuthService.handlerAccessToken(req.body),
+        }).send(res);
+    };
 }
 
 export default AuthController;

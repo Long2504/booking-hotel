@@ -4,7 +4,7 @@ import { Op, literal } from "sequelize";
 import User from "../models/user.model.js";
 import BaseService from "./base.service.js";
 import KeyTokenService from "./keyToken.service.js";
-import { createTokenPair } from "../helper/auth.helper.js";
+import { createTokenPair, createAccessToken, verifyToken } from "../helper/auth.helper.js";
 import { BadRequestError, UnauthorizedError } from "../utils/error.response.js";
 import { getInfoData } from "../utils/index.utils.js";
 import UserModel from "../models/user.model.js";
@@ -203,6 +203,48 @@ class AuthService extends BaseService {
             user: holderToken.user,
             tokens,
         };
+    }
+
+    async handlerAccessToken({ refreshToken }) {
+        const holderToken = await KeyTokenService.get({
+            where: {
+                refreshToken,
+            },
+            attributes: [
+                "id",
+                "publicKey",
+                "privateKey",
+                "refreshToken",
+                "refreshTokenUsed",
+            ],
+            include: [
+                {
+                    model: UserModel,
+                    as: "user",
+                    attributes: ["id", "email"],
+                },
+            ],
+        });
+
+        if (!holderToken) {
+            throw new UnauthorizedError("User not registered");
+        }
+
+        const decode = verifyToken(refreshToken, holderToken.privateKey);
+
+        const accessToken = createAccessToken(
+            {
+                userId: decode.userId,
+                email: decode.email,
+            },
+            holderToken.publicKey
+        );
+        return {
+            user: holderToken.user,
+            tokens: {
+                accessToken,
+            },
+        }
     }
 }
 
