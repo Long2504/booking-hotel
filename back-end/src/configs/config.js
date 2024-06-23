@@ -3,6 +3,8 @@ import "dotenv/config";
 const development = {
     app: {
         port: process.env.DEV_APP_PORT,
+        accessTokenExpires: process.env.DEV_ACCESS_TOKEN_EXPIRES || 60 * 60 * 24,
+        refreshTokenExpires: process.env.DEV_REFRESH_TOKEN_EXPIRES || 60 * 60 * 24 * 7,
     },
     db: {
         dialect: process.env.DEV_DB_DIALECT,

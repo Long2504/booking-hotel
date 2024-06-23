@@ -1,6 +1,6 @@
 "use strict";
 import { Sequelize } from "sequelize";
-import configMysql from "../configs/config.js";
+import config from "../configs/config.js";
 import ListModel from "./listModel.mysql.js";
 class MySqlDB {
     sequelize;
@@ -10,7 +10,7 @@ class MySqlDB {
 
     async connect() {
         const { dialect, host, port, username, password, database } =
-            configMysql.db;
+            config.db;
         try {
             this.sequelize = new Sequelize({
                 dialect,
