@@ -42,6 +42,12 @@ class KeyToken extends BaseModel {
             }
         );
     }
+    static associate() {
+        this.belongsTo(UserModel, {
+            foreignKey: "userId",
+            as: "user",
+        });
+    }
 }
 
 export default KeyToken;
