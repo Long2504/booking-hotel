@@ -35,7 +35,7 @@ class BaseService {
     }
 
     async updateById(id, data, options) {
-        const record = await this.findById(id, options);
+        const record = await this.model.findByPk(id, options);
         if (record) {
             return record.update(data, options);
         }
