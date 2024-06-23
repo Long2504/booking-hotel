@@ -8,17 +8,17 @@ class BaseModel extends Model {
                 primaryKey: true,
                 defaultValue: DataTypes.UUIDV4,
             },
-            createAt: {
+            createdAt: {
                 field: "created_at",
                 type: DataTypes.DATE,
                 defaultValue: DataTypes.NOW,
             },
-            updateAt: {
+            updatedAt: {
                 field: "updated_at",
                 type: DataTypes.DATE,
                 defaultValue: null,
             },
-            deleteAt: {
+            deletedAt: {
                 field: "deleted_at",
                 type: DataTypes.DATE,
                 defaultValue: null,
@@ -29,7 +29,7 @@ class BaseModel extends Model {
             {
                 paranoid: true,
                 timestamps: true,
-                updateAt: false,
+                updatedAt: false,
                 underscored: true,
                 modelName,
                 sequelize,
