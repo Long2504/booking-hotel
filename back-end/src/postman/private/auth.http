@@ -1,0 +1,8 @@
+@url_dev=http://localhost:3055/api/private/auth
+
+
+#### signout
+POST {{url_dev}}/signout
+Content-Type: application/json
+x-client-id: 306322e0-d855-4c1d-aead-e1b363a490f8
+authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMDYzMjJlMC1kODU1LTRjMWQtYWVhZC1lMWIzNjNhNDkwZjgiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MTM5NzI2LCJleHAiOjE3MTkxNDMzMjZ9.L-Qo3nzbLSxBb58i6mWmaGLr9IDaWnhWnau210KMIlM
