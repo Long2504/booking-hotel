@@ -5,6 +5,6 @@ import { asyncHandler, authentication } from "../../middlewares/asyncHandler.mid
 
 const router = express.Router();
 router.use(authentication);
-router.post("/signout", asyncHandler(AuthController.signOut));
+router.post("/sign-out", asyncHandler(AuthController.signOut));
 
 export default router;
