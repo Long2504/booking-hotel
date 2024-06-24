@@ -1,0 +1,45 @@
+@url_dev=http://localhost:3055/api/private/bed-type
+@clientId=532bbe03-49e5-4315-8487-6fcb99726896
+@Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MjUyNTQ2LCJleHAiOjE3MTkyNzQxNDZ9.abJPBKZZ0OMNxlg_9JoLG5Tly4nCTgO0fDua0Pol_EU
+
+#### create
+POST {{url_dev}}/
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
+
+{
+    "name": "Bed 2"
+}
+
+
+#### get all
+GET {{url_dev}}/?page=1&pageSize=10 HTTP/1.1
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
+
+
+#### get by id
+GET {{url_dev}}/b856ebcb-85f2-4287-bbb6-31e1b5fd5962 HTTP/1.1
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
+
+
+#### update by id
+PUT  {{url_dev}}/b856ebcb-85f2-4287-bbb6-31e1b5fd5962 HTTP/1.1
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
+
+{
+    "name": "Bed 1 updated"
+}
+
+
+#### delete by id
+DELETE {{url_dev}}/e458fe59-1c85-40a1-8a80-b15728497061 HTTP/1.1
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
