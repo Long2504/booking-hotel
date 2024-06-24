@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import BaseModel from "./base.model.js";
 import HotelModel from "./hotel.model.js";
-import RoomsBed from "./roomBed.model.js";
+import RoomsType from "./roomType.model.js";
 
 const TABLE_NAME = "hotel_rooms";
 
@@ -46,7 +46,7 @@ class HotelRoomModel extends BaseModel {
                     type: DataTypes.UUID,
                     allowNull: false,
                     references: {
-                        model: RoomsBed,
+                        model: RoomsType,
                         key: "id",
                     },
                 },
