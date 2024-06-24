@@ -1,3 +1,4 @@
+import { NotFoundError } from "../utils/error.response.js";
 
 class BaseService {
     constructor(model) {
@@ -24,6 +25,10 @@ class BaseService {
         return await this.model.findAll(options);
     }
 
+    async getAndCountAll(options) {
+        return await this.model.findAndCountAll(options);
+    }
+
     async findOneAndUpdate(where, data) {
         const record = await this.model.findOne({
             where: where,
@@ -39,7 +44,7 @@ class BaseService {
         if (record) {
             return record.update(data, options);
         }
-        return null;
+        throw new NotFoundError("Record not found");
     }
 
     async update(data, options) {
