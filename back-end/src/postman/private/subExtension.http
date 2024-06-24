@@ -1,0 +1,31 @@
+@url_dev=http://localhost:3055/api/private/sub-extension
+@Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MjUxNTIzLCJleHAiOjE3MTkyNTE3Mzl9.MMvYC07bJ7wgNQoeB2-V4cz-gq-eNz_56somutN5tbo
+
+#### create
+POST {{url_dev}}/
+Content-Type: application/json
+x-client-id: 532bbe03-49e5-4315-8487-6fcb99726896
+Authorization:{{Authorization}}
+
+{
+    "name": "Sub Extension 2",
+    "extensionId": "816cf64f-a520-4f19-b5e2-e562c31255ee"
+}
+
+#### update by id
+PUT  {{url_dev}}/fd2e19e9-7568-47a0-b948-73e24129e2e4 HTTP/1.1
+Content-Type: application/json
+x-client-id: 532bbe03-49e5-4315-8487-6fcb99726896
+Authorization:{{Authorization}}
+
+{
+    "name": "Sub Extension 1 updated",
+    "extensionId": "816cf64f-a520-4f19-b5e2-e562c31255ee"
+}
+
+
+#### delete by id
+DELETE {{url_dev}}/fd2e19e9-7568-47a0-b948-73e24129e2e4 HTTP/1.1
+Content-Type: application/json
+x-client-id: 532bbe03-49e5-4315-8487-6fcb99726896
+Authorization:{{Authorization}}
