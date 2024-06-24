@@ -1,0 +1,48 @@
+@url_dev=http://localhost:3055/api/private/extension
+
+
+#### create
+POST {{url_dev}}/
+Content-Type: application/json
+x-client-id: 532bbe03-49e5-4315-8487-6fcb99726896
+authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MjQ2NzE2LCJleHAiOjE3MTkyNDY5MzJ9.AunYVUnuDqH5aEFObFrBPmVBPMWW1RyYyxijkTT57FI
+
+{
+    "name": "Extension 1",
+    "description": "Description Extension 1"
+}
+
+
+#### get all
+GET {{url_dev}}/?page=1&pageSize=1 HTTP/1.1
+Content-Type: application/json
+x-client-id: 532bbe03-49e5-4315-8487-6fcb99726896
+authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MjQ3MjMwLCJleHAiOjE3MTkyNDc0NDZ9.Hc7O3DIxJNfuh-SxmMUtMBDC-CexZGFthxgnffzmLaQ
+
+
+#### get by id
+GET {{url_dev}}/816cf64f-a520-4f19-b5e2-e562c31255ee HTTP/1.1
+Content-Type: application/json
+x-client-id: 532bbe03-49e5-4315-8487-6fcb99726896
+authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MjQ2OTc1LCJleHAiOjE3MTkyNDcxOTF9.X9sLMcNp-wsICcnNZsIJl8r8EYMND7IaFXhLGp7_d9Q
+
+
+#### update by id
+PUT  {{url_dev}}/816cf64f-a520-4f19-b5e2-e562c31255ee HTTP/1.1
+Content-Type: application/json
+x-client-id: 532bbe03-49e5-4315-8487-6fcb99726896
+authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MjQ3MjMwLCJleHAiOjE3MTkyNDc0NDZ9.Hc7O3DIxJNfuh-SxmMUtMBDC-CexZGFthxgnffzmLaQ
+
+{
+    "name": "Extension 1 updated",
+    "description": "Description Extension 1 updated"
+}
+
+
+
+
+#### delete by id
+DELETE {{url_dev}}/bd6b3c7b-2c99-4573-a586-6f389f1b2e8e HTTP/1.1
+Content-Type: application/json
+x-client-id: 532bbe03-49e5-4315-8487-6fcb99726896
+authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MjQ3MjMwLCJleHAiOjE3MTkyNDc0NDZ9.Hc7O3DIxJNfuh-SxmMUtMBDC-CexZGFthxgnffzmLaQ
