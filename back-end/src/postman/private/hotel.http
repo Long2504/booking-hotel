@@ -1,0 +1,73 @@
+@url_dev=http://localhost:3055/api/private/hotel
+@clientId=532bbe03-49e5-4315-8487-6fcb99726896
+@Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MzIzNDA3LCJleHAiOjE3MTkzNDUwMDd9.E2g53zNfVe9hfhFfpwUUFS0S9AGzFluFuwQeImzoQ5E
+
+#### create
+POST {{url_dev}}/
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
+
+{
+    "name": "Khách sạn Mường Thanh Luxury Cần Thơ (Muong Thanh Luxury Can Tho Hotel)",
+    "address": "Area E1, Cai Khe River Islet, Cai Khe Ward ,, Cái Khế, Cần Thơ, Việt Nam",
+    "description": "Đỗ xe và Wi-Fi luôn miễn phí, vì vậy quý khách có thể giữ liên lạc, đến và đi tùy ý. Nằm ở vị trí chiến lược tại Cái Khế, cho phép quý khách lui tới và gần với các điểm thu hút và tham quan địa phương. Hãy nhớ dành một chút thời gian để thăm thú Nhà cổ Bình Thủy cũng như Bãi tắm Cần Thơ gần đó. Được xếp hạng 5 sao, chỗ nghỉ chất lượng cao này cho phép khách nghỉ sử dụng mát-xa, xông khô và phòng tập ngay trong khuôn viên.",
+    "images": [
+            "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815170046247240.png?ca=6&ce=1&s=512x384",
+            "https://pix6.agoda.net/hotelImages/907601/-1/dd38aff5cd81a7129ba68616c84837c0.jpg?ca=6&ce=1&s=512x384",
+            "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815190046247494.png?ca=6&ce=1&s=512x384",
+            "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815180046247439.png?ca=6&ce=1&s=512x384",
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/334271533.jpg?k=235ee057151f7386476cd433f3752197fe9c3fce670ff8b0b73a22a66006c123&o=",
+            "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815300046248738.png?ca=6&ce=1&s=512x384",
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/120674141.jpg?k=b46813f3f030ccea40eee1ccc0fed7af46671ad400e7a1e58c333fbfc7ac470e&o=",
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/251972146.jpg?k=d2ae1d9592226024aac3e69ab242e6ef44f4f81bd7da5cc22febfc4739870753&o=",
+            "https://pix6.agoda.net/hotelImages/907601/-1/79d3fc9742b36cd8390414f0f89f4cf7.jpg?ca=6&ce=1&s=512x384",
+            "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815280046248641.png?ca=6&ce=1&s=512x384",
+            "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815300046248735.png?ca=6&ce=1&s=512x384",
+            "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815300046248737.png?ca=6&ce=1&s=512x384",
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/334271223.jpg?k=0d7e466a759156454c4248c34d760424ba0281c6214f22e264fe315a8c80a985&o=",
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/251972145.jpg?k=90bf40adf81db55ffe33d372916d24fc54f18ec9825cc2e55a16ade2cd158926&o="
+        ],
+    "star": 5,
+    "hostId": "532bbe03-49e5-4315-8487-6fcb99726896",
+    "extensions": [
+        {
+            "id": "816cf64f-a520-4f19-b5e2-e562c31255ee",
+            "subExtension": [
+                "473ebf74-ad58-4ec0-9e40-4e029c8133d9",
+                "473ebf74-ad58-4ec0-9e40-4e029c8133d9"
+            ]
+        }
+    ],
+    "rooms": [
+        {
+            "roomTypeId":"b1bfbd86-ad15-41f3-aa45-f682dfac49e4",
+            "area": 68,
+            "occupancy": 2,
+            "bathrooms": 1,
+            "price": 2722208,
+            "number": 10,
+            "images": ["https://pix6.agoda.net/hotelImages/907/907601/907601_16090815390046250051.png?ca=6&ce=1"],
+            "beds": [
+                {
+                    "numBeds": 1,
+                    "bedId":"e458fe59-1c85-40a1-8a80-b15728497061"
+                }
+            ]
+        },
+        {
+            "area": 68,
+            "numBathrooms": 1,
+            "numBedrooms": 10,
+            "price": 2104928,
+            "images": ["https://pix6.agoda.net/hotelImages/907/907601/907601_16090815370046249854.png?ca=6&ce=1"],
+            "roomTypeId":"330cadf6-392e-493a-911f-52198431d688",
+            "beds": [
+                {
+                    "numBeds": 1,
+                    "bedId":"b856ebcb-85f2-4287-bbb6-31e1b5fd5962"
+                }
+            ]
+        }
+    ]
+}

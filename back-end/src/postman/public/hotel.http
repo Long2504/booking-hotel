@@ -1,0 +1,5 @@
+@url_dev=http://localhost:3055/api/public/hotel
+
+#### get all hotel
+GET  {{url_dev}}/
+Content-Type: application/json
