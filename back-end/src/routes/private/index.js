@@ -5,6 +5,7 @@ import routerExtension from "./extension.private.js";
 import routerSubExtension from "./subExtension.private.js";
 import routerBedType from "./bedType.private.js";
 import routerRoomType from "./roomType.private.js";
+import routerHotel from "./hotel.private.js";
 
 const router = express.Router();
 
@@ -13,5 +14,6 @@ router.use("/extension", routerExtension);
 router.use("/sub-extension", routerSubExtension);
 router.use("/bed-type", routerBedType);
 router.use("/room-type", routerRoomType);
+router.use("/hotel", routerHotel);
 
 export default router;
