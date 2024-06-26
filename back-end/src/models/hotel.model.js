@@ -1,6 +1,8 @@
 import { DataTypes } from "sequelize";
 import BaseModel from "./base.model.js";
 import UserModel from "./user.model.js";
+import HotelExtensionModel from "./hotelExtension.model.js";
+import HotelRoomModel from "./hotelRoom.model.js";
 
 const TABLE_NAME = "hotels";
 
@@ -45,14 +47,20 @@ class HotelModel extends BaseModel {
             },
             sequelize,
             {
-                //options
-                //Ex: tableName: "users",
-                // Sequelize will infer the table name to be equal to the model name, without any modifications
                 freezeTableName: true,
             }
         );
     }
-    static associate() {}
+    static associate() {
+        this.hasMany(HotelExtensionModel, {
+            foreignKey: "hotelId",
+            as: "hotelExtensions",
+        });
+        this.hasMany(HotelRoomModel, {
+            foreignKey: "hotelId",
+            as: "hotelRooms",
+        });
+    }
 }
 
 export default HotelModel;
