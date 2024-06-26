@@ -1,10 +1,11 @@
 import { DataTypes } from "sequelize";
 import BaseModel from "./base.model.js";
 import BedsTypeModel from "./bedsType.model.js";
+import HotelRoomModel from "./hotelRoom.model.js";
 
 const TABLE_NAME = "room_beds";
 
-class RoomsBed extends BaseModel {
+class RoomsBedModel extends BaseModel {
     static init(sequelize) {
         super.init(
             TABLE_NAME,
@@ -21,6 +22,14 @@ class RoomsBed extends BaseModel {
                         key: "id",
                     },
                 },
+                hotelRoomId: {   
+                    type: DataTypes.UUID,
+                    allowNull: false,
+                    references: {
+                        model: HotelRoomModel,
+                        key: "id",
+                    },
+                }
             },
             sequelize,
             {
@@ -29,7 +38,12 @@ class RoomsBed extends BaseModel {
         );
     }
 
-    static associate() {}
+    static associate() {
+        this.belongsTo(BedsTypeModel, {
+            foreignKey: "bedId",
+            as: "bedType",
+        });
+    }
 }
 
-export default RoomsBed;
+export default RoomsBedModel;
