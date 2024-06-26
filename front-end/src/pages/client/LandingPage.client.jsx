@@ -1,7 +1,9 @@
+import { FormSelection } from "../../components/client/formselection/FormSelection";
+
 function LandingPage() {
     return (
-        <div>
-            <h1>Landing Page</h1>
+        <div className="landing-page">
+            <FormSelection />
         </div>
     );
 }

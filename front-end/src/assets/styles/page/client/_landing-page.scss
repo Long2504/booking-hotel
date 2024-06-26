@@ -1,0 +1,13 @@
+.landing-page{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__promotion{
+        width: 70%;
+    }
+    &__destination{
+        width: 70%;
+    }
+}

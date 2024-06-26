@@ -1,0 +1,140 @@
+.form-selection {
+    width: 100%;
+    height: 850px;
+
+    &__main {
+        position: absolute;
+        width: 100vw;
+        height: 300vh;
+        top: 0;
+    }
+
+    &__background-img {
+        width: 100%;
+        height: 360px;
+    }
+
+    &__header {
+        width: 40%;
+        margin: auto;
+        position: relative;
+        top: 16px;
+        transform: translateY(-260px);
+        border-radius: 9px;
+        background-color: #fff;
+        z-index: 10;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 6px 2px;
+
+        &__content {
+            @include flex(center, center);
+            padding: 20px 0;
+            font-size: 16px;
+            color: #1976d2;
+            border-bottom: 2px solid #1976d2;
+            border-bottom-left-radius: 9px;
+            border-bottom-right-radius: 9px;
+        }
+    }
+
+    &__form {
+        width: 50%;
+        margin: auto;
+        background-color: #f8f7f9;
+        transform: translateY(-260px);
+        border-radius: 6px;
+        padding: 40px 50px 0 50px;
+        box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
+        &__top {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 9px;
+            height: 50px;
+
+            &__search-icon {
+                color: #555;
+            }
+
+            >input {
+                width: 100%;
+                border: none;
+                outline: none;
+                margin-left: 10px;
+                cursor: pointer;
+                font-size: 17px;
+            }
+
+            >input::placeholder {
+                color: #bbb;
+                font-size: 16px;
+            }
+        }
+
+        &__center {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+
+            &__calendar {
+                width: 49%;
+                height: 50px;
+            }
+
+            &__room {
+                width: 49%;
+                height: 50px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                background-color: white;
+            }
+        }
+
+        &__bottom {
+            width: 40%;
+            margin: auto;
+
+            &__link {
+                color: #fff;
+
+                button {
+                    background-color: #5392f9;
+                    cursor: pointer;
+                    border: none;
+                    color: #ffffff;
+                    padding: 15px;
+                    font-size: 20px;
+                    letter-spacing: 1.5px;
+                    border-radius: 10px;
+                    margin: 20px auto;
+                    font-weight: 600;
+                    width: 100%;
+
+
+                    &:hover {
+                        background-color: #87b3fb;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    &__debounce-res {
+        width: 89.5%;
+        max-height: 500px;
+        position: absolute;
+        top: 110px;
+        z-index: 100;
+        overflow-y: scroll;
+        font-size: 16px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+    }
+}
