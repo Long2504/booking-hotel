@@ -1,13 +1,23 @@
-.landing-page{
+.landing-page {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    &__promotion{
-        width: 70%;
+    &__promotion {
+        width: 60%;
+        @include flex(center, space-between);
+        margin: -320px 0 0 0;
+
+        img {
+            width: 550px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 10px rgb(170, 170, 170),
+                -4px -4px 10px lightgray;
+        }
     }
-    &__destination{
+
+    &__destination {
         width: 70%;
     }
 }

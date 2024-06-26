@@ -31,9 +31,6 @@ export const FormSelection = () => {
 				</div>
 			</div>
 			<div
-				style={{
-					// width: "50%",
-				}}
 				className='form-selection__form'
 			>
 				<div className='form-selection__form__top'>
