@@ -37,7 +37,12 @@ class HotelExtensionModel extends BaseModel {
             }
         );
     }
-    static associate() {}
+    static associate() {
+        this.belongsTo(ExtensionModel, {
+            foreignKey: "extensionId",
+            as: "extension",
+        })  
+    }
 }
 
 export default HotelExtensionModel;
