@@ -36,12 +36,9 @@ class MySqlDB {
         for (const model of ListModel) {
             model.init(sequelize);
         }
-        await sequelize.sync(); //automatically synchronize all models
-
         for (const model of ListModel) {
             model.associate();
         }
-        await sequelize.sync();
     }
 
     static getInstance() {
