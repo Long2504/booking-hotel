@@ -3,7 +3,7 @@ import BaseModel from "./base.model.js";
 
 const TABLE_NAME = "room_types";
 
-class RoomsType extends BaseModel {
+class RoomsTypeModel extends BaseModel {
     static init(sequelize) {
         super.init(
             TABLE_NAME,
@@ -27,4 +27,4 @@ class RoomsType extends BaseModel {
     static associate() {}
 }
 
-export default RoomsType;
+export default RoomsTypeModel;

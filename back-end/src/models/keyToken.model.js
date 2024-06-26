@@ -4,7 +4,7 @@ import UserModel from "./user.model.js";
 
 const TABLE_NAME = "key_tokens";
 
-class KeyToken extends BaseModel {
+class KeyTokenModel extends BaseModel {
     static init(sequelize) {
         super.init(
             TABLE_NAME,
@@ -50,4 +50,4 @@ class KeyToken extends BaseModel {
     }
 }
 
-export default KeyToken;
+export default KeyTokenModel;

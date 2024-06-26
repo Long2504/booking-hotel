@@ -1,5 +1,4 @@
-import RoomsType from "../models/roomType.model.js";
-import SubExtensionModel from "../models/subExtension.model.js";
+import RoomsTypeModel from "../models/roomType.model.js";
 import { NotFoundError } from "../utils/error.response.js";
 import BaseService from "./base.service.js";
 import { Op } from "sequelize";
@@ -35,4 +34,4 @@ class RoomTypeService extends BaseService {
     }
 }
 
-export default new RoomTypeService(RoomsType);
+export default new RoomTypeService(RoomsTypeModel);

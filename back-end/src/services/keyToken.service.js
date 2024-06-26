@@ -1,4 +1,4 @@
-import KeyToken from "../models/keyToken.model.js";
+import KeyTokenModel from "../models/keyToken.model.js";
 import BaseService from "./base.service.js";
 
 class KeyTokenService extends BaseService {
@@ -25,4 +25,4 @@ class KeyTokenService extends BaseService {
     }
 }
 
-export default new KeyTokenService(KeyToken);
+export default new KeyTokenService(KeyTokenModel);
