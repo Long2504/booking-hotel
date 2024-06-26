@@ -2,6 +2,7 @@ import { DataTypes } from "sequelize";
 import BaseModel from "./base.model.js";
 import HotelModel from "./hotel.model.js";
 import RoomsType from "./roomType.model.js";
+import RoomsBedModel from "./roomBed.model.js";
 
 const TABLE_NAME = "hotel_rooms";
 
@@ -57,7 +58,12 @@ class HotelRoomModel extends BaseModel {
             }
         );
     }
-    static associate() {}
+    static associate() {
+        this.hasMany(RoomsBedModel, {
+            foreignKey: "hotelRoomId",
+            as: "roomsBeds",
+        })
+    }
 }
 
 export default HotelRoomModel;
