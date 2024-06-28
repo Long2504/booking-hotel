@@ -14,7 +14,8 @@ function ClientLayout() {
 		height: "100%",
 		display: "flex",
 		flexDirection: "column",
-	};
+		backgroundColor: "white",
+    };
 	return (
 		<Layout style={layoutStyle}>
 			<HeaderClient />

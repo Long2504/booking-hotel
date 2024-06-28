@@ -32,7 +32,7 @@ function HeaderClient() {
                             Đăng nhập
                         </Button>
                     </Link>
-                    <Link to="/register">
+                    <Link to="/signup">
                         <Button
                             className="header-client__right__btn-signup"
                             size="large"
