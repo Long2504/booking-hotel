@@ -1,0 +1,152 @@
+.hotel {
+    display: flex;
+    width: 100%;
+    min-height: 220px;
+    margin-bottom: 30px;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    font-family: "Barlow", sans-serif;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .3);
+        background-color: #e4eaf1;
+    }
+
+    &__left {
+        width: 30%;
+
+        &__big-img {
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 182px;
+                border-top-left-radius: 5px;
+            }
+        }
+
+        &__small-img {
+            display: flex;
+            justify-content: space-between;
+
+            img {
+                width: 24.5%;
+            }
+        }
+    }
+
+    &__center {
+        width: 40%;
+        font-size: 15px;
+        margin-left: 10px;
+        border-right: 1px solid rgb(221, 223, 226);
+        padding: 20px 0px;
+
+        &__name {
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        &__address {
+            font-size: 14px;
+            color: rgb(49, 112, 231);
+            font-weight: 500;
+            @include flex(center, stretch);
+            margin-top: 5px;
+        }
+
+        &__convenience {
+            margin-top: 5px;
+
+            p {
+                color: rgb(36, 38, 44);
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            &__list {
+                margin-top: 5px;
+                display: flex;
+
+                &__item {
+                    @include flex(center, center);
+                    margin-right: 10px;
+                    border: 1px solid rgb(193, 203, 224);
+                    border-radius: 2px;
+                    padding: 4px 8px;
+                }
+            }
+        }
+    }
+
+    &__right {
+        width: 30%;
+        @include flex(center, space-between);
+        flex-direction: column;
+        padding: 10px 15px;
+
+        &__top {
+            width: 100%;
+            @include flex(center, flex-end);
+
+            &__text {
+                margin: 0px 10px;
+
+                p {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: rgb(42, 42, 46);
+                    line-height: 22px;
+                }
+
+                span {
+                    font-size: 12px;
+                    line-height: 18px;
+                    color: rqb(115, 115, 115);
+                    font-weight: 400;
+                }
+            }
+
+            &__rating {
+                position: relative;
+                @include flex(center, center);
+                width: 48px;
+                height: 48px;
+
+                &__text {
+                    @include flex(center, center);
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 22px;
+                    color: rgb(83, 146, 249);
+                }
+            }
+        }
+
+        &__bottom {
+            width: 100%;
+
+            &__price {
+                float: right;
+                margin: 10px 0px;
+
+                &__title {
+                    font-weight: 500;
+                }
+
+                &__value {
+                    font-weight: bold;
+                    color: #e12d2d;
+                    font-size: 25px;
+                    float: right;
+                    margin-top: 5px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+    }
+}

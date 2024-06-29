@@ -1,0 +1,17 @@
+.dashboard-page {
+    width: 100%;
+    display: flex;
+
+    &__left {
+        width: 32%;
+    }
+
+    &__right {
+        width: 68%;
+
+        &__content {
+            margin: 20px;
+            width: 70%;
+        }
+    }
+}

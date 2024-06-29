@@ -59,7 +59,7 @@ export const FormSelection = () => {
 					<Link
 						className='form-selection__form__bottom__link'
 						style={{ color: "#fff" }}
-						to='/hotel'
+						to='/hotels'
 					>
 						<button>TÌM</button>
 					</Link>
