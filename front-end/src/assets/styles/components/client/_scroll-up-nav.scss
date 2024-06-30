@@ -1,0 +1,49 @@
+.scroll-up-nav {
+    &__overlay {
+        position: absolute;
+        width: 100vw;
+        height: 3000vh;
+        top: 0;
+    }
+
+    &__content {
+        width: 100%;
+        height: $scroll-up-nav-height;
+        background-color: #20274d;
+        @include flex(center, center);
+        gap: 6px;
+
+        &__search {
+            width: 300px;
+            height: $scroll-up-nav-child-height;
+        }
+
+        &__calendar {
+            height: $scroll-up-nav-child-height;
+            width: 400px;
+        }
+
+        &__room-select {
+            width: 220px;
+            height: $scroll-up-nav-child-height;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        &__btn-search {
+            width: 130px;
+            height: $scroll-up-nav-child-height;
+            background-color: dodgerblue;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    }
+    input.ant-input-outlined {
+        &:focus-within{
+            border-color: transparent !important;
+            box-shadow: none !important;
+        }
+    }
+}
