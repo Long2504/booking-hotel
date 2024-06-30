@@ -3,3 +3,17 @@
     align-items: $align-item;
     justify-content: $justify-content;
 }
+
+
+@mixin position($position, $top, $right, $bottom, $left) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
