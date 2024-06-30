@@ -1,5 +1,5 @@
 import { DestinationCarousels } from "../../components/client/DestinationCarousels";
-import { FormSelection } from "../../components/client/FormSelection";
+import FormSelection from "../../components/client/FormSelection/FormSelection";
 function LandingPage() {
 	return (
 		<div className='landing-page'>

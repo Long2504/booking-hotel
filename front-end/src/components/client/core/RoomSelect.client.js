@@ -6,7 +6,7 @@ import {
 	PlusCircleTwoTone,
 } from "@ant-design/icons";
 
-export default function RoomSelect({ setFocus }) {
+function RoomSelect({ setFocus }) {
 	const [open, setOpen] = useState(false);
 	const [people, setPeople] = useState(1);
 	const [room, setRoom] = useState(1);
@@ -74,9 +74,7 @@ export default function RoomSelect({ setFocus }) {
 				<div>
 					<Space className='room-selection__dropdown__title'>
 						<p>{room} phòng</p>
-						<p style={{ color: "#999" }}>
-							{people} người
-						</p>
+						<p style={{ color: "#999" }}>{people} người</p>
 					</Space>
 					<DownOutlined />
 				</div>
@@ -84,3 +82,5 @@ export default function RoomSelect({ setFocus }) {
 		</div>
 	);
 }
+
+export default RoomSelect;

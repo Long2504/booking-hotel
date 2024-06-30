@@ -1,12 +1,13 @@
 import { Pagination } from "antd";
 import DashboardLeft from "../../components/client/hotel/DashboardLeft";
 import Loading from "../../components/client/core/Loading.client";
-import Hotel from "../../components/client/hotel/Hotel";
+import HotelContainer from "../../components/client/hotel/HotelContainer";
 import { dataHotel } from "../../data/listHotel.data";
 function DashboardPage() {
 	const listHotel = dataHotel.list;
 	const total = dataHotel.total;
 	let loading = false;
+
 	return (
 		<div className='dashboard-page'>
 			<div className='dashboard-page__left'>
@@ -16,7 +17,7 @@ function DashboardPage() {
 				<div className='dashboard-page__right__content'>
 					{!loading ? (
 						listHotel.map((item) => (
-							<Hotel data={item} key={item.id} />
+							<HotelContainer data={item} key={item.id} />
 						))
 					) : (
 						<Loading />

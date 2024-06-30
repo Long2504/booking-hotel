@@ -1,10 +1,15 @@
 import { vietNamDong } from "../../../utils/common.utils";
 import { EnvironmentTwoTone } from "@ant-design/icons";
 import { Rate, Button } from "antd";
-function Hotel({ data }) {
-	const { images, name, star, address, priceAverage } = data;
+import { useNavigate } from "react-router-dom";
+function HotelContainer({ data }) {
+	const { id, images, name, star, address, priceAverage } = data;
+	const navigate = useNavigate();
+	const handleClickHotel = () => {
+		navigate(`/hotel/${id}`);
+	};
 	return (
-		<div elevation={1} className='hotel'>
+		<div className='hotel' onClick={handleClickHotel}>
 			<div className='hotel__left'>
 				<div className='hotel__left__big-img'>
 					<img src={images[0]} alt='' />
@@ -20,8 +25,8 @@ function Hotel({ data }) {
 									alt=''
 								/>
 							);
-                        }
-                        return null;
+						}
+						return null;
 					})}
 				</div>
 			</div>
@@ -75,4 +80,4 @@ function Hotel({ data }) {
 		</div>
 	);
 }
-export default Hotel;
+export default HotelContainer;

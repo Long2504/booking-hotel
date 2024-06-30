@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Calendar } from "./Calendar";
-import RoomSelect from "./RoomSelect";
+import Calendar from "../core/Calendar.client";
+import RoomSelect from "../core/RoomSelect.client";
 import { Link } from "react-router-dom";
 import { Space } from "antd";
 import { SearchOutlined, HomeOutlined } from "@ant-design/icons";
-<HomeOutlined />;
 
-export const FormSelection = () => {
+function FormSelection() {
 	const [focus, setFocus] = useState(false);
 	return (
 		<div className='form-selection'>
@@ -30,9 +29,7 @@ export const FormSelection = () => {
 					</Space>
 				</div>
 			</div>
-			<div
-				className='form-selection__form'
-			>
+			<div className='form-selection__form'>
 				<div className='form-selection__form__top'>
 					<SearchOutlined style={{ color: "#555" }} />
 					<input
@@ -59,7 +56,7 @@ export const FormSelection = () => {
 					<Link
 						className='form-selection__form__bottom__link'
 						style={{ color: "#fff" }}
-						to='/hotels'
+						to='/hotel'
 					>
 						<button>TÌM</button>
 					</Link>
@@ -67,4 +64,6 @@ export const FormSelection = () => {
 			</div>
 		</div>
 	);
-};
+}
+
+export default FormSelection;

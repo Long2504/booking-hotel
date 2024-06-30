@@ -1,0 +1,270 @@
+import { Space, Divider, Rate, Col, Row, Image, Tabs, Modal } from "antd";
+import { useEffect, useState } from "react";
+import hotelDetail from "../../data/hotel.data";
+import { vietNamDong } from "../../utils/common.utils";
+import { CheckOutlined, CameraFilled } from "@ant-design/icons";
+import RoomItem from "../../components/client/HotelDetail/RoomItem";
+import ExtensionItem from "../../components/client/HotelDetail/ExtensionItem";
+import ScrollUpNav from "../../components/client/core/ScrollUpNav.client";
+
+function HotelDetailPage() {
+	const hotel = hotelDetail;
+
+	const [scroll, setScroll] = useState(0);
+	useEffect(() => {
+		window.addEventListener("scroll", (e) => {
+			setScroll(window.scrollY);
+		});
+	});
+
+	const itemTabs = [
+		{
+			label: "Tổng quan".toUpperCase(),
+			key: "1",
+		},
+		{
+			label: "Phòng nghỉ".toUpperCase(),
+			key: "2",
+		},
+		{
+			label: "Tiện nghi".toUpperCase(),
+			key: "3",
+		},
+	];
+
+	const styleScrollUpNav = {
+		position: "fixed",
+		top: 50,
+		zIndex: 10,
+		left: 0,
+		right: 0,
+		width: "100%",
+		backgroundColor: "white",
+		boxShawdow: "0 3px 6px 0 rgba(0, 0, 0, .3)",
+		padding: "0 20%",
+		border: "none",
+		borderBottom: "1px solid rgb(221, 223, 226)",
+	};
+	const [clicked, setClicked] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const handleScrollUp = (key) => {
+		
+		const ids = {
+			1: "hotel-detail-page",
+			2: "hotel-detail-page__list-room",
+			3: "hotel-detail-page__extension",
+		};
+
+		const element = document.getElementById(ids[key]);
+		if (element) {
+			element.scrollIntoView({ behavior: "smooth" });
+		}
+	};
+
+	return (
+		<>
+			<ScrollUpNav
+				calcScroll='150'
+				handleClicking={() => setClicked(!clicked)}
+			/>
+			<div className='hotel-detail-page' id='hotel-detail-page'>
+				<div className='hotel-detail-page__img'>
+					<div className='hotel-detail-page__img__main'>
+						<img
+							src={hotel?.images?.length > 0 && hotel.images[1]}
+							alt=''
+						/>
+						<button
+							className='hotel-detail-page__img__main__btn'
+							onClick={() => setIsModalOpen(true)}
+						>
+							<CameraFilled />
+							<p>Xem mọi bức ảnh</p>
+						</button>
+						<div className='hotel-detail-page__img__overlay'></div>
+					</div>
+					<Row
+						className='hotel-detail-page__img__list-sub'
+						gutter={[8, 8]}
+					>
+						{hotel?.images?.slice(1, 7)?.map((url, index) => {
+							return (
+								<Col
+									key={index}
+									span={8}
+									className='hotel-detail-page__img__list-sub__child'
+								>
+									<Image
+										src={url}
+										width={"100%"}
+										height={"100%"}
+									/>
+								</Col>
+							);
+						})}
+					</Row>
+				</div>
+				<div className='hotel-detail-page__tab'
+					style={scroll > 150 ? styleScrollUpNav : {}}
+				>
+					<Tabs
+						items={itemTabs}
+						defaultActiveKey='1'
+						tabBarStyle={{
+							borderBottom: "none",
+							height: "100%",
+							margin: 0,
+						}}
+						style={{ height: "100%" }}
+						onChange={handleScrollUp}
+					/>
+
+					<Space className='hotel-detail-page__tab__price'>
+						<p className='hotel-detail-page__tab__price__title'>
+							Từ
+						</p>
+						<p className='hotel-detail-page__tab__price__price'>
+							{vietNamDong(hotel?.priceAverage)}
+						</p>
+					</Space>
+				</div>
+				<div className='hotel-detail-page__content'>
+					<div className='hotel-detail-page__content__left'>
+						<div className='hotel-detail-page__content__left__top'>
+							<div className='hotel-detail-page__content__left__top__title'>
+								<h1>{hotel?.name}</h1>
+								<Rate
+									name='read-only'
+									size='small'
+									value={hotel?.star || 0}
+									readOnly
+									max={5}
+									sx={{ marginLeft: "5px" }}
+								/>
+							</div>
+							<div className='hotel-detail-page__content__left__top__address'>
+								<span>{hotel?.address}</span>
+								<span style={{ color: "#488bf8" }}>
+									- TRÊN BẢN ĐỒ
+								</span>
+							</div>
+							<Divider style={{ margin: "0" }} />
+							<p className='hotel-detail-page__content__left__top__desc'>
+								{hotel?.description}
+							</p>
+						</div>
+						<div className='hotel-detail-page__content__left__center'>
+							<h2>Tiện nghi</h2>
+							<Row gutter={[16, 24]}>
+								<Col
+									span={6}
+									className='hotel-detail-page__content__left__center__grid-item'
+								>
+									<CheckOutlined />
+									<span>Đưa đón sân bay</span>
+								</Col>
+								<Col
+									span={6}
+									className='hotel-detail-page__content__left__center__grid-item'
+								>
+									<CheckOutlined />
+									<span>CLB trẻ em</span>
+								</Col>
+								<Col
+									span={6}
+									className='hotel-detail-page__content__left__center__grid-item'
+								>
+									<CheckOutlined />
+									<span>Bãi đỗ xe có nhân viên</span>
+								</Col>
+								<Col
+									className='hotel-detail-page__content__left__center__grid-item'
+									span={6}
+								>
+									<CheckOutlined />
+									<span>Nhận/trả phòng [nhanh]</span>
+								</Col>
+								<Col
+									className='hotel-detail-page__content__left__center__grid-item'
+									span={6}
+								>
+									<CheckOutlined />
+									<span>
+										Wi-Fi miễn phí trong tất cả các phòng!
+									</span>
+								</Col>
+								<Col
+									className='hotel-detail-page__content__left__center__grid-item'
+									span={6}
+								>
+									<CheckOutlined />
+									<span>Tiện nghi nấu nướng ngoài trời</span>
+								</Col>
+								<Col
+									className='hotel-detail-page__content__left__center__grid-item'
+									span={6}
+								>
+									<CheckOutlined />
+									<span>Bàn tiếp tân [24 giờ]</span>
+								</Col>
+								<Col
+									className='hotel-detail-page__content__left__center__grid-item'
+									span={6}
+								>
+									<CheckOutlined />
+									<span>Bể bơi [ngoài trời]</span>
+								</Col>
+							</Row>
+						</div>
+					</div>
+				</div>
+				<div className='hotel-detail-page__list-room'
+					id='hotel-detail-page__list-room'
+				>
+					<h2>Phòng còn trống tại {hotel?.name}</h2>
+					<div className='hotel-detail-page__list-room__container'>
+						{hotel?.rooms?.map((room, index) => (
+							<RoomItem key={index} data={room} />
+						))}
+					</div>
+				</div>
+				<div className='hotel-detail-page__extension'
+					id='hotel-detail-page__extension'
+				>
+					<h2>Tiện nghi và cơ sở vật chất</h2>
+					<div className='hotel-detail-page__extension__list'>
+						{hotel?.extensions?.map((extension, index) => (
+							<ExtensionItem key={index} data={extension} />
+						))}
+					</div>
+				</div>
+			</div>
+			<Modal
+				open={isModalOpen}
+				onOk={() => setIsModalOpen(false)}
+				onCancel={() => setIsModalOpen(false)}
+				className='hotel-detail-page__modal'
+				closeIcon={null}
+				footer={null}
+				width={"100%"}
+			>
+				<div className='hotel-detail-page__modal__image'>
+					<Row gutter={[8, 8]}>
+						{hotel?.images?.map((url, index) => (
+							<Col key={index} span={8}>
+								<Image
+									src={url}
+									width={"100%"}
+									height={"100%"}
+								/>
+							</Col>
+						))}
+					</Row>
+				</div>
+			</Modal>
+		</>
+	);
+}
+
+export default HotelDetailPage;
