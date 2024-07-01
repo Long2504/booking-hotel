@@ -1,11 +1,12 @@
 import { vietNamDong } from "../../../utils/common.utils";
+import ImageCore from "../../core/image.core";
 
 function RoomItem({ data, linkToChekout, checkView = false }) {
 	return (
 		<div className='hotel-detail-page__list-room__container__room'>
-			<div className='hotel-detail-page__list-room__container__room__name'>
+			<p className='hotel-detail-page__list-room__container__room__name'>
 				{data?.roomType?.name}
-			</div>
+			</p>
 			<div className='hotel-detail-page__list-room__container__room__content'>
 				<div className='hotel-detail-page__list-room__container__room__content__header'>
 					<div className='hotel-detail-page__list-room__container__room__content__image'>
@@ -26,9 +27,9 @@ function RoomItem({ data, linkToChekout, checkView = false }) {
 				</div>
 				<div className='hotel-detail-page__list-room__container__room__content__body'>
 					<div className='hotel-detail-page__list-room__container__room__content__image'>
-						<img
+						<ImageCore
 							src={data?.images.length > 0 ? data?.images[0] : ""}
-							alt=''
+
 						/>
 					</div>
 					<div
@@ -94,7 +95,7 @@ function RoomItem({ data, linkToChekout, checkView = false }) {
 						""
 					) : (
 						<div className='hotel-detail-page__list-room__container__room__content__action'>
-							<button onClick={() => linkToChekout(data)}>
+							<button onClick={() => linkToChekout()}>
 								Đặt ngay
 							</button>
 						</div>
