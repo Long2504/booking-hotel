@@ -1,4 +1,4 @@
-//file
+//files
 import { vietNamDong } from "../../../utils/common.utils";
 import TimerPayment from "./TimerPayment";
 import { paypalImage } from "../../../assets/images/index.image";

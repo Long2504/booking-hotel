@@ -1,4 +1,4 @@
-// file
+// files
 import hotelDetail from "../../data/hotel.data";
 import { vietNamDong } from "../../utils/common.utils";
 import RoomItem from "../../components/client/HotelDetail/RoomItem";
@@ -6,7 +6,7 @@ import ExtensionItem from "../../components/client/HotelDetail/ExtensionItem";
 import ScrollUpNav from "../../components/client/core/ScrollUpNav.client";
 import ImageCore from "../../components/core/image.core";
 
-// lib
+// libs
 import { Space, Divider, Rate, Col, Row, Image, Tabs, Modal } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";

@@ -1,4 +1,4 @@
-//file
+//files
 import StepTwoPayment from "./StepTwoPayment";
 import HotelDetailPayment from "./HotelDetailPayment";
 import StepOnePayment from "./StepOnePayment";

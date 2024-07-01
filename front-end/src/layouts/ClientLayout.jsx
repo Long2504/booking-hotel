@@ -1,10 +1,13 @@
-import { Routes, Route } from "react-router-dom";
+//files
+import FooterClient from "../components/client/core/Footer.client";
 import { generateRoute } from "../utils/common.utils";
 import routesClient from "../router/client.router";
 import NotFound from "../pages/core/NotFound";
 import HeaderClient from "../components/client/core/Header.client";
+
+//libs
+import { Routes, Route } from "react-router-dom";
 import { Layout } from "antd";
-import FooterClient from "../components/client/core/Footer.client";
 const { Content } = Layout;
 
 function ClientLayout() {

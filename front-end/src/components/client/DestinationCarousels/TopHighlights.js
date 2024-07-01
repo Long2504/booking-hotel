@@ -1,7 +1,8 @@
-import React from "react";
-
-import { Tabs } from "antd";
+//files
 import HotelsHighlight from "./HotelsHighlight";
+
+//libs
+import { Tabs } from "antd";
 
 function TopHighlights() {
 	const listHotel = [

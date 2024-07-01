@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+//files
 import Calendar from "../core/Calendar.client";
 import RoomSelect from "../core/RoomSelect.client";
+
+//libs
+import React, { useState } from "react"; 
 import { Link } from "react-router-dom";
 import { Space } from "antd";
+
+//icons
 import { SearchOutlined, HomeOutlined } from "@ant-design/icons";
 
 function FormSelection() {

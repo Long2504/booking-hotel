@@ -1,7 +1,12 @@
-import { SearchOutlined } from "@ant-design/icons";
+//files
+import { vietNamDong } from "../../../utils/common.utils";
+
+//libs
 import { Divider, Checkbox, Slider, Rate } from "antd";
 import { useState } from "react";
-import { vietNamDong } from "../../../utils/common.utils";
+
+//icons
+import { SearchOutlined } from "@ant-design/icons";
 
 function DashboardLeft() {
 	const [value,] = useState([0, 1000]);

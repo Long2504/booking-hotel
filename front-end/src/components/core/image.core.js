@@ -1,3 +1,4 @@
+//libs
 import { Image } from "antd";
 
 function ImageCore({ src, alt }) {

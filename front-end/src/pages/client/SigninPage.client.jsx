@@ -1,10 +1,14 @@
+//files
+import InputCore from "../../components/core/input.core";
+import signinFormSchema from "../../validate/signin.validate";
+
+//libs
 import { GoogleLogin } from "@react-oauth/google";
 import { Divider } from "antd";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import InputCore from "../../components/core/input.core";
-import signinFormSchema from "../../validate/signin.validate";
+
 
 function SigninPage() {
 	const {

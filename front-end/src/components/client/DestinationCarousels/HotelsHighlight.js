@@ -1,6 +1,11 @@
-import { Space, Col, Row, Rate } from "antd";
-import { EnvironmentTwoTone } from "@ant-design/icons";
+//files
 import { vietNamDong } from "../../../utils/common.utils";
+
+//libs
+import { Space, Col, Row, Rate } from "antd";
+
+//icons
+import { EnvironmentTwoTone } from "@ant-design/icons";
 function HotelsHighlight({ listHotel }) {
 	return (
 		<Row

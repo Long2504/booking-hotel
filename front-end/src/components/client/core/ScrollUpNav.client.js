@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { SearchOutlined } from "@ant-design/icons";
+//files
 import Calendar from "./Calendar.client";
 import RoomSelect from "./RoomSelect.client";
+
+//libs
+import { useEffect, useState } from "react"; 
 import { Input } from "antd";
+
+//icons
+import { SearchOutlined } from "@ant-design/icons";
 
 function ScrollUpNav({ calcScroll, handleClicking }) {
 	const [scroll, setScroll] = useState(0);

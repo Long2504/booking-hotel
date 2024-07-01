@@ -1,10 +1,12 @@
+//files
+import InputCore from "../../components/core/input.core";
+import signupFormSchema from "../../validate/signup.validate";
+
+//libs
 import { GoogleLogin } from "@react-oauth/google";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-import InputCore from "../../components/core/input.core";
-import signupFormSchema from "../../validate/signup.validate";
 
 function SignupPage() {
 	const {

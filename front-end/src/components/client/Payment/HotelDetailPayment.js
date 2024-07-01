@@ -3,7 +3,7 @@ import { dataPayment } from "../../../data/payment.data";
 import { vietNamDong } from "../../../utils/common.utils";
 import { noImage } from "../../../assets/images/index.image";
 
-// lib
+// libs
 import { Rate, Divider, Tooltip } from "antd";
 import dayjs from "dayjs";
 

@@ -1,4 +1,4 @@
-import React from "react";
+//libs
 import { Carousel } from "antd";
 
 function TopDestination() {

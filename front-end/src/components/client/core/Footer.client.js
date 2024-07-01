@@ -1,3 +1,4 @@
+//libs
 import { Footer } from "antd/es/layout/layout";
 function FooterClient() {
 	return (

@@ -1,5 +1,8 @@
+//libs
 import { Dropdown, Space } from "antd";
 import { useState } from "react";
+
+//icons
 import {
 	DownOutlined,
 	MinusCircleTwoTone,
