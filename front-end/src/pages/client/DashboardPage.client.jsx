@@ -1,7 +1,7 @@
 import { Pagination } from "antd";
-import DashboardLeft from "../../components/client/hotel/DashboardLeft";
+import DashboardLeft from "../../components/client/HotelList/DashboardLeft";
 import Loading from "../../components/client/core/Loading.client";
-import HotelContainer from "../../components/client/hotel/HotelContainer";
+import HotelContainer from "../../components/client/HotelList/HotelContainer";
 import { dataHotel } from "../../data/listHotel.data";
 function DashboardPage() {
 	const listHotel = dataHotel.list;
