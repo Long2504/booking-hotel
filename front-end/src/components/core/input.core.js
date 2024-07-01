@@ -7,11 +7,15 @@ function InputCore({
 	value,
 	readOnly,
 	error,
+	width,
+	height,
 }) {
-	console.log(error);
 	const registerInput = register ? register(name) : {};
 	return (
-		<div className='input-core'>
+		<div className='input-core' style={{
+			width: width || "100%",
+			height: height || "100px",
+		}}>
 			<label>{label}</label>
 			<input
 				{...registerInput}
