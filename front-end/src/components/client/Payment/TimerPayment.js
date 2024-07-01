@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from "react";
+
+//libs
+import { useEffect, useState } from "react";
 import dayjs from "dayjs";
+
+//icons
 import ClockCircleOutlined from "@ant-design/icons/lib/icons/ClockCircleOutlined";
 function TimerPayment() {
 	const [hours, setHours] = useState(0);

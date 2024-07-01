@@ -1,3 +1,4 @@
+import CheckoutPage from "../pages/client/CheckoutPage.client";
 import DashboardPage from "../pages/client/DashboardPage.client";
 import HotelDetailPage from "../pages/client/HotelDetailPage.client";
 import LandingPage from "../pages/client/LandingPage.client";
@@ -16,6 +17,10 @@ const routesClient = [
 	{
 		path: "/hotel/:id",
 		element: <HotelDetailPage />,
+	},
+	{
+		path: "checkout/:id",
+		element: <CheckoutPage />,
 	},
 	{
 		path: "/signin",

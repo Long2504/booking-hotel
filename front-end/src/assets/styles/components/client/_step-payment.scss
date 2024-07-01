@@ -1,0 +1,11 @@
+.step-payment{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    &__content{
+        width: 68.5%;
+    }
+    &__right{
+        width: 30%;
+    }
+}

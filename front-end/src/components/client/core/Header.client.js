@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { logoMain } from "../../../assets/images";
+import { logoMain } from "../../../assets/images/index.image";
 import { Header } from "antd/es/layout/layout";
 import { Button, Space } from "antd";
 function HeaderClient() {

@@ -1,0 +1,247 @@
+.hotel-detail-checkout {
+    width: 100%;
+
+    &__info {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+
+        &__img {
+            width: 26%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                image-rendering: optimizeQuality;
+                transform: scaleX(2);
+                height: 130px;
+            }
+        }
+
+        &__content {
+            width: 70%;
+
+            &__name {
+                font-size: 20px;
+                margin-top: 5px;
+                line-height: 25px;
+                font-weight: 500;
+                color: #2a2a2e;
+                margin-bottom: 10px;
+            }
+
+            &__address {
+                font-size: 14px;
+                margin-top: 5px;
+                font-weight: 500;
+            }
+
+            &__exellent {
+                width: 100%;
+                font-size: 12px;
+                font-weight: 500;
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+
+    &__info-room {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 10px;
+
+        &__date {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+
+
+            span {
+                font-weight: 600;
+                font-size: 1 6px;
+                color: #2a2a2e;
+            }
+        }
+
+        &__quantity {
+            font-size: 14px;
+            font-weight: 500;
+            color: #2a2a2e;
+            margin-top: 20px;
+        }
+
+        &__rating {
+            width: 100%;
+            display: flex;
+            margin-top: 10px;
+
+            &__box {
+                font-size: 14px;
+                width: 35px;
+                height: 30px;
+                position: relative;
+                background: rgb(72, 139, 248);
+                border-radius: 3px;
+                margin-right: 8px;
+                margin-top: 5px;
+                color: white;
+                text-align: center;
+                line-height: 30px;
+
+                &::before {
+                    position: absolute;
+                    right: -1.5px;
+                    top: 0px;
+                    content: "";
+                    width: 8px;
+                    height: 5px;
+                    border-radius: 1px;
+                    background: rgb(72, 139, 248);
+                    transform: skew(150deg);
+                }
+            }
+
+            &__rev {
+                div:first-of-type {
+                    font-size: 14px;
+                    color: rgb(57, 111, 198);
+                    font-weight: 500;
+                }
+
+                div:last-of-type {
+                    font-size: 12px;
+                    font-weight: 300;
+                }
+            }
+
+
+        }
+
+        &__room {
+            width: 100%;
+            display: flex;
+
+            &__img {
+                width: 25%;
+            }
+
+            &__content {
+                width: 75%;
+                margin-left: 10px;
+                padding-top: 15px;
+
+                &__text {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+                    justify-content: flex-start;
+
+                    span {
+                        font-size: 12px;
+                        margin-left: 10px;
+                        color: #2a2a2e;
+                    }
+                }
+            }
+        }
+
+        &__bottom {
+            width: 100%;
+            display: flex;
+
+            span {
+                font-size: 14px;
+                font-weight: 400;
+                color: rgb(40, 135, 28);
+                line-height: 20px;
+                margin-left: 10px;
+
+            }
+        }
+
+
+    }
+
+    &__advice {
+        width: 100%;
+        margin-bottom: 10px;
+        border-left: 5px solid #1aac5b;
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+
+        &__text {
+            margin-left: 10px;
+
+            &__title {
+
+                font-weight: 500;
+                color: rgb(50, 169, 35);
+            }
+        }
+
+    }
+
+    &__price {
+        width: 100%;
+        margin-bottom: 10px;
+
+
+        &__top {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-bottom: 1px solid rgb(221, 223, 226);
+
+            &__item {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 15px;
+            }
+        }
+
+        &__bottom {
+            padding: 15px;
+
+            &__price {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+
+                &__text {
+                    display: flex;
+                    align-items: center;
+
+                    &__title {
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+
+                }
+
+                &__number {
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+            }
+
+            &__advice {
+                font-size: 13px;
+
+                span:first-of-type {
+                    font-weight: 500;
+                }
+
+            }
+        }
+    }
+
+    &__box {
+        border: 1px solid rgb(221, 223, 226);
+        box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
+        background-color: white;
+    }
+}
