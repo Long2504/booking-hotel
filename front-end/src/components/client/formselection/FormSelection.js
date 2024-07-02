@@ -32,7 +32,7 @@ function FormSelection() {
 				</Space>
 			</Box>
 
-			<Box className='form-selection__form'>
+			<Box radius={5} className='form-selection__form'>
 				<Box radius={5} border className='form-selection__form__top'>
 					<IoSearch style={{ color: "#555" }} />
 					<input
