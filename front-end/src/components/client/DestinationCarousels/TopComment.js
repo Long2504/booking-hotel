@@ -1,5 +1,6 @@
 //libs
 import { Space } from "antd";
+import Box from "../../core/box.core";
 
 function TopComment() {
 	return (
@@ -9,7 +10,7 @@ function TopComment() {
 			</div>
 
 			<Space className='top-comments-landing__content'>
-				<div className='top-comments-landing__content__review'>
+				<Box radius={5} border className='top-comments-landing__content__review'>
 					<h1>Ruby Can Tho Hotel</h1>
 					<p>tại Cần Thơ</p>
 					<h2>
@@ -17,9 +18,9 @@ function TopComment() {
 						Cám ơn hệ thống của các bạn rất nhiều."
 					</h2>
 					<p>-Nguyễn Văn A</p>
-				</div>
+				</Box>
 
-				<div className='top-comments-landing__content__review'>
+				<Box radius={5} border className='top-comments-landing__content__review'>
 					<h1>InterContinental Nha Trang</h1>
 					<p>in Nha Trang</p>
 					<h2>
@@ -27,9 +28,9 @@ function TopComment() {
 						Nha Trang. Cám ơn hệ thống của các bạn rất nhiều."
 					</h2>
 					<p>-Nguyễn Văn B</p>
-				</div>
+				</Box>
 
-				<div className='top-comments-landing__content__review'>
+				<Box radius={5} border className='top-comments-landing__content__review'>
 					<h1>Hanoi Era Hotel</h1>
 					<p>in Hà Nội</p>
 					<h2>
@@ -37,7 +38,7 @@ function TopComment() {
 						Cám ơn hệ thống của các bạn rất nhiều."
 					</h2>
 					<p>-Nguyễn Văn C</p>
-				</div>
+				</Box>
 			</Space>
 		</div>
 	);

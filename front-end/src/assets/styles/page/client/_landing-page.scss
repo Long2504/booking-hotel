@@ -1,8 +1,7 @@
 .landing-page {
     width: 100%;
-    display: flex;
+    @include flex(center,null);
     flex-direction: column;
-    align-items: center;
 
     &__promotion {
         width: 60%;

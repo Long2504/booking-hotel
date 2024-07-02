@@ -1,15 +1,12 @@
 .destination-carousels-landing {
     width: 100%;
-    display: flex;
+    @include flex(center, null);
     flex-direction: column;
-    align-items: center;
     margin-top: 40px;
 
     &__top-destination {
         width: 80%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex(center,center)
     }
 
     &__top-comments {
@@ -22,13 +19,11 @@
 }
 
 .top-destination-landing {
-    height: 280px;
-    width: 80%;
+    @include size(80%,280px);
 
     &__heading {
         text-align: center;
-        font-size: 30px;
-        font-weight: 500;
+        @include font(500, 30px, null, null);
     }
 
     &__carousel {
@@ -71,7 +66,6 @@
 
 }
 
-
 .top-comments-landing {
     text-align: center;
     margin-bottom: 40px;
@@ -79,27 +73,22 @@
     &__header {
         text-align: center;
         margin: 25px 0;
-        font-size: 30px;
-        font-weight: 500;
+        @include font(500, 30px, null, null);
     }
 
     &__content {
         width: 90%;
 
         &__review {
-
             text-align: center;
-            border: 1px solid #ddd;
             padding: 15px;
             margin: 10px;
-            border-radius: 7px;
-            border-bottom: 3px solid dodgerblue;
+            border-bottom: 3px solid dodgerblue !important;
             cursor: pointer;
 
             h1 {
-                color: dodgerblue;
                 margin-bottom: 0;
-                font-size: 25px;
+                @include font(null, 25px, null, dodgerblue);
             }
 
             h2 {
