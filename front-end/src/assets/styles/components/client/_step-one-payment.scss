@@ -2,21 +2,16 @@
     margin-bottom: 50px;
 
     &__advice {
-        width: 100%;
-        height: 50px;
+        @include size(100%, 50px);
         font-size: 13px;
         margin-bottom: 10px;
-        border-radius: 2px;
-        box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
-        border: 1px solid rgb(221, 223, 226);
-        display: flex;
-        align-items: center;
+        // box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
+        @include flex(center, null);
         background-color: white;
 
         &__green-bar {
             display: inline-block;
-            width: 5px;
-            height: 100%;
+            @include size(5px, 100%);
             border-top-left-radius: 2px;
             border-bottom-left-radius: 2px;
             background-color: green;
@@ -24,22 +19,18 @@
         }
 
         &__great {
-            color: rgb(50, 169, 35);
-            font-weight: 600;
+            @include font(600,null,null,rgb(50, 169, 35));
             margin: 0 4px;
         }
     }
 
     &__form {
         width: 100%;
-        border-radius: 2px;
 
         &__time {
-            width: 100%;
-            height: 55px;
+            @include size(100%,55px);
             background-color: rgb(244, 248, 254);
-            box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
-            border: 2px;
+            // box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
             padding: 0 15px;
         }
 
@@ -47,14 +38,12 @@
 
             &__title {
                 &__icon {
-                    color: #2e7d32;
-                    font-size: 24px;
+                    @include font(null, 24px, null, #2e7d32);
                 }
 
                 h4 {
-                    font-size: 24px;
                     margin-left: 10px;
-                    font-weight: 500;
+                    @include font(500, 24px, null, null);
                 }
             }
 
@@ -92,16 +81,14 @@
         }
 
         &__policy {
-            display: flex;
+            @include flex(null, flex-end);
             flex-direction: column;
-            justify-content: flex-end;
 
             &__text {
                 width: 100%;
 
                 &__link {
-                    color: rgb(49, 112, 231);
-                    font-weight: 500;
+                    @include font(500, null, null, rgb(49, 112, 231));
 
                     &:hover {
                         text-decoration: underline;
@@ -115,8 +102,7 @@
                 margin-top: 12px;
                 margin-bottom: 12px;
                 text-align: end;
-                font-weight: 500;
-                color: rgb(40, 135, 28);
+                @include font(500,null,null,rgb(40, 135, 28));
             }
 
             &__btn {
@@ -141,8 +127,7 @@
 
         &__box {
             margin-top: 10px;
-            border: 1px solid rgb(221, 223, 226);
-            box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
+            // box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
             background-color: white;
             padding: 20px 30px;
         }

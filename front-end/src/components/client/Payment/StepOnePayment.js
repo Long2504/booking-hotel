@@ -2,6 +2,7 @@
 import TimerPayment from "./TimerPayment";
 import InputCore from "../../core/input.core";
 import SelectCore from "../../core/select.core";
+import Box from "../../core/box.core";
 
 //libs
 import { CheckOutlined } from "@ant-design/icons";
@@ -14,7 +15,7 @@ import { LuBedSingle, LuBedDouble } from "react-icons/lu";
 function StepOnePayment() {
 	return (
 		<div className='step-one-payment'>
-			<div className='step-one-payment__advice'>
+			<Box className='step-one-payment__advice'>
 				<span className='step-one-payment__advice__green-bar'></span>
 				<CheckOutlined style={{ color: "green" }} />
 				<span className='step-one-payment__advice__great'>
@@ -23,13 +24,13 @@ function StepOnePayment() {
 				<span> - với số điểm trung bình của khách lên tới </span>
 				<span className='step-one-payment__advice__great'>5</span>
 				<span> từ các bài đánh giá</span>
-			</div>
+			</Box>
 
 			<div className='step-one-payment__form'>
-				<div className='step-one-payment__form__time'>
+				<Box className='step-one-payment__form__time'>
 					<TimerPayment />
-				</div>
-				<div className='step-one-payment__form__info-user step-one-payment__form__box'>
+				</Box>
+				<Box className='step-one-payment__form__info-user step-one-payment__form__box'>
 					<Space className='step-one-payment__form__info-user__title'>
 						<CheckOutlined className='step-one-payment__form__info-user__title__icon' />
 						<h4>Thông tin liên lạc</h4>
@@ -70,8 +71,8 @@ function StepOnePayment() {
 							width={"46%"}
 						/>
 					</div>
-				</div>
-				<div className='step-one-payment__form__preference step-one-payment__form__box'>
+				</Box>
+				<Box className='step-one-payment__form__preference step-one-payment__form__box'>
 					<div className='step-one-payment__form__preference__title'>
 						<h4>Hãy cho chúng tôi biết quý khách cần gì</h4>
 						<label>
@@ -141,9 +142,9 @@ function StepOnePayment() {
 							</Radio.Group>
 						</div>
 					</div>
-				</div>
+				</Box>
 
-				<div className='step-one-payment__form__policy step-one-payment__form__box'>
+				<Box className='step-one-payment__form__policy step-one-payment__form__box'>
 					<div className='step-one-payment__form__policy__text'>
 						<span>
 							Thực hiện bước tiếp theo đồng nghĩa với việc bạn
@@ -162,7 +163,7 @@ function StepOnePayment() {
 					<button className='step-one-payment__form__policy__btn'>
 						KẾ TIẾP: BƯỚC CUỐI CÙNG
 					</button>
-				</div>
+				</Box>
 			</div>
 		</div>
 	);

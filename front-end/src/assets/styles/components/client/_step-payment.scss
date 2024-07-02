@@ -1,7 +1,6 @@
 .step-payment{
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    @include flex(null, space-between);
     &__content{
         width: 68.5%;
     }

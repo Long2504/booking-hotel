@@ -2,6 +2,7 @@
 import { vietNamDong } from "../../../utils/common.utils";
 import TimerPayment from "./TimerPayment";
 import { paypalImage } from "../../../assets/images/index.image";
+import Box from "../../core/box.core";
 
 //libs
 import { Checkbox } from "antd";
@@ -10,6 +11,7 @@ import dayjs from "dayjs";
 
 //icons
 import { MdOutlineVerifiedUser, MdMarkEmailRead } from "react-icons/md";
+
 function StepTwoPayment() {
 	const initialOptions = {
 		clientId:
@@ -24,10 +26,10 @@ function StepTwoPayment() {
 	};
 	return (
 		<div className='step-two-payment'>
-			<div className='step-two-payment__timer'>
+			<Box className='step-two-payment__timer step-two-payment__box'>
 				<TimerPayment />
-			</div>
-			<div className='step-two-payment__content'>
+			</Box>
+			<Box className='step-two-payment__content step-two-payment__box'>
 				<div className='step-two-payment__content__top'>
 					<div className='step-two-payment__content__top__title'>
 						<MdOutlineVerifiedUser />
@@ -50,12 +52,12 @@ function StepTwoPayment() {
 						<div className='step-two-payment__content__center__payment__body'>
 							<div className='step-two-payment__content__center__payment__body__top'>
 								<p>Hình thức thanh toán</p>
-								<div className='step-two-payment__content__center__payment__body__top__container'>
+								<Box className='step-two-payment__content__center__payment__body__top__container'>
 									<div className='step-two-payment__content__center__payment__header__img'>
 										<img src={paypalImage} alt='' />
 									</div>
 									<p>PayPal</p>
-								</div>
+								</Box>
 							</div>
 							<ul className='step-two-payment__content__center__payment__body__bottom'>
 								<li>
@@ -120,6 +122,7 @@ function StepTwoPayment() {
 						</p>
 					</div>
 				</div>
+
 				<div className='step-two-payment__content__bottom'>
 					<MdMarkEmailRead />
 					<p>
@@ -127,7 +130,7 @@ function StepTwoPayment() {
 						<span>{"mail"}</span>
 					</p>
 				</div>
-			</div>
+			</Box>
 			<div className='step-two-payment__btn'>
 				<button onClick={() => {}}>Quay lại Chi tiết đặt phòng</button>
 			</div>

@@ -3,11 +3,8 @@
     background-color: rgb(245, 245, 245);
 
     &__nav{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 60px;
+        @include size(100%, 60px);
+        @include flex(center, center);
         padding: 0 110px;
         background-color: white;
         box-shadow: 0px 0px 2px grey;
@@ -20,8 +17,7 @@
         max-width: 85%;
         min-height: 500px;
         margin: auto;
-        display: flex;
+        @include flex(null, space-between);
         margin-top: 15px;
-        justify-content: space-between;
     }
 }
