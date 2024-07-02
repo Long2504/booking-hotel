@@ -5,7 +5,8 @@ import { vietNamDong } from "../../../utils/common.utils";
 import { Space, Col, Row, Rate } from "antd";
 
 //icons
-import { EnvironmentTwoTone } from "@ant-design/icons";
+import { FaLocationDot } from "react-icons/fa6";
+import Box from "../../core/box.core";
 function HotelsHighlight({ listHotel }) {
 	return (
 		<Row
@@ -14,7 +15,11 @@ function HotelsHighlight({ listHotel }) {
 		>
 			{listHotel?.map((item, index) => (
 				<Col className='gutter-row' span={6} key={index}>
-					<div className='top-highlights-landing__content__list__item'>
+					<Box
+						border
+						radius={5}
+						className='top-highlights-landing__content__list__item'
+					>
 						<img src={item.images[0]} alt='' />
 						<Space
 							direction='vertical'
@@ -33,12 +38,7 @@ function HotelsHighlight({ listHotel }) {
 								style={{ fontSize: "16px" }}
 							/>
 							<div className='top-highlights-landing__content__list__item__info__address'>
-								<EnvironmentTwoTone
-									style={{
-										fontSize: "36px ",
-										marginRight: "5px",
-									}}
-								/>
+								<FaLocationDot style={{ marginRight: "5px" }} />
 								<span title={item.address}>{item.address}</span>
 							</div>
 							<p className='top-highlights-landing__content__list__item__info__note'>
@@ -48,7 +48,7 @@ function HotelsHighlight({ listHotel }) {
 								{vietNamDong(item.priceAverage)}
 							</p>
 						</Space>
-					</div>
+					</Box>
 				</Col>
 			))}
 		</Row>
