@@ -10,12 +10,10 @@
     &__content {
 
         h6{
-            font-size: 25px;
-            font-weight: 500;
+            @include font(500, 25px, null,null);
         }
         &__submit {
-            width: 100%;
-            height: 45px;
+            @include size(100%, 45px);
             background-color: rgb(83, 146, 249);
             color: white;
             border: none;
@@ -32,48 +30,17 @@
 
         &__login-with-gg {
             width: 100%;
-            display: flex;
-            justify-content: center;
+            @include flex(null, center);
         }
 
 
         &__google {
-            width: 100%;
-            height: 45px;
-        }
-
-        &__btn-signin {
-            width: 100%;
-            height: 45px;
-            @include flex(center, center);
-            background-color: transparent;
-            color: rgba(83, 146, 249, 1);
-            border: 1px solid rgba(83, 146, 249, 1);
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
-            transition: 200ms ease-in-out;
-            font-size: 14px;
-            font-weight: 600;
-            margin-top: 20px;
-            margin-bottom: 20px;
-
-            &:hover {
-                background-color: rgba(83, 146, 249, 1);
-                color: white;
-                transition: 200ms ease-in-out;
-            }
-
-            a {
-                margin-left: 5px;
-
-            }
+            @include size(100%, 45px);
         }
 
         &__by-signing {
-            font-size: 12px;
             text-align: center;
-            color: rgba(0, 0, 0, 0.8);
+            @include font(null,12px,null,rgba(0, 0, 0, 0.8));
             margin-top: 30px;
         }
     }

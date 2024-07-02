@@ -69,7 +69,6 @@ function SignupPage() {
 				</button>
 				<div className='signup-client__content__login-with-gg'>
 					<GoogleLogin
-						className='resister-client__signup__google'
 						onSuccess={() => {}}
 						onError={() => {
 							console.log("Login Failed");

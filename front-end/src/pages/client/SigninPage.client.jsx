@@ -18,7 +18,6 @@ function SigninPage() {
 	} = useForm({
 		resolver: yupResolver(signinFormSchema),
 	});
-	console.log(errors);
 	return (
 		<div className='signin-client'>
 			<div className='signin-client__content'>
