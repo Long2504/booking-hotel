@@ -5,6 +5,7 @@ import RoomItem from "../../components/client/HotelDetail/RoomItem";
 import ExtensionItem from "../../components/client/HotelDetail/ExtensionItem";
 import ScrollUpNav from "../../components/client/core/ScrollUpNav.client";
 import ImageCore from "../../components/core/image.core";
+import Box from "../../components/core/box.core";
 
 // libs
 import { Space, Divider, Rate, Col, Row, Image, Tabs, Modal } from "antd";
@@ -13,6 +14,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 //icons
 import { FaCheck, FaCamera } from "react-icons/fa";
+
 function HotelDetailPage() {
 	const hotel = hotelDetail;
 	const navigate = useNavigate();
@@ -108,6 +110,7 @@ function HotelDetailPage() {
 						})}
 					</Row>
 				</div>
+
 				<div className='hotel-detail-page__tab'
 					style={scroll > 150 ? styleScrollUpNav : {}}
 				>
@@ -132,8 +135,9 @@ function HotelDetailPage() {
 						</p>
 					</Space>
 				</div>
+
 				<div className='hotel-detail-page__content'>
-					<div className='hotel-detail-page__content__top'>
+					<Box border radius={4} className='hotel-detail-page__content__top'>
 						<div className='hotel-detail-page__content__top__title'>
 							<h1>{hotel?.name}</h1>
 							<Rate value={hotel?.star || 0} disabled />
@@ -148,8 +152,8 @@ function HotelDetailPage() {
 						<p className='hotel-detail-page__content__top__desc'>
 							{hotel?.description}
 						</p>
-					</div>
-					<div className='hotel-detail-page__content__center'>
+					</Box>
+					<Box border radius={4} className='hotel-detail-page__content__center'>
 						<h2>Tiện nghi</h2>
 						<Row gutter={[16, 24]}>
 							<Col
@@ -211,8 +215,9 @@ function HotelDetailPage() {
 								<span>Bể bơi [ngoài trời]</span>
 							</Col>
 						</Row>
-					</div>
+					</Box>
 				</div>
+
 				<div className='hotel-detail-page__list-room'
 					id='hotel-detail-page__list-room'
 				>
@@ -227,8 +232,8 @@ function HotelDetailPage() {
 						))}
 					</div>
 				</div>
-				<div
-					className='hotel-detail-page__extension'
+
+				<Box radius={5} className='hotel-detail-page__extension'
 					id='hotel-detail-page__extension'
 				>
 					<h2>Tiện nghi và cơ sở vật chất</h2>
@@ -237,7 +242,7 @@ function HotelDetailPage() {
 							<ExtensionItem key={index} data={extension} />
 						))}
 					</div>
-				</div>
+				</Box>
 			</div>
 			<Modal
 				open={isModalOpen}

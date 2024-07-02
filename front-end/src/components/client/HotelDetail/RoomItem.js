@@ -1,10 +1,11 @@
 //filse
 import { vietNamDong } from "../../../utils/common.utils";
+import Box from "../../core/box.core";
 import ImageCore from "../../core/image.core";
 
 function RoomItem({ data, linkToChekout, checkView = false }) {
 	return (
-		<div className='hotel-detail-page__list-room__container__room'>
+		<Box className='hotel-detail-page__list-room__container__room'>
 			<p className='hotel-detail-page__list-room__container__room__name'>
 				{data?.roomType?.name}
 			</p>
@@ -71,9 +72,9 @@ function RoomItem({ data, linkToChekout, checkView = false }) {
 						className='hotel-detail-page__list-room__container__room__content__occupancy'
 						style={{ borderRight: "1px solid #ccc" }}
 					>
-						<div className='hotel-detail-page__list-room__container__room__content__occupancy__item'>
+						<Box className='hotel-detail-page__list-room__container__room__content__occupancy__item'>
 							{data?.occupancy}
-						</div>
+						</Box>
 					</div>
 					<div
 						className='hotel-detail-page__list-room__container__room__content__price'
@@ -103,7 +104,7 @@ function RoomItem({ data, linkToChekout, checkView = false }) {
 					)}
 				</div>
 			</div>
-		</div>
+		</Box>
 	);
 }
 

@@ -47,24 +47,21 @@
 
     &__tab {
         @include size(100%, 55px);
-        margin-top: 20px;
         @include flex(center, space-between);
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        margin-top: 20px;
         padding: 0 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
 
         &__price {
             display: flex;
 
             &__title {
-                font-size: 15px;
-                color: rgb(115, 115, 115);
+                @include font(null,15px, null, rgb(115, 115, 115));
             }
 
             &__price {
-                color: #e12d2d;
-                font-size: 22px;
-                font-weight: 500;
+                @include font(500,22px,null,#e12d2d)
             }
         }
     }
@@ -77,8 +74,6 @@
             display: flex;
             flex-direction: column;
             row-gap: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
 
             &__title {
                 display: inline-block;
@@ -105,11 +100,8 @@
         }
 
         &__center {
-            padding: 10px;
+            padding: 10px 10px 20px 10px;
             margin-top: 20px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            padding-bottom: 20px;
 
             h2 {
                 margin-bottom: 20px;
@@ -117,8 +109,7 @@
 
             &__grid-item {
                 @include flex(center, null);
-                font-size: 13px;
-                font-weight: 500;
+                @include font(500,13px, null,null);
                 span{
                     margin-left: 5px;
                 }
@@ -149,14 +140,11 @@
             margin-top: 10px;
 
             &__room {
-                border: 1px solid #cecece;
-                cursor: pointer;
                 margin-bottom: 30px;
 
                 &__name {
                     padding: 10px;
-                    font-weight: 500;
-                    font-size: 22px;
+                    @include font(500, 22px, null, null);
                 }
 
                 &__content {
@@ -165,8 +153,7 @@
                         @include flex(center, null);
                         padding: 10px;
                         background-color: #f7f7f7;
-                        font-size: 18px;
-                        font-weight: 500;
+                        @include font(500, 18px, null, null);
                     }
 
                     &__body {
@@ -202,7 +189,6 @@
                         &__item {
                             margin-top: 30px;
                             background-color: #e9ebee;
-                            border: 1px solid #dddfe2;
                             @include size(45px, 35px);
                             @include flex(center, center);
                             font-weight: 500;
@@ -222,8 +208,7 @@
                             padding: 10px;
 
                             h3 {
-                                color: #e12d2d;
-                                font-size: 30px;
+                                @include font(null, 30px, null, #e12d2d);
                                 float: right;
                                 text-align: right;
                             }
@@ -276,8 +261,6 @@
         margin-top: 20px;
         margin-bottom: 40px;
         padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
 
         &__list {
             width: 100%;
