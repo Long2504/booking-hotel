@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Input } from "antd";
 
 //icons
-import { SearchOutlined } from "@ant-design/icons";
+import { IoSearch } from "react-icons/io5";
 
 function ScrollUpNav({ calcScroll, handleClicking }) {
 	const [scroll, setScroll] = useState(0);
@@ -34,7 +34,7 @@ function ScrollUpNav({ calcScroll, handleClicking }) {
 				<Input
 					className='scroll-up-nav__content__search'
 					typeof='Search'
-					prefix={<SearchOutlined />}
+					prefix={<IoSearch style={{ fontSize: "20px" }} />}
 					onFocus={() => setFocus(true)}
 					onBlur={() => setFocus(false)}
 				/>
