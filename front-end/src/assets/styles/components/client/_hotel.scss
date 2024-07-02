@@ -1,10 +1,8 @@
-.hotel {
+.hotel-container {
     display: flex;
     width: 100%;
     min-height: 220px;
     margin-bottom: 30px;
-    border: 1px solid #dddfe2;
-    border-radius: 8px;
     font-family: "Barlow", sans-serif;
     cursor: pointer;
 
@@ -20,16 +18,13 @@
             position: relative;
 
             img {
-                width: 100%;
-                height: 182px;
+                @include size(100%, 182px);
                 border-top-left-radius: 5px;
             }
         }
 
         &__small-img {
-            display: flex;
-            justify-content: space-between;
-
+            @include flex(null,space-between);
             img {
                 width: 24.5%;
             }
@@ -44,16 +39,12 @@
         padding: 20px 0px;
 
         &__name {
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 20px;
+            @include font(600, 20px, null, null);
             margin-bottom: 5px;
         }
 
         &__address {
-            font-size: 14px;
-            color: rgb(49, 112, 231);
-            font-weight: 500;
+            @include font(500, 14px, null, rgb(49, 112, 231));
             @include flex(center, stretch);
             margin-top: 5px;
         }
@@ -62,9 +53,7 @@
             margin-top: 5px;
 
             p {
-                color: rgb(36, 38, 44);
-                font-size: 16px;
-                font-weight: 500;
+                @include font(500, 16px, null, rgb(36, 38, 44));
             }
 
             &__list {
@@ -74,8 +63,6 @@
                 &__item {
                     @include flex(center, center);
                     margin-right: 10px;
-                    border: 1px solid rgb(193, 203, 224);
-                    border-radius: 2px;
                     padding: 4px 8px;
                 }
             }
@@ -96,32 +83,22 @@
                 margin: 0px 10px;
 
                 p {
-                    font-size: 14px;
-                    font-weight: 500;
-                    color: rgb(42, 42, 46);
-                    line-height: 22px;
+                    @include font(500, 14px, 22px, rgb(42, 42, 46));
                 }
 
                 span {
-                    font-size: 12px;
-                    line-height: 18px;
-                    color: rqb(115, 115, 115);
-                    font-weight: 400;
+                    @include font(400, 12px, 18px, rgb(42, 42, 46));
                 }
             }
 
             &__rating {
                 position: relative;
                 @include flex(center, center);
-                width: 48px;
-                height: 48px;
+                @include size(48px, 48px);
 
                 &__text {
                     @include flex(center, center);
-                    font-size: 16px;
-                    font-weight: 500;
-                    line-height: 22px;
-                    color: rgb(83, 146, 249);
+                    @include font(500, 16px, 22px, rgb(83, 146, 249));
                 }
             }
         }
@@ -138,12 +115,9 @@
                 }
 
                 &__value {
-                    font-weight: bold;
-                    color: #e12d2d;
-                    font-size: 25px;
+                    @include font(bold, 25px, null, #e12d2d);
                     float: right;
-                    margin-top: 5px;
-                    margin-bottom: 10px;
+                    margin: 5px 0px 10px 0px;
                 }
             }
         }

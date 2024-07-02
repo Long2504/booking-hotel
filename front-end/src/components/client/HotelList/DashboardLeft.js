@@ -1,15 +1,17 @@
 //files
 import { vietNamDong } from "../../../utils/common.utils";
+import Box from "../../core/box.core";
 
 //libs
 import { Divider, Checkbox, Slider, Rate } from "antd";
 import { useState } from "react";
 
 //icons
-import { SearchOutlined } from "@ant-design/icons";
+import { IoSearch } from "react-icons/io5";
+
 
 function DashboardLeft() {
-	const [value,] = useState([0, 1000]);
+	const [value] = useState([0, 1000]);
 	const dataStar = [
 		{
 			label: <Rate disabled defaultValue={5} />,
@@ -75,7 +77,7 @@ function DashboardLeft() {
 	};
 	return (
 		<div className='dashboard-left'>
-			<div className='dashboard-left__map'>
+			<Box border={false} className='dashboard-left__map'>
 				<div className='dashboard-left__map__arrow'>
 					<img
 						height='40px'
@@ -94,30 +96,30 @@ function DashboardLeft() {
 				<div className='dashboard-left__map__text'>
 					<p>Xem ví trí</p>
 				</div>
-			</div>
+			</Box>
 
-			<div className='dashboard-left__search'>
-				<SearchOutlined
-					size='large'
+			<Box radius={18} className='dashboard-left__search'>
+				<IoSearch
 					className='dashboard-left__search__icon'
 				/>
 				<input type='text' placeholder='Tìm kiếm' />
-			</div>
+			</Box>
+
 			<div className='dashboard-left__slider'>
 				<p className='dashboard-left__slider__title'>Giá mỗi đêm</p>
 				<Slider valueLabelDisplay='auto' min={0} max={1000} range />
 				<div className='dashboard-left__slider__bottom'>
 					<div style={{ width: "40%" }}>
 						<p>Tối thiểu</p>
-						<div className='dashboard-left__slider__bottom__value'>
+						<Box radius={5} className='dashboard-left__slider__bottom__value'>
 							{vietNamDong(value[0])}
-						</div>
+						</Box>
 					</div>
 					<div style={{ width: "40%" }}>
 						<p>Tối đa</p>
-						<div className='dashboard-left__slider__bottom__value'>
+						<Box radius={5} className='dashboard-left__slider__bottom__value'>
 							{vietNamDong(value[1])}
-						</div>
+						</Box>
 					</div>
 				</div>
 

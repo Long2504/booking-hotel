@@ -1,12 +1,13 @@
 //files
 import { vietNamDong } from "../../../utils/common.utils";
+import Box from "../../core/box.core";
 
 //libs
 import { Space, Col, Row, Rate } from "antd";
 
 //icons
 import { FaLocationDot } from "react-icons/fa6";
-import Box from "../../core/box.core";
+
 function HotelsHighlight({ listHotel }) {
 	return (
 		<Row

@@ -1,99 +1,78 @@
-.dashboard-left{
-    cursor: text;
-    font-weight: 400;
-    padding-top: 22px;
-    padding-bottom: 7px;
-    font-size: 12px;
-    color: #5a5b5b;
+.dashboard-left {
+    padding: 22px 0px 7px 0px;
     width: 50%;
     margin-left: 48%;
+    @include font(400, 12px, 18px, #5a5b5b);
 
-    &__map{
+    &__map {
         position: relative;
-        border: 1px solid #ccc;
 
-        &__arrow{
-            position: absolute;
-            width: 100px;
-            height: 15px;
-            left: 90px;
+        &__arrow {
+            @include size(100px, 15px);
+            @include position(absolute, null, null, null, 90px);
             font-size: 12px;
             padding: 5px 10px;
-            border-radius: 2px;
         }
 
-        &__text{
-            position: absolute;
+        &__text {
+            @include position(absolute, null, 0, 10%, 0);
             display: block;
-            bottom: 10%;
-            left: 0;
-            right: 0;
+            @include font(700, 16px, null, #3c3c3c);
             text-align: center;
-            font-size: 16px;
-            font-weight: 700;
-            color: #3c3c3c;
             text-transform: uppercase;
         }
     }
 
-    &__search{
-        width: 100%;
+    &__search {
+        @include size(100%, 40px);
         @include flex(center, space-between);
-        height: 40px;
-        border: 1.5px solid #737373;
-        border-radius: 18px;
         margin-top: 20px;
         padding: 0 10px;
         background-color: #f8f7f9;
         color: #2a2a2e;
 
-        &__icon{
+        &__icon {
             font-size: 20px;
         }
-        input{
-            width: 90%;
-            height: 36px;
+
+        input {
+            @include size(90%, 36px);
             background-color: #f8f7f9;
             font-size: 16px;
         }
     }
 
-    &__slider{
+    &__slider {
         width: 100%;
         margin-top: 20px;
-        &__title{
-            color: #5a5b5b;
-            font-size: 16px;
-            font-weight: 600;
+
+        &__title {
+            @include font(600, 16px, null, #5a5b5b);
             margin-bottom: 20px;
             text-align: center;
         }
 
-        &__bottom{
+        &__bottom {
             @include flex(center, space-between);
             width: 100%;
-            p{
-                font-size: 14px;
+
+            p {
+                @include font(500, 14px, null, black);
                 margin-bottom: 5px;
-                font-weight: 500;
-                color: black;
             }
 
-            &__value{
-                border: 1px solid black;
+            &__value {
+                border-color: black !important;
                 height: 25px;
                 padding: 3px 10px;
                 @include flex(center, center);
-                font-size: 13px;
-                color: black;
+                @include font(null, 13px, null, black);
             }
         }
 
-        &__hotel-type{
-            &__title{
-                color: #5a5b5b;
-                font-size: 16px;
-                font-weight: 600;
+        &__hotel-type {
+            &__title {
+                @include font(600, 16px, null, #5a5b5b);
                 margin-bottom: 20px;
             }
         }

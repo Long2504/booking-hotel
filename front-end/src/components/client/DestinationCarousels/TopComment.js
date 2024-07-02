@@ -1,6 +1,9 @@
+//files
+import Box from "../../core/box.core";
+
 //libs
 import { Space } from "antd";
-import Box from "../../core/box.core";
+
 
 function TopComment() {
 	return (
