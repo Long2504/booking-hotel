@@ -1,38 +1,30 @@
 .form-selection {
-    width: 100%;
-    height: 850px;
+    @include size(100%, 850px);
 
     &__main {
-        position: absolute;
-        width: 100vw;
-        height: 300vh;
-        top: 0;
+        @include size(100vw, 300vh);
+        @include position(absolute, null, 0, 0, null);
     }
 
     &__background-img {
-        width: 100%;
-        height: 360px;
+        @include size(100%, 360px);
     }
 
     &__header {
         width: 40%;
         margin: auto;
-        position: relative;
-        top: 16px;
+        @include position(relative, 16px, null, null, null);
         transform: translateY(-260px);
-        border-radius: 9px;
         background-color: #fff;
         z-index: 10;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 6px 2px;
 
         &__content {
             @include flex(center, center);
             padding: 20px 0;
-            font-size: 16px;
-            color: #1976d2;
+            @include font(null, 16px, null, #1976d2);
             border-bottom: 2px solid #1976d2;
-            border-bottom-left-radius: 9px;
-            border-bottom-right-radius: 9px;
+            border-bottom-left-radius: 7px;
+            border-bottom-right-radius: 7px;
         }
     }
 
@@ -41,17 +33,13 @@
         margin: auto;
         background-color: #f8f7f9;
         transform: translateY(-260px);
-        border-radius: 6px;
         padding: 40px 50px 0 50px;
         box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
         &__top {
-            display: flex;
-            align-items: center;
-            border: 1px solid #ccc;
+            @include flex(center, null);
             background-color: #fff;
             padding: 10px;
-            border-radius: 9px;
             height: 50px;
 
             &__search-icon {
@@ -68,26 +56,20 @@
             }
 
             >input::placeholder {
-                color: #bbb;
-                font-size: 16px;
+                @include font(null, 16px, null, #bbb);
             }
         }
 
         &__center {
-            display: flex;
-            justify-content: space-between;
+            @include flex(null, space-between);
             margin-top: 20px;
 
             &__calendar {
-                width: 49%;
-                height: 50px;
+                @include size(49%, 50px);
             }
 
             &__room {
-                width: 49%;
-                height: 50px;
-                border: 1px solid #ccc;
-                border-radius: 6px;
+                @include size(49%, 50px);
                 background-color: white;
             }
         }
@@ -101,15 +83,11 @@
 
                 button {
                     background-color: #5392f9;
-                    cursor: pointer;
-                    border: none;
-                    color: #ffffff;
+                    @include font(600, 20px, null, #fff);
                     padding: 15px;
-                    font-size: 20px;
                     letter-spacing: 1.5px;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     margin: 20px auto;
-                    font-weight: 600;
                     width: 100%;
 
 
@@ -119,22 +97,5 @@
                 }
             }
         }
-    }
-
-
-
-    &__debounce-res {
-        width: 89.5%;
-        max-height: 500px;
-        position: absolute;
-        top: 110px;
-        z-index: 100;
-        overflow-y: scroll;
-        font-size: 16px;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-
     }
 }
