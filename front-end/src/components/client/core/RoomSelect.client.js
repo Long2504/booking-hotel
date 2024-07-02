@@ -3,11 +3,8 @@ import { Dropdown, Space } from "antd";
 import { useState } from "react";
 
 //icons
-import {
-	DownOutlined,
-	MinusCircleTwoTone,
-	PlusCircleTwoTone,
-} from "@ant-design/icons";
+import { FaChevronDown } from "react-icons/fa";
+import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 
 function RoomSelect({ setFocus }) {
 	const [open, setOpen] = useState(false);
@@ -28,12 +25,12 @@ function RoomSelect({ setFocus }) {
 				<div className='room-selection__dropdown__item'>
 					<p>Phòng</p>
 					<Space className='room-selection__dropdown__item__number'>
-						<MinusCircleTwoTone
+						<FiMinusCircle
 							className='room-selection__dropdown__item__number__icon'
 							onClick={() => setRoom(room - 1)}
 						/>
 						<div>{room}</div>
-						<PlusCircleTwoTone
+						<FiPlusCircle
 							className='room-selection__dropdown__item__number__icon'
 							onClick={() => setRoom(room + 1)}
 						/>
@@ -47,12 +44,12 @@ function RoomSelect({ setFocus }) {
 				<div className='room-selection__dropdown__item'>
 					<p>Số lượng người</p>
 					<Space className='room-selection__dropdown__item__number'>
-						<MinusCircleTwoTone
+						<FiMinusCircle
 							className='room-selection__dropdown__item__number__icon'
 							onClick={() => setPeople(people - 1)}
 						/>
 						<div>{people}</div>
-						<PlusCircleTwoTone
+						<FiPlusCircle
 							className='room-selection__dropdown__item__number__icon'
 							onClick={() => setPeople(people + 1)}
 						/>
@@ -79,7 +76,7 @@ function RoomSelect({ setFocus }) {
 						<p>{room} phòng</p>
 						<p style={{ color: "#999" }}>{people} người</p>
 					</Space>
-					<DownOutlined />
+					<FaChevronDown />
 				</div>
 			</Dropdown>
 		</div>
