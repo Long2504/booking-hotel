@@ -1,6 +1,6 @@
 //files
 import { vietNamDong } from "../../../utils/common.utils";
-import Box from "../../core/box.core";
+import Box from "../../common/box.core";
 
 //libs
 import { Divider, Checkbox, Slider, Rate } from "antd";

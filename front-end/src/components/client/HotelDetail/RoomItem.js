@@ -1,7 +1,7 @@
 //filse
 import { vietNamDong } from "../../../utils/common.utils";
-import Box from "../../core/box.core";
-import ImageCore from "../../core/image.core";
+import Box from "../../common/box.core";
+import ImageCore from "../../common/image.core";
 
 function RoomItem({ data, linkToChekout, checkView = false }) {
 	return (

@@ -1,7 +1,7 @@
 //files
-import Calendar from "../core/Calendar.client";
-import RoomSelect from "../core/RoomSelect.client";
-import Box from "../../core/box.core";
+import Calendar from "../common/Calendar.client";
+import RoomSelect from "../common/RoomSelect.client";
+import Box from "../../common/box.core";
 
 //libs
 import React, { useState } from "react";

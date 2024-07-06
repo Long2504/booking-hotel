@@ -3,9 +3,9 @@ import hotelDetail from "../../data/hotel.data";
 import { vietNamDong } from "../../utils/common.utils";
 import RoomItem from "../../components/client/HotelDetail/RoomItem";
 import ExtensionItem from "../../components/client/HotelDetail/ExtensionItem";
-import ScrollUpNav from "../../components/client/core/ScrollUpNav.client";
-import ImageCore from "../../components/core/image.core";
-import Box from "../../components/core/box.core";
+import ScrollUpNav from "../../components/client/common/ScrollUpNav.client";
+import ImageCore from "../../components/common/image.core";
+import Box from "../../components/common/box.core";
 
 // libs
 import { Space, Divider, Rate, Col, Row, Image, Tabs, Modal } from "antd";

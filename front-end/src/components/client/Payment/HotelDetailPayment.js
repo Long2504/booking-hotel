@@ -2,7 +2,7 @@
 import { dataPayment } from "../../../data/payment.data";
 import { vietNamDong } from "../../../utils/common.utils";
 import { noImage } from "../../../assets/images/index.image";
-import Box from "../../core/box.core";
+import Box from "../../common/box.core";
 
 // libs
 import { Rate, Divider, Tooltip } from "antd";

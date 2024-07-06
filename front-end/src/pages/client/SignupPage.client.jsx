@@ -1,5 +1,5 @@
 //files
-import InputCore from "../../components/core/input.core";
+import InputCore from "../../components/common/input.core";
 import signupFormSchema from "../../validate/signup.validate";
 
 //libs

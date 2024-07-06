@@ -1,5 +1,5 @@
 //files
-import Box from "../../core/box.core";
+import Box from "../../common/box.core";
 
 //libs
 import { Space } from "antd";

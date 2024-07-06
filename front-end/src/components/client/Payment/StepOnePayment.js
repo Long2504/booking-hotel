@@ -1,8 +1,8 @@
 // files
 import TimerPayment from "./TimerPayment";
-import InputCore from "../../core/input.core";
-import SelectCore from "../../core/select.core";
-import Box from "../../core/box.core";
+import InputCore from "../../common/input.core";
+import SelectCore from "../../common/select.core";
+import Box from "../../common/box.core";
 
 //libs
 import { CheckOutlined } from "@ant-design/icons";

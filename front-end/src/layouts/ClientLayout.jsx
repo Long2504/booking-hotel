@@ -1,9 +1,9 @@
 //files
-import FooterClient from "../components/client/core/Footer.client";
+import FooterClient from "../components/client/common/Footer.client";
 import { generateRoute } from "../utils/common.utils";
 import routesClient from "../router/client.router";
-import NotFound from "../pages/core/NotFound";
-import HeaderClient from "../components/client/core/Header.client";
+import NotFound from "../pages/common/NotFound";
+import HeaderClient from "../components/client/common/Header.client";
 
 //libs
 import { Routes, Route } from "react-router-dom";

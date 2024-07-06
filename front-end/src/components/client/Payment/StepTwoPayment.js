@@ -2,7 +2,7 @@
 import { vietNamDong } from "../../../utils/common.utils";
 import TimerPayment from "./TimerPayment";
 import { paypalImage } from "../../../assets/images/index.image";
-import Box from "../../core/box.core";
+import Box from "../../common/box.core";
 
 //libs
 import { Checkbox } from "antd";

@@ -1,6 +1,6 @@
 //files
 import DashboardLeft from "../../components/client/HotelList/DashboardLeft";
-import Loading from "../../components/client/core/Loading.client";
+import Loading from "../../components/client/common/Loading.client";
 import HotelContainer from "../../components/client/HotelList/HotelContainer";
 import { dataHotel } from "../../data/listHotel.data";
 
