@@ -13,19 +13,7 @@
             @include font(500, 25px, null,null);
         }
         &__submit {
-            @include size(100%, 45px);
-            background-color: rgb(83, 146, 249);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
-            cursor: pointer;
-            margin-top: 20px;
-            margin-bottom: 20px;
-
-            &:hover {
-                background-color: rgba(83, 146, 249, .8);
-            }
+            margin:  20px 0;
         }
 
         &__login-with-gg {
