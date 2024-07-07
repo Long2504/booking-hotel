@@ -16,19 +16,12 @@
     }
 
     &__right {
-        display: flex;
-        align-items: center;
+        @include flex(center, null);
 
         &__user {
             width: 250px;
-            @include flex(center, stretch);
             margin-left: 20px;
-
-            &__dropdown {
-                @include flex(center, center);
-                margin: 0px 12px;
-                cursor: pointer;
-            }
+            cursor: pointer;
         }
 
         button {
@@ -66,9 +59,8 @@
 
     &__left>div,
     &__right>p {
-        color: #555;
+        @include font(null, 14px, null, #555);
         margin: 15px 12px 0 12px;
-        font-size: 14px;
         text-shadow: 0.5px 0 1px #555;
         cursor: pointer;
     }
