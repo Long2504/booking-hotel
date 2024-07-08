@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import ClientLayout from "./layouts/ClientLayout";
 import { ConfigProvider } from "antd";
+import AdminLayout from "./layouts/AdminLayout";
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 			<div className='Booking-hotel'>
 				<Routes>
 					<Route path='/*' element={<ClientLayout />} />
+					<Route path='/admin/*' element={<AdminLayout />} />
 				</Routes>
 			</div>
 		</ConfigProvider>
