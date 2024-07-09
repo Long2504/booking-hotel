@@ -1,0 +1,13 @@
+.sider-admin {
+    color: white;
+    background-color: white !important;
+
+    &__logo {
+        height: 64px;
+
+        @include flex(center, center);
+        img{
+            height: 100%;
+        }
+    }
+}
