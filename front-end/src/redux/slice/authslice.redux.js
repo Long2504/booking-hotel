@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import handleAsyncActions from "./common.redux";
-import userApi, { handleSigninFulfilled } from "../action/authAction.redux";
-
+import userApi, {
+	handleRefreshAccessTokenFulfilled,
+	handleSigninFulfilled,
+} from "../action/authAction.redux";
 
 const authSlice = createSlice({
 	name: "auth",
@@ -14,6 +16,11 @@ const authSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		handleAsyncActions(builder, userApi.signIn, handleSigninFulfilled);
+		handleAsyncActions(
+			builder,
+			userApi.refreshAccessToken,
+			handleRefreshAccessTokenFulfilled
+		);
 	},
 });
 
