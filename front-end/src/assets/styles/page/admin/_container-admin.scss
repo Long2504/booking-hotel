@@ -1,0 +1,24 @@
+.container-admin {
+    &__header {
+        @include flex(null,flex-end);
+        margin-bottom: 15px;
+    }
+
+    .expand-icon {
+        transition: all .3s;
+        font-size: 20px;
+        margin-right: 5px;
+
+        &:hover {
+            cursor: pointer;
+
+        }
+    }
+}
+
+
+
+
+.ant-collapse-expand-icon {
+    align-self: center;
+}
