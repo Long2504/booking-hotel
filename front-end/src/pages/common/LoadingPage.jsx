@@ -1,10 +1,12 @@
 //libs
 import React from "react";
 import { Spin } from "antd";
+import { useSelector } from "react-redux";
 
-function LoadingPage({ loading }) {
+function LoadingPage() {
+	const { globalLoading } = useSelector((state) => state.globalLoading);
 	return (
-		loading && (
+		globalLoading && (
 			<div
 				style={{
 					position: "fixed",
@@ -16,6 +18,7 @@ function LoadingPage({ loading }) {
 					justifyContent: "center",
 					alignItems: "center",
 					backgroundColor: "rgba(0, 0, 0, 0.5)",
+					zIndex: 10000,
 				}}
 			>
 				<Spin size='large' />
