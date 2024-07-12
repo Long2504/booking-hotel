@@ -40,9 +40,10 @@ const handleSigninFulfilled = (state, action) => {
 };
 
 const handleRefreshAccessTokenFulfilled = (state, action) => {
-	const { data: accessToken } = action?.payload?.metaData;
-	state.accessToken = accessToken;
+	const { tokens, user } = action?.payload?.metaData;
+	state.accessToken = tokens.accessToken;
 	state.isAuthenticated = true;
+	state.user = user;
 };
 
 export { handleSigninFulfilled, handleRefreshAccessTokenFulfilled };
