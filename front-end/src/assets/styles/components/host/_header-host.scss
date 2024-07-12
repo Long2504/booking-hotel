@@ -1,0 +1,66 @@
+.header-host {
+    @include flex(center, null);
+    background-color: $bg-header-host;
+    min-height: 60px;
+
+    &__logo {
+        height: 50px;
+        @include flex(center, center);
+
+        img {
+            @include size(100%, 100%)
+        }
+    }
+
+    &__divider {
+        background-color: white;
+        @include size(1.5px, 40px);
+        margin: 0 20px;
+    }
+
+    &__menu {
+        background-color: $bg-header-host;
+        flex: 1;
+        min-width: 0;
+        @include font(500, 16px, null, null);
+        margin-left: 30px;
+
+
+        li {
+            color: white !important;
+        }
+
+
+        .ant-menu-item-selected::after {
+            border-bottom-color: white !important;
+            border-bottom-width: 3px !important;
+        }
+
+        .ant-menu-item-active::after {
+            border-bottom-color: white !important;
+            border-bottom-width: 3px !important;
+        }
+    }
+
+    &__btn {
+        height: 40px;
+        border-radius: 100px !important;
+        border-color: #1174a6;
+        color: #1174a6;
+    }
+
+    &__user {
+        @include flex(center, space-between);
+        margin: 0 80px 0 20px;
+
+        &__avatar {
+            background-color: rgb(193, 193, 192);
+        }
+
+        &__name {
+            cursor: pointer;
+            @include font(null, 14px, null, white);
+        }
+    }
+
+}
