@@ -11,12 +11,18 @@ function InputCore({
 	height,
 }) {
 	const registerInput = register ? register(name) : {};
+	
 	return (
-		<div className='input-core' style={{
-			width: width || "100%",
-			height: height || "100px",
-		}}>
-			<label>{label}</label>
+		<div
+			className='input-core'
+			style={{
+				width: width || "100%",
+				height: height || `${label ? "100px" : "50px"}`,
+			}}
+		>
+			{
+				label && <label>{label}</label>
+			}
 			<input
 				{...registerInput}
 				id={name}
@@ -25,6 +31,9 @@ function InputCore({
 				name={name}
 				defaultValue={value || ""}
 				placeholder={placeholder}
+				style={{
+					padding: "10px",
+				}}
 			/>
 			<p className='input-core__error'>{error?.message}</p>
 		</div>

@@ -1,10 +1,11 @@
-function Box({ border = true,radius, ...props }) {
-	const style = {
-        border: border && `1px solid #ccc`,
-        borderRadius: radius && `${radius}px`,
+function Box({ border = true, radius, style, ...props }) {
+	const boxStyle = {
+		...(border && { border: `1px solid #ccc` }),
+		...(radius && { borderRadius: `${radius}px` }),
+		...style,
 	};
 	return (
-		<div style={style} {...props}>
+		<div style={boxStyle} {...props}>
 			{props.children}
 		</div>
 	);

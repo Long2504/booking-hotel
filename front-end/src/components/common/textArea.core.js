@@ -16,7 +16,7 @@ function TextAreaCore({
 				height: height || "100%",
 			}}
 		>
-			<label>{label}</label>
+			{label && <label>{label}</label>}
 			<textarea
 				placeholder={placeholder}
 				{...registerInput}

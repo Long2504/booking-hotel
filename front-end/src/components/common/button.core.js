@@ -11,8 +11,10 @@ function ButtonCore(props) {
 			onClick={props.onClick}
 
 			style={{
+				...props.style,
 				width: size?.[0] || "",
 				height: size?.[1] || "",
+				borderRadius: '3px',
 			}}
 		>
 			{props.children}
