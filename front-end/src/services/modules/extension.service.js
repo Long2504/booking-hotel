@@ -16,14 +16,12 @@ const extensionApi = {
 	},
 	update: async (data) => {
 		return await handleApiCall(() =>
-			privateApi.put(extensionEndpoint, data)
+			privateApi.put(`${extensionEndpoint}/${data.id}`, data)
 		);
 	},
-	delete: async (data) => {
+	delete: async (id) => {
 		return await handleApiCall(() =>
-			privateApi.delete(extensionEndpoint, {
-				data,
-			})
+			privateApi.delete(`${extensionEndpoint}/${id}`)
 		);
 	},
 };

@@ -12,13 +12,13 @@ const subExtensionApi = {
 
 	update: async (data) => {
 		return await handleApiCall(() =>
-			privateApi.put(subExtensionEndpoint, data)
+			privateApi.put(`${subExtensionEndpoint}/${data.id}`, data)
 		);
 	},
 
-	delete: async (data) => {
+	delete: async (id) => {
 		return await handleApiCall(() =>
-			privateApi.delete(subExtensionEndpoint, { data })
+			privateApi.delete(`${subExtensionEndpoint}/${id}`)
 		);
 	},
 };
