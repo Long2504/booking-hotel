@@ -1,7 +1,11 @@
-import { Routes, Route } from "react-router-dom";
+//files
 import ClientLayout from "./layouts/ClientLayout";
-import { ConfigProvider } from "antd";
 import AdminLayout from "./layouts/AdminLayout";
+
+//libs
+import { Routes, Route } from "react-router-dom";
+import { ConfigProvider } from "antd";
+import HostLayout from "./layouts/HostLayout";
 
 function App() {
 	return (
@@ -18,6 +22,7 @@ function App() {
 				<Routes>
 					<Route path='/*' element={<ClientLayout />} />
 					<Route path='/admin/*' element={<AdminLayout />} />
+					<Route path='/host/*' element={<HostLayout />} />
 				</Routes>
 			</div>
 		</ConfigProvider>
