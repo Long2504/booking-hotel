@@ -6,4 +6,15 @@ import paypalImage from "./paypal.png";
 //image admin
 import logoAdmin from "./logo-admin.png";
 
-export { logoMain, noImage, paypalImage, logoAdmin };
+//image host
+import logoHost from "./logo-host.png";
+import descriptionHotelHost from "./description-hotel-host.png";
+
+export {
+	logoMain,
+	noImage,
+	paypalImage,
+	logoAdmin,
+	logoHost,
+	descriptionHotelHost,
+};
