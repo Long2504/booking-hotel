@@ -9,6 +9,7 @@ import logoAdmin from "./logo-admin.png";
 //image host
 import logoHost from "./logo-host.png";
 import descriptionHotelHost from "./description-hotel-host.png";
+import locationHotelHost from "./location-hotel-host.png";
 
 export {
 	logoMain,
@@ -17,4 +18,5 @@ export {
 	logoAdmin,
 	logoHost,
 	descriptionHotelHost,
+	locationHotelHost,
 };
