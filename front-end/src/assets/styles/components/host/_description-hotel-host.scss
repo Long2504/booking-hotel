@@ -1,0 +1,41 @@
+.description-hotel-host {
+    width: 70%;
+    padding: 0 30px;
+
+    p {
+        color: #2a2a2e;
+    }
+
+    &__title {
+        width: 100%;
+        @include flex(center, space-between);
+        margin-bottom: 40px;
+
+        h1 {
+            @include font(500, 24px, null, null);
+        }
+
+        &__img {
+            width: 240px;
+        }
+    }
+
+    &__content {
+        width: 100%;
+
+        h2 {
+            @include font(500, 20px, null, null);
+        }
+
+        &__item {
+            width: 100%;
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 30px;
+            h5 {
+                font-size: 14px;
+            }
+        }
+    }
+
+}

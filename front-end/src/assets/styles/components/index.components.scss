@@ -14,6 +14,16 @@
 @import './client/hotel-detail-checkout.scss';
 @import './client/step-two-payment.scss';
 
+//admin
+@import './admin/sider-admin.scss';
+@import './admin/header-admin.scss';
+
+//host
+@import './host/header-host.scss';
+@import './host/description-hotel-host.scss';
+
+
 //core
 @import './core/input.scss';
 @import './core/select.scss';
+@import './core/textarea.scss';
