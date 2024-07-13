@@ -1,0 +1,32 @@
+.list-room-booked {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+
+    &__header {
+        @include flex(null, flex-end);
+        margin-bottom: 15px;
+
+        label {
+            margin-right: 10px;
+        }
+    }
+
+
+    .expand-icon {
+        transition: all .3s;
+        font-size: 14px;
+        margin-right: 5px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+
+
+
+.ant-collapse-expand-icon {
+    align-self: center;
+}

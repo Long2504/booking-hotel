@@ -1,0 +1,38 @@
+.create-hotel-host{
+    width: 100%;
+    display: flex;
+
+    &__steps{
+        width: 30%;
+
+        &__container{
+            @include size(40%, 420px);
+            margin-left: 60%;
+            font-weight: 500;
+        }
+    }
+    &__content{
+        width: 70%;
+        border-left: 1px solid #dddfe2;
+
+        &__center{
+            width: 100%;
+        }
+        &__bottom{
+            @include size(100%, 75px);
+            border-top: 1px solid #dddfe2;
+            @include flex(center, space-between);
+            background-color: #fcfcfc;
+            margin-top: 30px;
+            padding-right: calc(30% + 30px);
+
+
+            &__btn{
+                min-width: 180px;
+                min-height: 42px;
+                @include font(500, 14px, 22px, #fff);
+            }
+        }
+
+    }
+}

@@ -1,0 +1,24 @@
+.list-hotel-host {
+    width: 100%;
+    padding: 20px;
+
+    &__header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        &__anchor {
+            &__link {
+                @include font(500, 16px, null, null);
+                margin-right: 10px;
+            }
+        }
+    }
+
+    &__content {
+        width: 100%;
+        padding: 20px;
+        background-color: white;
+    }
+
+}

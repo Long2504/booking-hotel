@@ -1,0 +1,131 @@
+.overview-host {
+    width: 100%;
+    @include flex(null, center);
+
+    &__container {
+        width: 60%;
+        padding: 20px;
+        margin-top: 30px;
+        background-color: #fff;
+
+        &__top {
+            width: 100%;
+            @include flex(null, space-between);
+            margin-bottom: 15px;
+
+            &__avatar {
+                @include size(100px, 100px)
+            }
+
+            &__process {
+                width: calc(100% - 280px);
+                display: flex;
+                flex-direction: column;
+                padding-left: 20px;
+
+                h1 {
+                    margin-bottom: 15px;
+                }
+
+                .ant-steps-item-title {
+                    font-size: 13px;
+                }
+            }
+
+            &__btn {
+
+                border: 1px solid #1174a6;
+                width: 180px;
+                @include font(600, 14px, 42px, #1174a6);
+
+                &:hover {
+                    color: #1174a6 !important;
+                    background-color: #e6e6e6 !important;
+                    border-color: #1174a6 !important;
+                }
+
+            }
+        }
+
+        &__content {
+            width: 100%;
+
+            h3 {
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            &__main {
+                width: 100%;
+                @include flex(null, space-between);
+
+                &__item {
+                    width: 24%;
+                    background-color: #f6f7f9;
+                    padding: 16px;
+
+                    &.true {
+                        border-color: #85c150 !important;
+                    }
+
+                    &.false {
+                        border-color: #d03f37 !important;
+                    }
+
+                    h4 {
+                        margin-bottom: 8px;
+                    }
+
+                    p {
+                        margin-bottom: 8px;
+                    }
+
+                    &__check {
+                        color: #85c150;
+
+                        strong {
+                            font-weight: 600;
+                            margin-left: 5px;
+                        }
+
+                        button {
+                            background-color: #fff;
+                            border: 1px solid #1174a6;
+                            @include font(null, 12px, 1.5px, #1174a6);
+
+                            &:hover {
+                                color: #1174a6 !important;
+                                background-color: #e6e6e6 !important;
+                                border-color: #1174a6 !important;
+                            }
+                        }
+                    }
+
+                    &__line {
+                        width: 100%;
+                        @include flex(null, space-between);
+
+                        &__item {
+                            &.true {
+                                border-block-start: 4px solid #85c150;
+                            }
+
+                            &.false {
+                                border-block-start: 4px solid #d03f37;
+                            }
+
+                            width: 49%;
+                            min-width: 0;
+                            border-radius: 4px;
+                            margin: 12px 0px 0px 0px;
+                        }
+                    }
+                }
+            }
+        }
+
+        p {
+            margin-top: 20px;
+        }
+    }
+}

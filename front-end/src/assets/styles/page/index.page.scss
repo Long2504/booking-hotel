@@ -7,3 +7,15 @@
 @import './client/dashboard-page.scss';
 @import './client/hotel-detail-page.scss';
 @import './client/checkout-page.scss';
+
+
+//page admin
+@import "./admin/container-admin.scss";
+
+//page host
+@import './host/overview-host.scss';
+@import './host/list-hotel-host.scss';
+@import './host/list-booking-host.scss';
+@import './host/room-manager-host.scss';
+@import './host/profile-host.scss';
+@import './host/create-hotel-host.scss';

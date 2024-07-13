@@ -1,0 +1,90 @@
+.profile-host {
+    width: 100%;
+    @include flex(null, center);
+
+    &__container {
+        width: 66%;
+
+        &__item {
+            margin-bottom: 25px;
+            width: 100%;
+
+            h2 {
+                @include font(600, 20px, null, null);
+            }
+
+
+            &__main {
+                @include flex(center, null);
+                padding: 15px;
+                background-color: white;
+
+
+                &__avatar {
+                    @include size(80px, 80px);
+                }
+
+                p {
+                    width: calc(100% - 400px);
+                    font-size: 14px;
+                    padding-left: 15px;
+                }
+
+                button {
+                    margin-bottom: 0;
+                    border: 1px solid #1174a6;
+                    text-transform: uppercase;
+                    @include font(500, 14px, null, #1174a6);
+
+                    &:hover {
+                        color: #1174a6 !important;
+                        background-color: #e6e6e6 !important;
+                        border-color: #1174a6 !important;
+                    }
+                }
+
+                &__inputs {
+                    @include flex(null, space-between);
+                    width: 100%;
+                }
+            }
+
+            &__btn {
+                width: 100%;
+                @include flex(null, flex-end);
+
+                button {
+                    min-height: 45px;
+                    width: 210px;
+                    border: 1px solid #1174a6;
+                    @include font(500, 14px, null, #1174a6);
+                    text-transform: uppercase;
+
+                    &:first-child {
+                        &:hover {
+                            color: #1174a6 !important;
+                            background-color: #e6e6e6 !important;
+                        }
+                    }
+
+                    &:last-child {
+                        margin-left: 10px;
+                        background-color: #1174a6;
+                        color: white;
+
+                        &:hover {
+                            color: #fff !important;
+                            background-color: #0c5478 !important;
+                        }
+                    }
+
+                    &:hover {
+                        border-color: #1174a6 !important;
+                    }
+
+                }
+            }
+
+        }
+    }
+}

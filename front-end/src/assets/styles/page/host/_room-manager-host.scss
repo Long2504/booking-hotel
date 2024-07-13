@@ -1,0 +1,15 @@
+.room-manager-host {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+
+    &__header {
+        @include flex(null, flex-end);
+        margin-bottom: 15px;
+
+        label {
+            margin-right: 10px;
+        }
+    }
+}
+
