@@ -1,7 +1,7 @@
 //libs
 import { Select } from "antd";
 
-function SelectCore({ data, label, placeholder, width, height }) {
+function SelectCore({ data, label, placeholder, width, height, error }) {
 	return (
 		<div
 			className='select-core'
@@ -18,6 +18,7 @@ function SelectCore({ data, label, placeholder, width, height }) {
 				optionFilterProp='children'
 				options={data}
 			/>
+			<p className='select-core__error'>{error?.message}</p>
 		</div>
 	);
 }

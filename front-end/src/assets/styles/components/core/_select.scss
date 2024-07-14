@@ -2,36 +2,13 @@
     display: flex;
     flex-direction: column;
 
-
     label {
-        margin-top: 15px;
-        font-weight: 500;
-        color: rgba(0, 0, 0, 0.8);
-        margin-bottom: 8px;
-    }
-
-    input {
-        height: 40px;
-        padding-left: 10px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 3px;
-
-        &:focus {
-            outline: none !important;
-            border-color: #719ECE;
-            box-shadow: 0 0 5px rgb(83, 146, 249);
-        }
-
-        &::placeholder {
-
-            color: rgba(0, 0, 0, 0.3);
-            font-weight: 600;
-        }
+        @include font(500, null, null, rgba(0, 0, 0, 0.8));
+        margin: 15px 0px 8px 0px;
     }
 
     &__input {
-        height: 40px;
-        width: 100%;
+        @include size(100%, 42px);
 
         .ant-select-selector {
             border-radius: 3px;
@@ -40,6 +17,11 @@
         input:focus {
             box-shadow: none;
         }
+    }
+
+    &__error {
+        @include font(null, 12px, null, red);
+        margin-top: 5px;
     }
 
 }
