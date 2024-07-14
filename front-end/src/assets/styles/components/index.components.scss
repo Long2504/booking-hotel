@@ -23,9 +23,11 @@
 @import './host/description-hotel-host.scss';
 @import './host/location-hotel-host.scss';
 @import './host/extension-hotel-host.scss';
-
+@import './host/volume-host.scss';
+@import './host/room-hotel-host.scss';
 
 //core
 @import './core/input.scss';
 @import './core/select.scss';
 @import './core/textarea.scss';
+@import './core/expand-icon.scss';
