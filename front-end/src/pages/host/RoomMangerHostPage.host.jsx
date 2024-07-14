@@ -1,7 +1,12 @@
+//files
+import Box from "../../components/common/box.core";
+
+//libs
 import { Empty, Space, Table, DatePicker, Pagination } from "antd";
 import { useState } from "react";
+
+//icons
 import { RightOutlined } from "@ant-design/icons";
-import Box from "../../components/common/box.core";
 
 const { RangePicker } = DatePicker;
 function RoomManageHostPage() {
