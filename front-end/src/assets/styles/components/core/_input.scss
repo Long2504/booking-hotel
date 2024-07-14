@@ -3,10 +3,8 @@
     flex-direction: column;
 
     label {
-        margin-top: 15px;
-        font-weight: 500;
-        color: rgba(0, 0, 0, 0.8);
-        margin-bottom: 8px;
+        margin: 15px 0px 8px 0px;
+        @include font(500, null, null, rgba(0, 0, 0, 0.8))
     }
 
     input {
@@ -22,15 +20,12 @@
         }
 
         &::placeholder {
-
-            color: rgba(0, 0, 0, 0.3);
-            font-weight: 600;
+            @include font(600, null, null, rgba(0, 0, 0, 0.3))
         }
     }
 
     &__error {
-        color: red;
-        font-size: 12px;
+        @include font(null, 12px, null, red);
         margin-top: 5px;
     }
 }
