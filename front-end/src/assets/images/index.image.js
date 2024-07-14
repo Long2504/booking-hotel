@@ -12,6 +12,7 @@ import descriptionHotelHost from "./description-hotel-host.png";
 import locationHotelHost from "./location-hotel-host.png";
 import extensionHotelHost from "./extension-hotel-host.png";
 import photoHotelHost from "./photo-hotel-host.png";
+import postHotelHost from "./post-hotel-host.png";
 
 export {
 	logoMain,
@@ -23,4 +24,5 @@ export {
 	locationHotelHost,
 	extensionHotelHost,
 	photoHotelHost,
+	postHotelHost,
 };
