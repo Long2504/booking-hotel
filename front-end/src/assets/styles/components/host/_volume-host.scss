@@ -1,0 +1,36 @@
+.volume-host {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        @include font(500, null, null, rgba(0, 0, 0, 0.8));
+        margin: 15px 0px 8px 0px;
+    }
+
+    &__content {
+        padding: 0px 10px;
+        max-width: 100px;
+
+        &__icon {
+            color: #1174a6;
+            cursor: pointer;
+        }
+
+        input {
+            text-align: center !important;
+            max-width: 50px;
+            height: 40px;
+        }
+
+        input:disabled {
+            background-color: #fff;
+            color: black;
+            cursor: pointer;
+        }
+    }
+
+    &__error {
+        @include font(null, 12px, null, red);
+        margin-top: 5px;
+    }
+}
