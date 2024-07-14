@@ -10,6 +10,7 @@ import extensionApi from "../../services/modules/extension.service";
 import { handleError } from "../../utils/common.utils";
 import ContainerAdmin from "../../components/admin/common/Container.admin";
 import showConfirmDelete from "../../components/admin/common/ConfirmDelete.admin";
+import { expandIconTable } from "../../components/common/expandIcon.core";
 
 //libs
 import { useEffect, useState } from "react";
@@ -19,10 +20,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSearchParams } from "react-router-dom";
 import dayjs from "dayjs";
-
-//icons
-import { FaAngleRight } from "react-icons/fa6";
-
 
 function ExtensionManagerPage() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -156,24 +153,6 @@ function ExtensionManagerPage() {
 		},
 	];
 
-	const expandIcon = ({ expanded, record, onExpand }) => {
-		return (
-			<span
-				onClick={(e) => {
-					onExpand(record, e);
-					e.stopPropagation();
-				}}
-			>
-				<FaAngleRight
-					className='expand-icon'
-					style={{
-						transform: expanded ? "rotate(90deg)" : "",
-					}}
-				/>
-			</span>
-		);
-	};
-
 	const handleCreate = async (data) => {
 		try {
 			if (formData.isSub) {
@@ -300,7 +279,7 @@ function ExtensionManagerPage() {
 				columns={columns}
 				dataSource={listExtension.map((r, i) => ({ ...r, key: i }))}
 				expandable={{
-					expandIcon,
+					expandIcon: expandIconTable,
 					expandedRowRender: (record) => (
 						<SubExtension
 							data={record.subExtensions}
