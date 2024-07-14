@@ -1,0 +1,54 @@
+.profile-hotel-host {
+    width: 70%;
+    padding: 0 30px;
+
+    &__container {
+        width: 100%;
+
+        &__item {
+
+            h2 {
+                @include font(600, 20px, null, null);
+                margin-bottom: 10px;
+            }
+
+            &__main {
+                @include flex(center, null);
+                padding: 15px;
+                background-color: white;
+                margin-bottom: 25px;
+
+
+                &__avatar {
+                    @include size(80px, 80px);
+                }
+
+                p {
+                    width: calc(100% - 400px);
+                    font-size: 14px;
+                    padding-left: 15px;
+                }
+
+                button {
+                    width: 310px;
+                    min-height: 45px;
+                    margin-bottom: 0;
+                    border: 1px solid #1174a6;
+                    text-transform: uppercase;
+                    @include font(500, 14px, null, #1174a6);
+
+                    &:hover {
+                        color: #1174a6 !important;
+                        background-color: #e6e6e6 !important;
+                        border-color: #1174a6 !important;
+                    }
+                }
+
+                &__inputs {
+                    width: 100%;
+                    @include flex(null, space-between);
+                }
+            }
+        }
+    }
+}
