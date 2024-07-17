@@ -1,0 +1,15 @@
+@url_dev=http://localhost:3055/api/private/media
+@clientId=532bbe03-49e5-4315-8487-6fcb99726896
+@Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MjUxNzk3LCJleHAiOjE3MTkyNTIwMTN9.AUJojs729u86-2OEcmyp9m7KC2uKd6C6W4qISLmWL6c
+
+
+### upload image
+POST {{url_dev}}/upload-img
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="image"; filename="test.jpg"
+Content-Type: image/*
+
+< D:\LEARNING\fullstackJS\booking-hotel\back-end\temp\test.jpg
+--boundary--

@@ -5,6 +5,7 @@ const development = {
         port: process.env.DEV_APP_PORT,
         accessTokenExpires: process.env.DEV_ACCESS_TOKEN_EXPIRES || 60 * 60 * 24,
         refreshTokenExpires: process.env.DEV_REFRESH_TOKEN_EXPIRES || 60 * 60 * 24 * 7,
+        urlBaseMedia: process.env.DEV_URL_BASE_MEDIA,
     },
     db: {
         dialect: process.env.DEV_DB_DIALECT,
@@ -20,6 +21,9 @@ const development = {
 const production = {
     app: {
         port: process.env.PRO_APP_PORT,
+        accessTokenExpires: process.env.PRO_ACCESS_TOKEN_EXPIRES || 60 * 60 * 24,
+        refreshTokenExpires: process.env.PRO_REFRESH_TOKEN_EXPIRES || 60 * 60 * 24 * 7,
+        urlBaseMedia: process.env.PRO_URL_BASE_MEDIA,
     },
     db: {
         dialect: process.env.PRO_DB_DIALECT,
