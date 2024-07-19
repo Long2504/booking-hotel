@@ -56,6 +56,14 @@ class UserModel extends BaseModel {
 					type: DataTypes.STRING,
 					allowNull: true,
 				},
+				description: {
+					type: DataTypes.TEXT,
+					allowNull: true,
+				},
+				birthday: {
+					type: DataTypes.DATE,
+					allowNull: true,
+				},
 			},
 			sequelize,
 			{
