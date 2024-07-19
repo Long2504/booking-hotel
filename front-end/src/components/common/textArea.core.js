@@ -6,6 +6,7 @@ function TextAreaCore({
 	register,
 	name,
 	rows,
+	error,
 }) {
 	const registerInput = register ? register(name) : {};
 	return (
@@ -23,6 +24,7 @@ function TextAreaCore({
 				name={name}
 				rows={rows}
 			/>
+			<p className='text-area-core__error'>{error?.message}</p>
 		</div>
 	);
 }

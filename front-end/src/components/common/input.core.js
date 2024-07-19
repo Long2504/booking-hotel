@@ -9,6 +9,7 @@ function InputCore({
 	error,
 	width,
 	height,
+	...props
 }) {
 	const registerInput = register ? register(name) : {};
 	
@@ -25,6 +26,7 @@ function InputCore({
 			}
 			<input
 				{...registerInput}
+				{...props}
 				id={name}
 				readOnly={readOnly}
 				type={type || "text"}
