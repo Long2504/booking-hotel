@@ -1,10 +1,14 @@
-import { Space, Rate } from "antd";
+//files
 import { descriptionHotelHost } from "../../../assets/images/index.image";
 import InputCore from "../../common/input.core";
 import Box from "../../common/box.core";
 import TextAreaCore from "../../common/textArea.core";
 
-function DescriptionHotel() {
+//libs
+import { Space } from "antd";
+import RateCore from "../../common/rate.core";
+
+function DescriptionHotel({ register, errors, control }) {
 	return (
 		<Space direction='vertical' className='description-hotel-host'>
 			<div className='description-hotel-host__title'>
@@ -19,9 +23,9 @@ function DescriptionHotel() {
 					</p>
 				</Space>
 				<img
+					className='description-hotel-host__title__img'
 					src={descriptionHotelHost}
 					alt=''
-					className='description-hotel-host__title__img'
 				/>
 			</div>
 			<Space
@@ -45,6 +49,9 @@ function DescriptionHotel() {
 						count={{
 							max: 50,
 						}}
+						name={"name"}
+						register={register}
+						error={errors?.name}
 					/>
 				</Box>
 				<Space direction='vertical'>
@@ -58,6 +65,9 @@ function DescriptionHotel() {
 					<TextAreaCore
 						rows={8}
 						placeholder='Cho dù làm việc từ xa hay du lịch cùng gia đình, 0 Bedroom 1 Bathroom Apartment in London là lựa chọn tuyệt vời để lưu trú tại London. Từ chỗ nghỉ, quý khách có thể tận hưởng hết mọi điều sôi động tại thành phố sôi động này. Với vị trí thuận lợi, quý khách có thể dễ dàng đi đến mọi điểm du lịch không thể bỏ qua tại London.'
+						name={"description"}
+						register={register}
+						error={errors?.description}
 					/>
 				</Box>
 				<Space direction='vertical'>
@@ -71,7 +81,11 @@ function DescriptionHotel() {
 					radius={5}
 					className='description-hotel-host__content__item'
 				>
-					<Rate />
+					<RateCore
+						control={control}
+						name={"star"}
+						error={errors?.star}
+					/>
 				</Box>
 			</Space>
 		</Space>

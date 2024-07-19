@@ -1,31 +1,33 @@
 //files
 import VolumeHost from "../../common/Volume.host";
-import BedRoomHotel from "./BedRoomHotel";
 import listRoomHotel from "../../../../data/listRoomHotel.data";
 import SelectCore from "../../../common/select.core";
 import InputCore from "../../../common/input.core";
 import { expandIconCollapse } from "../../../common/expandIcon.core";
+import ButtonCore from "../../../common/button.core";
+import BedRoomHotel from "./BedRoomHotel";
 
 //libs
 import { Collapse, Space, Divider, Row, Col } from "antd";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import ButtonCore from "../../../common/button.core";
-
+import { useState } from "react";
 
 const { Panel } = Collapse;
-function RoomHotelDetail({ room, indexRoom }) {
-	const { register, setValue, getValues } = useForm({
-		defaultValues: {
-			occupancy: 1,
-		},
-		resolver: yupResolver({}),
-	});
+function RoomHotelDetail({
+	indexRoom,
+	register,
+	setValue,
+	getValues,
+	control,
+	errors,
+	handleRemoveRoom,
+}) {
+	const listBedroomType = listRoomHotel;
+	const [roomType, setRoomType] = useState("");
 
 	const headerPanel = () => {
 		if (indexRoom === 0) {
-			return `Phòng ${indexRoom + 1}  ${
-				room?.roomType?.name && "- " + room?.roomType.name
+			return `Phòng ${indexRoom + 1} ${
+				roomType && `- ${roomType?.label}`
 			}`;
 		}
 		return (
@@ -37,14 +39,15 @@ function RoomHotelDetail({ room, indexRoom }) {
 				}}
 			>
 				<p>{`Phòng ${indexRoom + 1}  ${
-					room?.roomType?.name && "- " + room?.roomType?.name
+					roomType && "- " + roomType?.label
 				}`}</p>
-				<ButtonCore danger>Delete</ButtonCore>
+				<ButtonCore danger onClick={() => handleRemoveRoom(indexRoom)}>
+					Delete
+				</ButtonCore>
 			</div>
 		);
 	};
 
-	const listBedroomType = listRoomHotel;
 	return (
 		<Collapse
 			className='room-hotel-host__content__container__item'
@@ -72,50 +75,64 @@ function RoomHotelDetail({ room, indexRoom }) {
 							value: item?.id,
 							label: item?.name,
 						}))}
+						name={`rooms.${indexRoom}.roomTypeId`}
+						control={control}
+						setValue={setRoomType}
+						error={errors?.roomTypeId}
 					/>
 					<InputCore
 						label={"Quy mô phòng (m²)"}
 						placeholder={"Nhập quy mô phòng"}
+						type={"number"}
+						name={`rooms.${indexRoom}.area`}
+						error={errors?.area}
+						register={register}
 					/>
 					<Row gutter={[15, 15]}>
 						<Col span={8}>
 							<VolumeHost
 								label={"Số lượng người tối đa"}
-								register={register}
-								name={"occupancy"}
 								min={1}
 								max={10}
 								setValue={setValue}
 								getValues={getValues}
+								name={`rooms.${indexRoom}.occupancy`}
+								register={register}
+								error={errors?.occupancy}
 							/>
 						</Col>
 						<Col span={8}>
 							<VolumeHost
 								label={"Phòng tắm"}
-								register={register}
-								name={"bathrooms"}
-								min={1}
+								min={0}
 								max={10}
 								setValue={setValue}
 								getValues={getValues}
+								name={`rooms.${indexRoom}.bathrooms`}
+								register={register}
+								error={errors?.bathrooms}
 							/>
 						</Col>
 						<Col span={8}>
 							<VolumeHost
 								label={"Số lượng phòng"}
-								register={register}
-								name={"number"}
+								name={`rooms.${indexRoom}.number`}
 								min={1}
 								max={10}
 								setValue={setValue}
 								getValues={getValues}
+								register={register}
+								error={errors?.number}
 							/>
 						</Col>
 					</Row>
 					<InputCore
 						label={"Giá phòng của một đêm"}
-						placeholder={"Nhập giá phòng"}
+						placeholder={"Nhập giá phòng"}
 						type={"number"}
+						name={`rooms.${indexRoom}.price`}
+						error={errors?.price}
+						register={register}
 					/>
 
 					<Divider
@@ -126,7 +143,14 @@ function RoomHotelDetail({ room, indexRoom }) {
 							borderColor: "var(--primary-color)",
 						}}
 					/>
-					<BedRoomHotel room={room} />
+					<BedRoomHotel
+						control={control}
+						register={register}
+						errors={errors?.beds}
+						setValue={setValue}
+						getValues={getValues}
+						indexRoom={indexRoom}
+					/>
 				</Space>
 			</Panel>
 		</Collapse>

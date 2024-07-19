@@ -4,12 +4,18 @@ import ButtonCore from "../../../common/button.core";
 import SelectCore from "../../../common/select.core";
 
 //libs
-import { Space, Button } from "antd";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Space } from "antd";
+import { useFieldArray } from "react-hook-form";
+import { useState } from "react";
 
-function BedRoomHotel({ room }) {
-	const idRoom = room?.id;
+function BedRoomHotel({
+	control,
+	errors,
+	register,
+	setValue,
+	getValues,
+	indexRoom,
+}) {
 	const listBed = [
 		{
 			id: "0849ffcc-7adc-42a0-bd6c-86efa4bd22d4",
@@ -20,17 +26,31 @@ function BedRoomHotel({ room }) {
 			name: "Giường đơn",
 		},
 	];
-	const newOption = [];
-	for (const option of listBed) {
-		let check = false;
-		for (const item of room?.bed) {
-			if (option?.id === item?.bedType?.id) {
-				check = true;
-				break;
+
+	const [listTypeBed, setListTypeBed] = useState(listBed);
+
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: `rooms.${indexRoom}.beds`,
+	});
+
+	const handleAddBed = () => {
+		const newOptions = [];
+		const listBedCurrent = getValues(`rooms.${indexRoom}.beds`);
+		listBed.forEach((item) => {
+			if (!listBedCurrent?.some((bed) => bed?.bedTypeId === item?.id)) {
+				newOptions.push(item);
 			}
-		}
-		if (!check) newOption.push(option);
-	}
+		});
+
+		setListTypeBed(newOptions);
+		append({ quantity: 1, bedTypeId: "" });
+	};
+
+	const handleRemoveBed = (index) => {
+		remove(index);
+	};
+
 	return (
 		<Space direction='vertical' style={{ width: "100%" }}>
 			<p
@@ -43,19 +63,51 @@ function BedRoomHotel({ room }) {
 			>
 				Giường ngủ
 			</p>
-			{room?.bed?.map((bed, index) => {
+			{fields?.map((_, index) => {
 				return (
-					<Bed
+					<div
+						style={{
+							display: "flex",
+						}}
 						key={index}
-						bed={bed}
-						index={index}
-						options={newOption}
-						idRoom={idRoom}
-					/>
+					>
+						<VolumeHost
+							label={"Số lượng giường"}
+							register={register}
+							name={`rooms.${indexRoom}.beds.${index}.quantity`}
+							min={1}
+							max={10}
+							setValue={setValue}
+							getValues={getValues}
+							width={"40%"}
+							error={errors?.[index]?.quantity}
+						/>
+						<SelectCore
+							label={"Loại giường"}
+							data={listTypeBed?.map((item) => ({
+								value: item?.id,
+								label: item?.name,
+							}))}
+							width={"300px"}
+							placeholder={"Chọn loại giường"}
+							control={control}
+							name={`rooms.${indexRoom}.beds.${index}.bedTypeId`}
+							error={errors?.[index]?.bedTypeId}
+						/>
+						{index > 0 && (
+							<ButtonCore
+								onClick={() => handleRemoveBed(index)}
+								danger
+								ghost
+							>
+								Delete
+							</ButtonCore>
+						)}
+					</div>
 				);
 			})}
-			{newOption?.length > 0 && (
-				<ButtonCore onClick={() => {}} type='primary' ghost>
+			{listTypeBed?.length > 0 && (
+				<ButtonCore onClick={() => handleAddBed()} type='primary' ghost>
 					THÊM LOẠI GIƯỜNG KHÁC
 				</ButtonCore>
 			)}
@@ -63,41 +115,4 @@ function BedRoomHotel({ room }) {
 	);
 }
 
-function Bed({ bed, index, options }) {
-	const { register, setValue, getValues } = useForm({
-		defaultValues: {
-			occupancy: 1,
-		},
-		resolver: yupResolver({}),
-	});
-	return (
-		<div
-			style={{
-				display: "flex",
-			}}
-			key={index}
-		>
-			<VolumeHost
-				label={"Số lượng giường"}
-				register={register}
-				name={"number"}
-				min={1}
-				max={10}
-				setValue={setValue}
-				getValues={getValues}
-				width={"40%"}
-			/>
-			<SelectCore
-				label={"Loại giường"}
-				data={options?.map((item) => ({
-					value: item?.id,
-					label: item?.name,
-				}))}
-				width={"300px"}
-				placeholder={"Chọn loại giường"}
-			/>
-			{index > 0 && <Button>Delete</Button>}
-		</div>
-	);
-}
 export default BedRoomHotel;

@@ -5,8 +5,9 @@ import { photoHotelHost } from "../../../../assets/images/index.image";
 //libs
 import { Space } from "antd";
 
-function ImageHotel() {
+function ImageHotel({ getValues,register }) {
 	const hotel = {};
+	const listRoom = getValues("rooms") || [];
 	return (
 		<Space direction='vertical' className='photo-hotel-host'>
 			<div className='photo-hotel-host__title'>
@@ -34,20 +35,18 @@ function ImageHotel() {
 					}
 					urlList={hotel?.images}
 				/>
-				{hotel?.rooms?.map((room, index) => {
-					if (room?.roomType?.id) {
-						return (
-							<ImageItem
-								key={index}
-								idRoom={room?.id}
-								title={room?.name}
-								urlList={room?.images}
-								description={
-									"(Các) phòng ngủ, phòng tắm, bếp, và khu vực ăn uống/tiếp khách của căn"
-								}
-							/>
-						);
-					}
+				{listRoom.map((room, index) => {
+					return (
+						<ImageItem
+							key={index}
+							idRoom={room?.id}
+							title={room?.name}
+							urlList={room?.images}
+							description={
+								"(Các) phòng ngủ, phòng tắm, bếp, và khu vực ăn uống/tiếp khách của căn"
+							}
+						/>
+					);
 				})}
 			</Space>
 		</Space>

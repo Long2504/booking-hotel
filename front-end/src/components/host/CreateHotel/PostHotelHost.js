@@ -5,7 +5,7 @@ import Box from "../../common/box.core";
 //libs
 import { Space, Checkbox } from "antd";
 
-function PostHotelHost() {
+function PostHotelHost({ setCheckedConfirm }) {
 	return (
 		<Space direction='vertical' className='post-hotel-host'>
 			<Space direction='horizontal' className='post-hotel-host__title'>
@@ -48,7 +48,9 @@ function PostHotelHost() {
 				</Box>
 				<h2>Chấp nhận các điều khoản và điều kiện</h2>
 				<Box radius={5} className='post-hotel-host__content__item'>
-					<Checkbox>
+					<Checkbox
+						onChange={(e) => setCheckedConfirm(e.target.checked)}
+					>
 						<p>
 							<a href='#' style={{ color: "#1174a6" }}>
 								Các điều khoản và điều kiện chung

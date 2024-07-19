@@ -1,15 +1,13 @@
 //files
-import Box from "../../common/box.core";
+import Box from "../../../common/box.core";
 
 //libs
 import { Space, Checkbox, Col, Row } from "antd";
 
-function ExtensionItem({ data, listConvenience }) {
-	const idConvenience = data?.id;
-	const convenience = listConvenience?.find(
-		(item) => item?.id === idConvenience
-	);
-	const defaultCheckedValues = convenience?.subExtensions || [];
+function ExtensionItem({ data, listSubExtension, handleExtensionSelect }) {
+	const idExtension = data?.id;
+	const defaultCheckedValues = listSubExtension || [];
+
 	return (
 		<Space
 			direction='vertical'
@@ -17,8 +15,16 @@ function ExtensionItem({ data, listConvenience }) {
 		>
 			<h2>{data?.name}</h2>
 			{data?.description && <p>{data?.description}</p>}
-			<Box className='extension-hotel-host__content__item__checkbox' radius={3}>
-				<Checkbox.Group defaultValue={defaultCheckedValues}>
+			<Box
+				className='extension-hotel-host__content__item__checkbox'
+				radius={3}
+			>
+				<Checkbox.Group
+					defaultValue={defaultCheckedValues}
+					onChange={(data) =>
+						handleExtensionSelect(data, idExtension)
+					}
+				>
 					<Row gutter={[15, 15]}>
 						{data?.subExtensions.map((item, index) => {
 							return (

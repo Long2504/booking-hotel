@@ -5,35 +5,38 @@ import ButtonCore from "../../../common/button.core";
 
 //libs
 import { Space } from "antd";
+import { useEffect } from "react";
+import { useFieldArray } from "react-hook-form";
 
-function RoomHotel() {
-	const hotel = {
-		rooms: [
-			{
-				id: 1,
-				roomType: {
-					id: "",
-					name: "",
-				},
-				area: 0,
-				occupancy: 1,
-				bathrooms: 0,
-				price: 0,
-				number: 1,
-				images: [],
-				bed: [
-					{
-						id: 1,
-						bedType: {
-							id: "",
-							name: "",
-						},
-						number: 1,
-					},
-				],
-			},
-		],
+function RoomHotel({ errors, setValue, register, control, getValues }) {
+	const roomObj = {
+		id: 1,
+		roomTypeId: "",
+		area: 0,
+		occupancy: 1,
+		bathrooms: 0,
+		price: 0,
+		number: 1,
+		images: [],
 	};
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: "rooms",
+	});
+	useEffect(() => {
+		if (fields?.length < 1) {
+			append(roomObj);
+		}
+		remove(0);
+	}, []);
+
+	const handleAddRoom = () => {
+		append(roomObj);
+	};
+	const handleRemoveRoom = (index) => {
+		remove(index);
+	};
+
 	return (
 		<Space direction='vertical' className='room-hotel-host'>
 			<div className='room-hotel-host__title'>
@@ -49,17 +52,23 @@ function RoomHotel() {
 			<Space direction='vertical' className='room-hotel-host__content'>
 				<h2>Chi tiết phòng và giá</h2>
 				<Box className='room-hotel-host__content__container' radius={5}>
-					{hotel?.rooms?.map((room, index) => (
+					{fields?.map((_, index) => (
 						<RoomHotelDetail
-							room={room}
 							indexRoom={index}
 							key={index}
+							register={register}
+							control={control}
+							errors={errors?.rooms?.[index]}
+							setValue={setValue}
+							getValues={getValues}
+							handleRemoveRoom={handleRemoveRoom}
 						/>
 					))}
 					<ButtonCore
 						type='primary'
 						size='large'
 						className='room-hotel-host__content__container__btn'
+						onClick={handleAddRoom}
 					>
 						Thêm phòng
 					</ButtonCore>
