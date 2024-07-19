@@ -1,10 +1,12 @@
 //files
 import Box from "../../components/common/box.core";
 import ButtonCore from "../../components/common/button.core";
+import { getUserInfo, setKeyHeaderHost } from "../../utils/localStorage.utils";
 
 //libs
 import { Divider, Avatar, Steps } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //icons
 import { FaCircleCheck } from "react-icons/fa6";
@@ -12,12 +14,18 @@ import { LuUser2 } from "react-icons/lu";
 import { FaStar } from "react-icons/fa";
 
 function OverviewHostPage() {
-	const user = {
-		photoUrl: "",
-		displayName: "Hoa Phúc",
-		uid: "1",
-	};
+	const userInfo = getUserInfo();
 	const [currentStep, setCurrentStep] = useState(0);
+	useEffect(() => {
+		const { email, displayName, photoUrl, phone } = userInfo;
+		if (email && displayName && photoUrl && phone) setCurrentStep(1);
+	});
+	const navigate = useNavigate();
+
+	const handleUpdateProfile = () => {
+		setKeyHeaderHost("5");
+		navigate("/host/profile");
+	};
 	return (
 		<div className='overview-host'>
 			<Box radius={5} className='overview-host__container'>
@@ -25,12 +33,12 @@ function OverviewHostPage() {
 					<Avatar
 						className='overview-host__container__top__avatar'
 						icon={<LuUser2 />}
-						src={user?.photoUrl}
+						src={userInfo?.avatarUrl}
 					/>
 					<div className='overview-host__container__top__process'>
 						<h1>
-							Xin chào {user?.displayName}, rất vui khi thấy bạn
-							trở lại!
+							Xin chào {userInfo?.displayName}, rất vui khi thấy
+							bạn trở lại!
 						</h1>
 						<div className='overview-host__container__top__process__content'>
 							<Steps
@@ -59,6 +67,7 @@ function OverviewHostPage() {
 					<ButtonCore
 						className='overview-host__container__top__btn'
 						size={["180px", "40px"]}
+						onClick={handleUpdateProfile}
 					>
 						Hiệu chỉnh hồ sơ
 					</ButtonCore>
@@ -71,51 +80,53 @@ function OverviewHostPage() {
 					<div className='overview-host__container__content__main'>
 						<Box
 							className={`overview-host__container__content__main__item ${
-								user?.displayName ? "true" : "false"
+								userInfo?.displayName ? "true" : "false"
 							}`}
 							radius={5}
 						>
 							<h4>Tên của quý đối tác</h4>
 							<p>Tên, Họ</p>
 							<div className='overview-host__container__content__main__item__check'>
-								{user?.displayName ? (
+								{userInfo?.displayName ? (
 									<>
 										<FaCircleCheck />
 										<strong>Tuyệt vời</strong>
 									</>
 								) : (
-									<ButtonCore>Cập nhật họ tên</ButtonCore>
+									<ButtonCore onClick={handleUpdateProfile}>
+										Cập nhật họ tên
+									</ButtonCore>
 								)}
 							</div>
 							<div className='overview-host__container__content__main__item__line'>
 								<Divider
 									className={`overview-host__container__content__main__item__line__item ${
-										user?.displayName ? "true" : "false"
+										userInfo?.displayName ? "true" : "false"
 									}`}
 								/>
 								<Divider
 									className={`overview-host__container__content__main__item__line__item ${
-										user?.displayName ? "true" : "false"
+										userInfo?.displayName ? "true" : "false"
 									}`}
 								/>
 							</div>
 						</Box>
 						<Box
 							className={`overview-host__container__content__main__item ${
-								user?.avatarUrl ? "true" : "false"
+								userInfo?.photoUrl ? "true" : "false"
 							}`}
 							radius={5}
 						>
 							<h4>Ảnh</h4>
-							<p>Tải ảnh đại diện</p>
+							<p>Ảnh đại diện</p>
 							<div className='overview-host__container__content__main__item__check'>
-								{user?.avatarUrl ? (
+								{userInfo?.photoUrl ? (
 									<>
 										<FaCircleCheck />
-										<strong>Tuyệt vớii</strong>
+										<strong>Tuyệt vời</strong>
 									</>
 								) : (
-									<ButtonCore>
+									<ButtonCore onClick={handleUpdateProfile}>
 										Tải lên ngay bây giờ
 									</ButtonCore>
 								)}
@@ -123,32 +134,32 @@ function OverviewHostPage() {
 							<div className='overview-host__container__content__main__item__line'>
 								<Divider
 									className={`overview-host__container__content__main__item__line__item ${
-										user?.avatarUrl ? "true" : "false"
+										userInfo?.photoUrl ? "true" : "false"
 									}`}
 								/>
 								<Divider
 									className={`overview-host__container__content__main__item__line__item ${
-										user?.avatarUrl ? "true" : "false"
+										userInfo?.photoUrl ? "true" : "false"
 									}`}
 								/>
 							</div>
 						</Box>
 						<Box
 							className={`overview-host__container__content__main__item ${
-								user?.email ? "true" : "false"
+								userInfo?.email ? "true" : "false"
 							}`}
 							radius={5}
 						>
 							<h4>Thư điện tử</h4>
 							<p>Xác minh thư điện tử</p>
 							<div className='overview-host__container__content__main__item__check'>
-								{user?.email ? (
+								{userInfo?.email ? (
 									<>
 										<FaCircleCheck />
 										<strong>Tuyệt vời</strong>
 									</>
 								) : (
-									<ButtonCore>
+									<ButtonCore onClick={handleUpdateProfile}>
 										Xác thực ngay bây giờ
 									</ButtonCore>
 								)}
@@ -156,43 +167,45 @@ function OverviewHostPage() {
 							<div className='overview-host__container__content__main__item__line'>
 								<Divider
 									className={`overview-host__container__content__main__item__line__item ${
-										user?.email ? "true" : "false"
+										userInfo?.email ? "true" : "false"
 									}`}
 								/>
 								<Divider
 									className={`overview-host__container__content__main__item__line__item ${
-										user?.email ? "true" : "false"
+										userInfo?.email ? "true" : "false"
 									}`}
 								/>
 							</div>
 						</Box>
 						<Box
 							className={`overview-host__container__content__main__item ${
-								user?.phoneNumber ? "true" : "false"
+								userInfo?.phone ? "true" : "false"
 							}`}
 							radius={5}
 						>
 							<h4>Số điện thoại</h4>
 							<p>Xác minh số điện thoại</p>
 							<div className='overview-host__container__content__main__item__check'>
-								{user?.phoneNumber ? (
+								{userInfo?.phone ? (
 									<>
 										<FaCircleCheck />
 										<strong>Tuyệt vớii</strong>
 									</>
 								) : (
-									<ButtonCore>Thêm số điện thoại</ButtonCore>
+									<ButtonCore onClick={handleUpdateProfile}>
+										Thêm số điện thoại
+									</ButtonCore>
 								)}
 							</div>
 							<div className='overview-host__container__content__main__item__line'>
 								<Divider
 									className={`overview-host__container__content__main__item__line__item ${
-										user?.phoneNumber ? "true" : "false"
+										userInfo?.phone ? "true" : "false"
 									}`}
 								/>
 								<Divider
 									className={`overview-host__container__content__main__item__line__item ${
-										user?.phoneNumber ? "true" : "false"
+										userInfo?.phone ? "true" : "false"
 									}`}
 								/>
 							</div>
