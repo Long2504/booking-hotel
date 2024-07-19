@@ -1,11 +1,10 @@
 //files
 import { store } from "../../redux/store";
-import userApi from "../../redux/action/authAction.redux";
+import authApi from "../../redux/action/authAction.redux";
 
 //libs
 import axios from "axios";
 import Cookies from "js-cookie";
-
 
 const baseURL = "http://localhost:3055/api/private/";
 const privateApi = axios.create({
@@ -43,7 +42,7 @@ privateApi.interceptors.response.use(
 		if (error.response.status === 401 && !originalRequest._retry) {
 			originalRequest._retry = true;
 			const refreshToken = Cookies.get("refreshToken");
-			await store.dispatch(userApi.refreshAccessToken({ refreshToken }));
+			await store.dispatch(authApi.refreshAccessToken({ refreshToken }));
 			return privateApi(originalRequest);
 		}
 		return Promise.reject(error);
