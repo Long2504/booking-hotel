@@ -16,6 +16,13 @@ class AuthController {
         }).send(res);
     };
 
+    static signInByGoogle = async (req, res) => {
+        new SuccessResponse({
+            message: "Login success",
+            metaData: await AuthService.signInByGoogle(req.body),
+        }).send(res);
+    };
+
     static signOut = async (req, res) => {
         new SuccessResponse({
             message: "Logout success",
@@ -34,6 +41,14 @@ class AuthController {
         new SuccessResponse({
             message: "Access token success",
             metaData: await AuthService.handlerAccessToken(req.body),
+        }).send(res);
+    };
+
+    static updateProfile = async (req, res) => {
+        console.log(req.body);
+        new SuccessResponse({
+            message: "Update profile success",
+            metaData: await AuthService.updateProfile(req.body),
         }).send(res);
     };
 }

@@ -3,7 +3,7 @@ import express from "express";
 import multer, { diskStorage } from "multer";
 import MediaController from "../../controllers/media.controller.js";
 import { extname } from "path";
-import { asyncHandler } from "../../middlewares/asyncHandler.middleware.js";
+import { asyncHandler, authentication } from "../../middlewares/asyncHandler.middleware.js";
 const router = express.Router();
 
 const storage = diskStorage({
@@ -14,7 +14,7 @@ const storage = diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
+// router.use(authentication);
 router.post(
 	"/upload-img",
 	upload.single("image"),

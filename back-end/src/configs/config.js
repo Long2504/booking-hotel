@@ -6,6 +6,7 @@ const development = {
         accessTokenExpires: process.env.DEV_ACCESS_TOKEN_EXPIRES || 60 * 60 * 24,
         refreshTokenExpires: process.env.DEV_REFRESH_TOKEN_EXPIRES || 60 * 60 * 24 * 7,
         urlBaseMedia: process.env.DEV_URL_BASE_MEDIA,
+        clientId: process.env.DEV_GOOGLE_CLIENT_ID,
     },
     db: {
         dialect: process.env.DEV_DB_DIALECT,
@@ -24,6 +25,7 @@ const production = {
         accessTokenExpires: process.env.PRO_ACCESS_TOKEN_EXPIRES || 60 * 60 * 24,
         refreshTokenExpires: process.env.PRO_REFRESH_TOKEN_EXPIRES || 60 * 60 * 24 * 7,
         urlBaseMedia: process.env.PRO_URL_BASE_MEDIA,
+        clientId: process.env.PRO_GOOGLE_CLIENT_ID,
     },
     db: {
         dialect: process.env.PRO_DB_DIALECT,
