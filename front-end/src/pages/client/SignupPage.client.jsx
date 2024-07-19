@@ -1,12 +1,16 @@
 //files
 import InputCore from "../../components/common/input.core";
 import signupFormSchema from "../../validate/signup.validate";
+import { handleError } from "../../utils/common.utils";
+import authApi from "../../redux/action/authAction.redux";
 
 //libs
 import { GoogleLogin } from "@react-oauth/google";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch } from "react-redux";
+import { message } from "antd";
 
 function SignupPage() {
 	const {
@@ -17,8 +21,33 @@ function SignupPage() {
 		resolver: yupResolver(signupFormSchema),
 	});
 
+	const [messageApi, contextHolder] = message.useMessage();
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const responseGoogle = async (response) => {
+		try {
+			const tokenId = response.credential;
+			await dispatch(authApi.signInByGoogle({ tokenId })).unwrap();
+			navigate("/");
+		} catch (error) {
+			const { errorMessage } = handleError(error);
+			messageApi.open({
+				type: "error",
+				content: errorMessage,
+			});
+		}
+	};
+
+	const responseGoogleFailure = (error) => {
+		messageApi.open({
+			type: "error",
+			content: error,
+		});
+	};
 	return (
 		<div className='signup-client'>
+			{contextHolder}
 			<div className='signup-client__content'>
 				<h6 style={{ fontSize: 25, fontWeight: 500 }}>Sign up</h6>
 				<InputCore
@@ -69,10 +98,8 @@ function SignupPage() {
 				</button>
 				<div className='signup-client__content__login-with-gg'>
 					<GoogleLogin
-						onSuccess={() => {}}
-						onError={() => {
-							console.log("Login Failed");
-						}}
+						onSuccess={responseGoogle}
+						onError={responseGoogleFailure}
 					/>
 				</div>
 				<div className='signup-client__content__btn-signin'>

@@ -1,24 +1,42 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+//files
 import publicApi from "../../services/api/apiPublic.service";
+import { setUserInfo } from "../../utils/localStorage.utils";
+
+//libs
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
-const userEndpoints = {
+
+const authEndpoints = {
 	signin: "auth/sign-in",
+	signinByGoogle: "auth/sign-in-by-google",
 	refreshAccessToken: "auth/access-token",
 };
 
-const userApi = {
+const authApi = {
 	signIn: createAsyncThunk("auth/signin", async ({ email, password }) => {
-		const response = await publicApi.post(userEndpoints.signin, {
+		const response = await publicApi.post(authEndpoints.signin, {
 			email,
 			password,
 		});
 		return response;
 	}),
+	signInByGoogle: createAsyncThunk(
+		"auth/signin-by-google",
+		async ({ tokenId }) => {
+			const response = await publicApi.post(
+				authEndpoints.signinByGoogle,
+				{
+					tokenId,
+				}
+			);
+			return response;
+		}
+	),
 	refreshAccessToken: createAsyncThunk(
 		"auth/refresh-access-token",
 		async ({ refreshToken }) => {
 			const response = await publicApi.post(
-				userEndpoints.refreshAccessToken,
+				authEndpoints.refreshAccessToken,
 				{
 					refreshToken,
 				}
@@ -37,6 +55,7 @@ const handleSigninFulfilled = (state, action) => {
 	state.isAuthenticated = true;
 	state.user = user;
 	Cookies.set("refreshToken", tokens.refreshToken);
+	setUserInfo(user);
 };
 
 const handleRefreshAccessTokenFulfilled = (state, action) => {
@@ -47,4 +66,4 @@ const handleRefreshAccessTokenFulfilled = (state, action) => {
 };
 
 export { handleSigninFulfilled, handleRefreshAccessTokenFulfilled };
-export default userApi;
+export default authApi;

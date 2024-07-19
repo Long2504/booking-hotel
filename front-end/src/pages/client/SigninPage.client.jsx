@@ -1,6 +1,9 @@
 //files
 import InputCore from "../../components/common/input.core";
 import signinFormSchema from "../../validate/signin.validate";
+import ButtonCore from "../../components/common/button.core";
+import { handleError } from "../../utils/common.utils";
+import authApi from "../../redux/action/authAction.redux";
 
 //libs
 import { GoogleLogin } from "@react-oauth/google";
@@ -8,10 +11,7 @@ import { Divider, message } from "antd";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
-import userApi from "../../redux/action/authAction.redux";
 import { useNavigate } from "react-router-dom";
-import ButtonCore from "../../components/common/button.core";
-import { handleError } from "../../utils/common.utils";
 
 function SigninPage() {
 	const {
@@ -25,9 +25,10 @@ function SigninPage() {
 	const [messageApi, contextHolder] = message.useMessage();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	
 	const onSubmit = async (data) => {
 		try {
-			await dispatch(userApi.signIn(data)).unwrap();
+			await dispatch(authApi.signIn(data)).unwrap();
 			navigate("/");
 		} catch (error) {
 			const { errorMessage } = handleError(error);
@@ -36,6 +37,27 @@ function SigninPage() {
 				content: errorMessage,
 			});
 		}
+	};
+
+	const responseGoogle = async (response) => {
+		try {
+			const tokenId = response.credential;
+			await dispatch(authApi.signInByGoogle({ tokenId })).unwrap();
+			navigate("/");
+		} catch (error) {
+			const { errorMessage } = handleError(error);
+			messageApi.open({
+				type: "error",
+				content: errorMessage,
+			});
+		}
+	};
+
+	const responseGoogleFailure = (error) => {
+		messageApi.open({
+			type: "error",
+			content: error,
+		});
 	};
 	return (
 		<div className='signin-client'>
@@ -71,10 +93,8 @@ function SigninPage() {
 
 				<div className='signin-client__content__login-with-gg'>
 					<GoogleLogin
-						onSuccess={() => {}}
-						onError={() => {
-							console.log("Login Failed");
-						}}
+						onSuccess={responseGoogle}
+						onError={responseGoogleFailure}
 					/>
 				</div>
 				<p className='signin-client__content__by-signing'>
