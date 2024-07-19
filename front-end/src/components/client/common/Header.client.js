@@ -1,5 +1,6 @@
 //files
 import { logoMain } from "../../../assets/images/index.image";
+import { getUserInfo } from "../../../utils/localStorage.utils";
 
 //libs
 import { Link, useNavigate } from "react-router-dom";
@@ -11,8 +12,10 @@ import { useSelector } from "react-redux";
 import { LuUser2 } from "react-icons/lu";
 import { FaSortDown } from "react-icons/fa6";
 
+
 function HeaderClient() {
-	const { isAuthenticated, user } = useSelector((state) => state.auth);
+	const { isAuthenticated } = useSelector((state) => state.auth);
+	const userInfo = getUserInfo();
 	const navigate = useNavigate();
 	const itemsDropdown = [
 		{
@@ -62,7 +65,10 @@ function HeaderClient() {
 					</Link>
 					{isAuthenticated ? (
 						<Space className='header-client__right__user'>
-							<Avatar icon={<LuUser2 />} src={user?.photoUrl} />
+							<Avatar
+								icon={<LuUser2 />}
+								src={userInfo?.avatarUrl}
+							/>
 							<Dropdown
 								menu={{
 									items: itemsDropdown,
@@ -73,7 +79,8 @@ function HeaderClient() {
 							>
 								<Space direction='horizontal'>
 									<span>
-										{user?.displayName || user?.email}
+										{userInfo?.displayName ||
+											userInfo?.email}
 									</span>
 									<FaSortDown size={16} />
 								</Space>
