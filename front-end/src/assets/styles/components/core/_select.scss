@@ -20,7 +20,7 @@
     }
 
     &__error {
-        @include font(null, 12px, null, red);
+        @include font(null, 12px, null, red !important);
         margin-top: 5px;
     }
 

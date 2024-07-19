@@ -5,6 +5,8 @@
     label {
         @include font(500, null, null, rgba(0, 0, 0, 0.8));
         margin: 15px 0px 8px 0px;
+        @include text-ellipsis();
+
     }
 
     &__content {
@@ -30,7 +32,7 @@
     }
 
     &__error {
-        @include font(null, 12px, null, red);
+        @include font(null, 12px, null, red !important);
         margin-top: 5px;
     }
 }
