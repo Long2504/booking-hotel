@@ -19,14 +19,29 @@ Content-Type: application/json
     "password": "12345678"
 }
 
+### signin by gg
+POST  {{url_dev}}/sign-in-by-google
+Content-Type: application/json
+
+{
+    "tokenId": ""
+}
 
 
-### get refresh token
-
+#### get refresh token
 POST {{url_dev}}/refresh-token
 Content-Type: application/json
 
 {
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiMGRhYThhYi0yNDE3LTRlNDgtODUyZS1hMWFmODMyZGVmOGMiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MTY0MTY0LCJleHAiOjE3MTk3Njg5NjR9.kBNRSmNAzZllLUfvswmLu0vWhIm4sTDr3SNSjcbKNiE"
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiMGRhYThhYi0yNDE3LTRlNDgtODUyZS1hMWFmODMyZGVmOGMiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MTY0MjUyLCJleHAiOjE3MTk3NjkwNTJ9.OBmb0S7kcrYDiPFXJM_38qu__yO4iPMCeIra0-9GyXs"
 }
+
+#### get access token
+POST {{url_dev}}/access-token
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzIwNjAyOTkzLCJleHAiOjE3MjExMjEzOTN9.zbNZnn6BPBm9vz_5NlZyixAbvvCaF9Gy5XvS4_XJASQ"
+}
+
 
