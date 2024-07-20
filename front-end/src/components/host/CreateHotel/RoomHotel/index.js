@@ -23,12 +23,6 @@ function RoomHotel({ errors, setValue, register, control, getValues }) {
 		control,
 		name: "rooms",
 	});
-	useEffect(() => {
-		if (fields?.length < 1) {
-			append(roomObj);
-		}
-		remove(0);
-	}, []);
 
 	const handleAddRoom = () => {
 		append(roomObj);

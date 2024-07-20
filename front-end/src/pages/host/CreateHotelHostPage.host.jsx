@@ -14,14 +14,19 @@ import {
 	postHotelFormSchema,
 	roomsHotelFormSchema,
 } from "../../validate/create-hotel.validate";
-import { generateAddress } from "../../utils/common.utils";
+import {
+	base64ToFile,
+	generateAddress,
+	handleError,
+} from "../../utils/common.utils";
+import hotelApi from "../../services/modules/hotel.service";
 
 //libs
 import { message, Space, Steps } from "antd";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import mediaApi from "../../services/modules/media.service";
 
 function CreateHotelHostPage() {
 	const [current, setCurrent] = useState(0);
@@ -67,15 +72,19 @@ function CreateHotelHostPage() {
 		<ImageHotel
 			control={control}
 			getValues={getValues}
+			setValue={setValue}
 			register={register}
 		/>,
 		<PostHotelHost setCheckedConfirm={setCheckedConfirm} />,
 	];
 
 	const handleNext = () => {
-		trigger().then((res) => {
+		trigger().then(async (res) => {
 			if (res) {
 				setCurrent(current + 1);
+				if (current + 1 === 5) {
+					await handleSetUrlImg();
+				}
 			}
 		});
 		return;
@@ -93,18 +102,81 @@ function CreateHotelHostPage() {
 			data.district,
 			data.ward,
 			data.street
-		)
+		);
 		console.log(address);
 		console.log(data);
 	};
 
-	const handlePost = (data) => {
+	const handleUploadImgs = async (listImages) => {
+		const listImageResponse = listImages.map(async (image) => {
+			if (image.url) {
+				return image.url;
+			} else {
+				const formData = new FormData();
+				const file = base64ToFile(image.base64, image.name, image.type);
+				formData.append("image", file);
+				const response = await mediaApi.uploadImg(formData);
+				return response?.data?.metaData?.url;
+			}
+		});
+		return await Promise.all(listImageResponse);
+	};
+
+	const handleSetUrlImg = async () => {
+		try {
+			await handleUploadImgs(getValues("images")).then((response) => {
+				setValue("images", response);
+			});
+			const imgsRoom = getValues("rooms").map(async (room, index) => {
+				await handleUploadImgs(room.images).then((response) => {
+					setValue(`rooms.${index}.images`, response);
+				});
+			});
+			await Promise.all(imgsRoom);
+			messageApi.open({
+				type: "success",
+				content: "Upload ảnh thành công",
+			});
+		} catch (error) {
+			const { errorMessage } = handleError(error);
+			messageApi.open({
+				type: "error",
+				content: errorMessage,
+			});
+		}
+	};
+
+	const handlePost = async (data) => {
 		if (!checkedConfirm) {
 			messageApi.open({
 				type: "error",
 				content: "Vui lòng xác nhận điều khoản trước khi tiếp tục",
 			});
 			return;
+		}
+		const address = generateAddress(
+			data.province,
+			data.district,
+			data.ward,
+			data.street
+		);
+		const dataPost = {
+			address,
+			...data,
+		};
+		console.log(dataPost);
+		try {
+			// await hotelApi.post(dataPost);
+			messageApi.open({
+				type: "success",
+				content: "Đăng tin thành công",
+			});
+		} catch (error) {
+			const { errorMessage } = handleError(error);
+			messageApi.open({
+				type: "error",
+				content: errorMessage,
+			});
 		}
 	};
 	return (

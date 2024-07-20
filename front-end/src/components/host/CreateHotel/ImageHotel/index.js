@@ -5,8 +5,7 @@ import { photoHotelHost } from "../../../../assets/images/index.image";
 //libs
 import { Space } from "antd";
 
-function ImageHotel({ getValues,register }) {
-	const hotel = {};
+function ImageHotel({ getValues, setValue }) {
 	const listRoom = getValues("rooms") || [];
 	return (
 		<Space direction='vertical' className='photo-hotel-host'>
@@ -22,8 +21,8 @@ function ImageHotel({ getValues,register }) {
 					<p>* Mẹo: tối thiểu 800x600 px — lý tưởng 2048x1536 px</p>
 				</Space>
 				<img
-					src={photoHotelHost}
 					alt=''
+					src={photoHotelHost}
 					className='photo-hotel-host__title__img'
 				/>
 			</div>
@@ -33,18 +32,20 @@ function ImageHotel({ getValues,register }) {
 					description={
 						"Mặt ngoài của tòa nhà, (các) chỗ để xe, lối vào, và mọi cơ sở vật chất có sẵn"
 					}
-					urlList={hotel?.images}
+					setValue={setValue}
+					urlList={getValues("images") || []}
 				/>
 				{listRoom.map((room, index) => {
 					return (
 						<ImageItem
-							key={index}
-							idRoom={room?.id}
 							title={room?.name}
-							urlList={room?.images}
 							description={
 								"(Các) phòng ngủ, phòng tắm, bếp, và khu vực ăn uống/tiếp khách của căn"
 							}
+							urlList={room?.images}
+							indexRoom={index}
+							setValue={setValue}
+							key={index}
 						/>
 					);
 				})}

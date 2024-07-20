@@ -73,10 +73,45 @@ function decodeAddress(address) {
 	return { provinceCode, districtCode, wardCode, street };
 }
 
+function getBase64(file) {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => resolve(reader.result);
+		reader.onerror = (error) => reject(error);
+	});
+}
+
+function fileToBase64(file) {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => resolve(reader.result.split(",")[1]);
+		reader.onerror = (error) => reject(error);
+	});
+}
+
+function base64ToFile(base64String, fileName, mimeType) {
+	const byteCharacters = atob(base64String);
+	const byteNumbers = new Array(byteCharacters.length);
+	for (let i = 0; i < byteCharacters.length; i++) {
+		byteNumbers[i] = byteCharacters.charCodeAt(i);
+	}
+	const byteArray = new Uint8Array(byteNumbers);
+	const arrayBuffer = byteArray.buffer;
+	const blob = new Blob([arrayBuffer], { type: mimeType });
+	const file = new File([blob], fileName, { type: mimeType });
+
+	return file;
+}
+
 export {
 	generateRoute,
 	vietNamDong,
 	handleError,
 	generateAddress,
 	decodeAddress,
+	getBase64,
+	fileToBase64,
+	base64ToFile,
 };

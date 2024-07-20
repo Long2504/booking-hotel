@@ -1,3 +1,6 @@
+//files
+import { fileToBase64, getBase64 } from "../../../../utils/common.utils";
+
 //libs
 import { Image, Upload, Space } from "antd";
 import { useEffect, useState } from "react";
@@ -5,7 +8,8 @@ import { useEffect, useState } from "react";
 //icons
 import { IoMdAdd } from "react-icons/io";
 
-function ImageItem({ title, description, urlList }) {
+
+function ImageItem({ title, description, urlList, indexRoom, setValue }) {
 	const renderURL = urlList?.map((url) => {
 		return {
 			uid: url,
@@ -25,29 +29,39 @@ function ImageItem({ title, description, urlList }) {
 		}
 	}, [urlList]);
 
+
 	const handlePreview = async (file) => {
+		if (!file.url && !file.preview) {
+			file.preview = await getBase64(file.originFileObj);
+		}
 		setPreviewImage(file.url || file.preview);
 		setPreviewOpen(true);
 	};
+
 	const handleChange = async ({ fileList: newFileList }) => {
 		setFileList(newFileList);
+		const newFileListCustom = newFileList.map(async (file) => {
+			if (!file.url && !file.preview) {
+				return {
+					base64: await fileToBase64(file.originFileObj),
+					type: file.type,
+					name: file.name,
+				};
+			}
+			return file;
+		});
+		const fileListTemp = await Promise.all(newFileListCustom);
+		if (indexRoom !== undefined) {
+			setValue(`rooms.${indexRoom}.images`, fileListTemp);
+		} else {
+			setValue("images", fileListTemp);
+		}
 	};
 
 	const uploadButton = (
-		<button
-			style={{
-				border: 0,
-				background: "none",
-			}}
-		>
+		<button>
 			<IoMdAdd size={20} />
-			<div
-				style={{
-					marginTop: 8,
-				}}
-			>
-				Upload
-			</div>
+			<p>Upload</p>
 		</button>
 	);
 	return (
@@ -78,6 +92,10 @@ function ImageItem({ title, description, urlList }) {
 							!visible && setPreviewImage(""),
 					}}
 					src={previewImage}
+					crossOrigin='anonymous'
+					alt='Preview'
+					style={{ width: "100%" }}
+					loading='lazy'
 				/>
 			)}
 		</Space>
