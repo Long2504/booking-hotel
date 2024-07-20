@@ -36,14 +36,14 @@ const roomHotelFormSchema = yup.object().shape({
 		.test("is-occupancy-valid", "Occupancy is not valid", (value) => {
 			return value > 0;
 		}),
-	bathrooms: yup.number().required("Bathrooms is required"),
+	numBathrooms: yup.number().required("Bathrooms is required"),
 	price: yup
 		.number()
 		.required("Price is required")
 		.test("is-price-valid", "Price is not valid", (value) => {
 			return value > 0;
 		}),
-	number: yup.number().required("Number is required"),
+	numBedrooms: yup.number().required("Number is required"),
 	images: yup.array().required("Images is required"),
 	beds: yup
 		.array()
@@ -63,11 +63,9 @@ const roomsHotelFormSchema = yup.object().shape({
 });
 
 const imgHotelFormSchema = yup.object().shape({
-	images: yup.array(),
-	// .required("Images is required")
-	// .test("is-image-valid", "Image is not valid", (value) => {
-	// 	return value?.length > 0;
-	// }),
+	images: yup.array().test("is-image-valid", "Image is not valid", (value) => {
+		return value?.length > 0;
+	}),
 });
 
 const postHotelFormSchema = yup.object().shape({
