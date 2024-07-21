@@ -14,9 +14,10 @@ import { useNavigate, useParams } from "react-router-dom";
 
 //icons
 import { FaCheck, FaCamera } from "react-icons/fa";
+import hotelApi from "../../services/modules/hotel.service";
 
 function HotelDetailPage() {
-	const hotel = hotelDetail;
+	const [hotel, setHotel] = useState({});
 	const navigate = useNavigate();
 	const [scroll, setScroll] = useState(0);
 	useEffect(() => {
@@ -24,6 +25,15 @@ function HotelDetailPage() {
 			setScroll(window.scrollY);
 		});
 	});
+
+	useEffect(() => {
+		(async () => {
+			try {
+				const { metaData } = await hotelApi.getById(id);
+				setHotel(metaData);
+			} catch (error) {}
+		})();
+	}, []);
 	const { id } = useParams();
 	const linkToChekout = (room) => {
 		navigate(`/checkout/${id}`);
@@ -76,17 +86,17 @@ function HotelDetailPage() {
 	return (
 		<>
 			<ScrollUpNav
-				calcScroll='150'
+				calcScroll="150"
 				handleClicking={() => setClicked(!clicked)}
 			/>
-			<div className='hotel-detail-page' id='hotel-detail-page'>
-				<div className='hotel-detail-page__img'>
-					<div className='hotel-detail-page__img__main'>
+			<div className="hotel-detail-page" id="hotel-detail-page">
+				<div className="hotel-detail-page__img">
+					<div className="hotel-detail-page__img__main">
 						<ImageCore
 							src={hotel?.images?.length > 0 && hotel.images[1]}
 						/>
 						<button
-							className='hotel-detail-page__img__main__btn'
+							className="hotel-detail-page__img__main__btn"
 							onClick={() => setIsModalOpen(true)}
 						>
 							<FaCamera />
@@ -94,7 +104,7 @@ function HotelDetailPage() {
 						</button>
 					</div>
 					<Row
-						className='hotel-detail-page__img__list-sub'
+						className="hotel-detail-page__img__list-sub"
 						gutter={[8, 8]}
 					>
 						{hotel?.images?.slice(1, 7)?.map((url, index) => {
@@ -102,7 +112,7 @@ function HotelDetailPage() {
 								<Col
 									key={index}
 									span={8}
-									className='hotel-detail-page__img__list-sub__child'
+									className="hotel-detail-page__img__list-sub__child"
 								>
 									<ImageCore src={url} />
 								</Col>
@@ -111,12 +121,13 @@ function HotelDetailPage() {
 					</Row>
 				</div>
 
-				<div className='hotel-detail-page__tab'
+				<div
+					className="hotel-detail-page__tab"
 					style={scroll > 150 ? styleScrollUpNav : {}}
 				>
 					<Tabs
 						items={itemTabs}
-						defaultActiveKey='1'
+						defaultActiveKey="1"
 						tabBarStyle={{
 							borderBottom: "none",
 							height: "100%",
@@ -126,66 +137,74 @@ function HotelDetailPage() {
 						onChange={handleScrollUp}
 					/>
 
-					<Space className='hotel-detail-page__tab__price'>
-						<p className='hotel-detail-page__tab__price__title'>
+					<Space className="hotel-detail-page__tab__price">
+						<p className="hotel-detail-page__tab__price__title">
 							Từ
 						</p>
-						<p className='hotel-detail-page__tab__price__price'>
+						<p className="hotel-detail-page__tab__price__price">
 							{vietNamDong(hotel?.priceAverage)}
 						</p>
 					</Space>
 				</div>
 
-				<div className='hotel-detail-page__content'>
-					<Box border radius={4} className='hotel-detail-page__content__top'>
-						<div className='hotel-detail-page__content__top__title'>
+				<div className="hotel-detail-page__content">
+					<Box
+						border
+						radius={4}
+						className="hotel-detail-page__content__top"
+					>
+						<div className="hotel-detail-page__content__top__title">
 							<h1>{hotel?.name}</h1>
 							<Rate value={hotel?.star || 0} disabled />
 						</div>
-						<Space className='hotel-detail-page__content__top__address'>
+						<Space className="hotel-detail-page__content__top__address">
 							<span>{hotel?.address}</span>
 							<span style={{ color: "#488bf8" }}>
 								- TRÊN BẢN ĐỒ
 							</span>
 						</Space>
 						<Divider style={{ margin: "0" }} />
-						<p className='hotel-detail-page__content__top__desc'>
+						<p className="hotel-detail-page__content__top__desc">
 							{hotel?.description}
 						</p>
 					</Box>
-					<Box border radius={4} className='hotel-detail-page__content__center'>
+					<Box
+						border
+						radius={4}
+						className="hotel-detail-page__content__center"
+					>
 						<h2>Tiện nghi</h2>
 						<Row gutter={[16, 24]}>
 							<Col
 								span={6}
-								className='hotel-detail-page__content__center__grid-item'
+								className="hotel-detail-page__content__center__grid-item"
 							>
 								<FaCheck />
 								<span>Đưa đón sân bay</span>
 							</Col>
 							<Col
 								span={6}
-								className='hotel-detail-page__content__center__grid-item'
+								className="hotel-detail-page__content__center__grid-item"
 							>
 								<FaCheck />
 								<span>CLB trẻ em</span>
 							</Col>
 							<Col
 								span={6}
-								className='hotel-detail-page__content__center__grid-item'
+								className="hotel-detail-page__content__center__grid-item"
 							>
 								<FaCheck />
 								<span>Bãi đỗ xe có nhân viên</span>
 							</Col>
 							<Col
-								className='hotel-detail-page__content__center__grid-item'
+								className="hotel-detail-page__content__center__grid-item"
 								span={6}
 							>
 								<FaCheck />
 								<span>Nhận/trả phòng [nhanh]</span>
 							</Col>
 							<Col
-								className='hotel-detail-page__content__center__grid-item'
+								className="hotel-detail-page__content__center__grid-item"
 								span={6}
 							>
 								<FaCheck />
@@ -194,21 +213,21 @@ function HotelDetailPage() {
 								</span>
 							</Col>
 							<Col
-								className='hotel-detail-page__content__center__grid-item'
+								className="hotel-detail-page__content__center__grid-item"
 								span={6}
 							>
 								<FaCheck />
 								<span>Tiện nghi nấu nướng ngoài trời</span>
 							</Col>
 							<Col
-								className='hotel-detail-page__content__center__grid-item'
+								className="hotel-detail-page__content__center__grid-item"
 								span={6}
 							>
 								<FaCheck />
 								<span>Bàn tiếp tân [24 giờ]</span>
 							</Col>
 							<Col
-								className='hotel-detail-page__content__center__grid-item'
+								className="hotel-detail-page__content__center__grid-item"
 								span={6}
 							>
 								<FaCheck />
@@ -218,12 +237,13 @@ function HotelDetailPage() {
 					</Box>
 				</div>
 
-				<div className='hotel-detail-page__list-room'
-					id='hotel-detail-page__list-room'
+				<div
+					className="hotel-detail-page__list-room"
+					id="hotel-detail-page__list-room"
 				>
 					<h2>Phòng còn trống tại {hotel?.name}</h2>
-					<div className='hotel-detail-page__list-room__container'>
-						{hotel?.rooms?.map((room, index) => (
+					<div className="hotel-detail-page__list-room__container">
+						{hotel?.hotelRooms?.map((room, index) => (
 							<RoomItem
 								key={index}
 								data={room}
@@ -233,12 +253,14 @@ function HotelDetailPage() {
 					</div>
 				</div>
 
-				<Box radius={5} className='hotel-detail-page__extension'
-					id='hotel-detail-page__extension'
+				<Box
+					radius={5}
+					className="hotel-detail-page__extension"
+					id="hotel-detail-page__extension"
 				>
 					<h2>Tiện nghi và cơ sở vật chất</h2>
-					<div className='hotel-detail-page__extension__list'>
-						{hotel?.extensions?.map((extension, index) => (
+					<div className="hotel-detail-page__extension__list">
+						{hotel?.hotelExtensions?.map((extension, index) => (
 							<ExtensionItem key={index} data={extension} />
 						))}
 					</div>
@@ -248,12 +270,12 @@ function HotelDetailPage() {
 				open={isModalOpen}
 				onOk={() => setIsModalOpen(false)}
 				onCancel={() => setIsModalOpen(false)}
-				className='hotel-detail-page__modal'
+				className="hotel-detail-page__modal"
 				closeIcon={null}
 				footer={null}
 				width={"100%"}
 			>
-				<div className='hotel-detail-page__modal__image'>
+				<div className="hotel-detail-page__modal__image">
 					<Row gutter={[8, 8]}>
 						{hotel?.images?.map((url, index) => (
 							<Col key={index} span={8}>

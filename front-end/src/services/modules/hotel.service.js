@@ -6,9 +6,7 @@ const hotelPrivateEndpoint = {
 	post: "hotel/post",
 };
 
-const hotelPublicEndpoint = {
-	getList: "hotel",
-};
+const hotelPublicEndpoint = 'hotel';
 
 const hotelApi = {
 	post: async (data) => {
@@ -19,9 +17,17 @@ const hotelApi = {
 
 	getList: async (params) => {
 		return await handleApiCall(() =>
-			publicApi.get(hotelPublicEndpoint.getList, { params })
+			publicApi.get(hotelPublicEndpoint, { params })
 		);
 	},
+
+	getById: async (id) => {
+		return await handleApiCall(() =>
+			publicApi.get(`${hotelPublicEndpoint}/${id}`)
+		);
+	},
+
+
 };
 
 export default hotelApi;
