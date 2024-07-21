@@ -83,12 +83,12 @@
             text-align: center;
             padding: 15px;
             margin: 10px;
-            border-bottom: 3px solid dodgerblue !important;
+            border-bottom: 3px solid $blue-client !important;
             cursor: pointer;
 
             h1 {
                 margin-bottom: 0;
-                @include font(null, 25px, null, dodgerblue);
+                @include font(null, 25px, null, $blue-client);
             }
 
             h2 {
@@ -159,7 +159,7 @@
                     }
 
                     &__address {
-                        @include font(500, null, null, rgb(49, 112, 231));
+                        @include font(500, null, null, $blue-client);
                         display: flex;
                         align-items: center;
                         span {

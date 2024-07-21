@@ -5,7 +5,6 @@
         @include size(100%, 50px);
         font-size: 13px;
         margin-bottom: 10px;
-        // box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
         @include flex(center, null);
         background-color: white;
 
@@ -30,7 +29,6 @@
         &__time {
             @include size(100%,55px);
             background-color: rgb(244, 248, 254);
-            // box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
             padding: 0 15px;
         }
 
@@ -88,7 +86,7 @@
                 width: 100%;
 
                 &__link {
-                    @include font(500, null, null, rgb(49, 112, 231));
+                    @include font(500, null, null, $blue-client);
 
                     &:hover {
                         text-decoration: underline;
@@ -106,28 +104,13 @@
             }
 
             &__btn {
-                margin-top: 10px;
-                padding: 12px 34px;
-                position: relative;
-                border-radius: 4px;
-                background-color: rgb(83, 146, 249);
-                color: rgb(255, 255, 255);
-                box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
-                transition: all 0.15s ease-in-out 0s;
+                height: 50px;
                 align-self: flex-end;
-
-                &:hover {
-                    background-color: rgb(135, 179, 251);
-                    border-color: rgb(135, 179, 251);
-                    color: rgb(255, 255, 255);
-                    transition: all 0.15s ease-in-out 0s;
-                }
             }
         }
 
         &__box {
             margin-top: 10px;
-            // box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 1px;
             background-color: white;
             padding: 20px 30px;
         }

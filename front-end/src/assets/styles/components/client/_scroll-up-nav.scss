@@ -1,47 +1,41 @@
 .scroll-up-nav {
     &__overlay {
         position: absolute;
-        width: 100vw;
-        height: 3000vh;
+        @include size(100vw, 3000vh);
         top: 0;
     }
 
     &__content {
-        width: 100%;
-        height: $scroll-up-nav-height;
-        background-color: #20274d;
+        @include size(100%, $scroll-up-nav-height);
         @include flex(center, center);
+        background-color: #20274d;
         gap: 6px;
 
         &__search {
-            width: 300px;
-            height: $scroll-up-nav-child-height;
+            @include size(300px, $scroll-up-nav-child-height);
         }
 
         &__calendar {
-            height: $scroll-up-nav-child-height;
-            width: 400px;
+            @include size(400px, $scroll-up-nav-child-height);
         }
 
         &__room-select {
-            width: 220px;
-            height: $scroll-up-nav-child-height;
+            @include size(220px, $scroll-up-nav-child-height);
             background-color: #fff;
             border-radius: 5px;
         }
 
         &__btn-search {
-            width: 130px;
-            height: $scroll-up-nav-child-height;
-            background-color: dodgerblue;
-            color: #fff;
+            @include size(130px, $scroll-up-nav-child-height);
+            background-color: $blue-client;
             letter-spacing: 1px;
             text-transform: uppercase;
-            font-weight: 600;
+            @include font(600, null, null, #fff);
         }
     }
+
     input.ant-input-outlined {
-        &:focus-within{
+        &:focus-within {
             border-color: transparent !important;
             box-shadow: none !important;
         }

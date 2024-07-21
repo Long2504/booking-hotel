@@ -21,8 +21,8 @@
         &__content {
             @include flex(center, center);
             padding: 20px 0;
-            @include font(null, 16px, null, #1976d2);
-            border-bottom: 2px solid #1976d2;
+            @include font(null, 16px, null, $blue-client);
+            border-bottom: 2px solid $blue-client;
             border-bottom-left-radius: 7px;
             border-bottom-right-radius: 7px;
         }
@@ -82,18 +82,9 @@
                 color: #fff;
 
                 button {
-                    background-color: #5392f9;
-                    @include font(600, 20px, null, #fff);
-                    padding: 15px;
-                    letter-spacing: 1.5px;
-                    border-radius: 5px;
+                    @include font(600, 20px, null,null);
                     margin: 20px auto;
-                    width: 100%;
-
-
-                    &:hover {
-                        background-color: #87b3fb;
-                    }
+                    @include size(100%, 50px);
                 }
             }
         }

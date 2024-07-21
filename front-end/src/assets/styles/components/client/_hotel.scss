@@ -3,11 +3,10 @@
     width: 100%;
     min-height: 220px;
     margin-bottom: 30px;
-    font-family: "Barlow", sans-serif;
     cursor: pointer;
 
     &:hover {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .3);
+        box-shadow: 0 4px 8px 0 #0000004d;
         background-color: #e4eaf1;
     }
 
@@ -24,7 +23,8 @@
         }
 
         &__small-img {
-            @include flex(null,space-between);
+            @include flex(null, space-between);
+
             img {
                 width: 24.5%;
             }
@@ -35,35 +35,43 @@
         width: 40%;
         font-size: 15px;
         margin-left: 10px;
-        border-right: 1px solid rgb(221, 223, 226);
-        padding: 20px 0px;
+        border-right: 1px solid $color-border;
+        padding: 10px 0px;
 
         &__name {
-            @include font(600, 20px, null, null);
-            margin-bottom: 5px;
+            @include font(600, 25px, null, null);
+            @include text-ellipsis(2);
         }
 
         &__address {
-            @include font(500, 14px, null, rgb(49, 112, 231));
-            @include flex(center, stretch);
-            margin-top: 5px;
+            @include font(500, 16px, null, $blue-client);
+            @include flex(center, null);
+
+            p {
+                margin-left: 5px;
+                @include text-ellipsis();
+            }
         }
 
         &__convenience {
-            margin-top: 5px;
 
             p {
-                @include font(500, 16px, null, rgb(36, 38, 44));
+                @include font(500, 18px, null, rgb(36, 38, 44));
             }
 
             &__list {
-                margin-top: 5px;
+                margin-top: 10px;
                 display: flex;
 
                 &__item {
                     @include flex(center, center);
                     margin-right: 10px;
                     padding: 4px 8px;
+                    border-color: $blue-client !important;
+
+                    span {
+                        @include font(500, 14px, null, null);
+                    }
                 }
             }
         }
@@ -75,50 +83,29 @@
         flex-direction: column;
         padding: 10px 15px;
 
-        &__top {
-            width: 100%;
-            @include flex(center, flex-end);
+        &__price {
+            float: right;
+            margin: 20px 0px;
 
-            &__text {
-                margin: 0px 10px;
-
-                p {
-                    @include font(500, 14px, 22px, rgb(42, 42, 46));
-                }
-
-                span {
-                    @include font(400, 12px, 18px, rgb(42, 42, 46));
-                }
+            &__title {
+                @include font(500, 20px, null, null);
             }
 
-            &__rating {
-                position: relative;
-                @include flex(center, center);
-                @include size(48px, 48px);
-
-                &__text {
-                    @include flex(center, center);
-                    @include font(500, 16px, 22px, rgb(83, 146, 249));
-                }
+            &__value {
+                @include font(bold, 25px, null, #e12d2d);
+                float: right;
+                margin: 5px 0px 10px 0px;
             }
         }
 
-        &__bottom {
+        &__btn {
+            background-color: $blue-client;
             width: 100%;
-
-            &__price {
-                float: right;
-                margin: 10px 0px;
-
-                &__title {
-                    font-weight: 500;
-                }
-
-                &__value {
-                    @include font(bold, 25px, null, #e12d2d);
-                    float: right;
-                    margin: 5px 0px 10px 0px;
-                }
+            padding: 15px;
+            border-radius: 3px;
+            @include font(600, 18px, null, white);
+            p{
+                text-align: center;
             }
         }
 

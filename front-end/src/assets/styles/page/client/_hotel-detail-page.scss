@@ -22,7 +22,6 @@
 
             &__btn {
                 background-color: rgba(0, 0, 0, .5);
-                box-shadow: 0 1px 3px 1px rgba(0, 0, 0, .2);
                 @include flex(center, null);
                 padding: 8px 12px;
                 border-radius: 4px;
@@ -236,20 +235,16 @@
                     }
 
                     &__action {
-                        width: 16%;
-                        @include flex(flex-end, center);
+                        width: 16%; 
+                        @include flex(center, flex-end);
+                        flex-direction: column;
 
                         button {
-                            @include size(80%, 70px);
-                            background-color: #5392f9;
-                            color: #fff;
-                            margin-bottom: 30px;
-                            font-size: 18px;
-                            border-radius: 3px;
-
-                            &:hover {
-                                background-color: #53b7ff;
-                            }
+                            @include size(80%, 50px);
+                            margin-bottom: 20px;
+                            @include font(500,16px, null,null);
+                            text-transform: uppercase;
+                            
                         }
                     }
                 }
@@ -258,8 +253,7 @@
     }
 
     &__extension {
-        margin-top: 20px;
-        margin-bottom: 40px;
+        margin: 20px 0px 40px 0px;
         padding: 10px;
 
         &__list {
@@ -271,8 +265,7 @@
                 margin-bottom: 20px;
 
                 p {
-                    font-size: 18px;
-                    font-weight: 600;
+                    @include font(600,18px, null, null);
                 }
 
                 ul {

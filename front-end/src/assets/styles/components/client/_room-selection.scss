@@ -1,39 +1,36 @@
-.room-selection{
-    width: 100%;
-    height: 100%;
+.room-selection {
+    @include size(100%, 100%);
     @include flex(center, center);
 
-    &__icon-people{
+    &__icon-people {
         margin: 0 5px;
     }
-    &__dropdown{
-        width: 100%;
-        height: 100%;
+
+    &__dropdown {
+        @include size(100%, 100%);
         @include flex(center, space-between);
         padding: 0px 15px;
         cursor: pointer;
 
-        &__item{
+        &__item {
             @include flex(center, space-between);
             padding: 5px 0;
-            p{
-                font-size: 16px;
-                font-weight: 500;
+
+            p {
+                @include font(500, 16px, null, null);
             }
 
-            &__number{
-                display: flex;
-                align-items: center;
+            &__number {
+                @include flex(center, null);
 
-                &__icon{
+                &__icon {
                     font-size: 24px;
                 }
             }
         }
 
-        &__title{
-            font-size: 14px;
-            font-weight: 600;
+        &__title {
+            @include font(600, 14px, null, null);
             display: flex;
         }
     }

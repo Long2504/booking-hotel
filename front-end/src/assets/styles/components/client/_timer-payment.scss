@@ -1,39 +1,23 @@
-.timer-payment{
-    width: 100%;
-    height: 100%;
+.timer-payment {
+    @include size(100%, 100%);
     @include flex(center, right);
 
-    &__text{
-        color: rgb(83, 146, 249);
-        font-size: 15px;
-        line-height: 20px;
-        font-weight: 400;
+    &__text {
         margin-right: 12px;
+        @include font(400, 15px, 20px, $blue-client);
     }
 
-    &__icon{
-        color: rgb(57,111,198);
-        font-size: 24px;
+    &__icon {
+        @include font(null, 24px, null, $blue-client);
     }
 
-    &__time{
+    &__time {
         display: flex;
-        margin-left: 10px;
-        margin-right: 10px;
-        &__item{
-          font-size: 20px;
-          margin-right: 1px;
-          font-weight: 500;
-          color: rgb(57, 111, 198);
-        }
-    }
+        margin: 0px 10px;
 
-    &__btn{
-        background-color: rgb(83, 146, 249);
-        padding: 12px;
-        color: white;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
-        transition: all 0.15s ease-in-out 0s;
-        border-radius: 4px
+        &__item {
+            margin-right: 1px;
+            @include font(500, 20px, null, $blue-client);
+        }
     }
 }
