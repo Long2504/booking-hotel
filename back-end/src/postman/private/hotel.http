@@ -2,7 +2,7 @@
 @clientId=532bbe03-49e5-4315-8487-6fcb99726896
 @Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MzIzNDA3LCJleHAiOjE3MTkzNDUwMDd9.E2g53zNfVe9hfhFfpwUUFS0S9AGzFluFuwQeImzoQ5E
 
-#### create
+#### post
 POST {{url_dev}}/
 Content-Type: application/json
 x-client-id: {{clientId}}
@@ -19,14 +19,6 @@ Authorization:{{Authorization}}
             "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815180046247439.png?ca=6&ce=1&s=512x384",
             "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/334271533.jpg?k=235ee057151f7386476cd433f3752197fe9c3fce670ff8b0b73a22a66006c123&o=",
             "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815300046248738.png?ca=6&ce=1&s=512x384",
-            "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/120674141.jpg?k=b46813f3f030ccea40eee1ccc0fed7af46671ad400e7a1e58c333fbfc7ac470e&o=",
-            "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/251972146.jpg?k=d2ae1d9592226024aac3e69ab242e6ef44f4f81bd7da5cc22febfc4739870753&o=",
-            "https://pix6.agoda.net/hotelImages/907601/-1/79d3fc9742b36cd8390414f0f89f4cf7.jpg?ca=6&ce=1&s=512x384",
-            "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815280046248641.png?ca=6&ce=1&s=512x384",
-            "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815300046248735.png?ca=6&ce=1&s=512x384",
-            "https://pix6.agoda.net/hotelImages/907/907601/907601_16090815300046248737.png?ca=6&ce=1&s=512x384",
-            "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/334271223.jpg?k=0d7e466a759156454c4248c34d760424ba0281c6214f22e264fe315a8c80a985&o=",
-            "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/251972145.jpg?k=90bf40adf81db55ffe33d372916d24fc54f18ec9825cc2e55a16ade2cd158926&o="
         ],
     "star": 5,
     "hostId": "532bbe03-49e5-4315-8487-6fcb99726896",
@@ -71,3 +63,11 @@ Authorization:{{Authorization}}
         }
     ]
 }
+
+
+
+### get hote detail
+GET {{{url_dev}}}/f39f5dcf-ad9a-4fa6-94b9-6393e8c2bbb4
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
