@@ -9,6 +9,6 @@ import HotelController from "../../controllers/hotel.controller.js";
 
 const router = express.Router();
 router.use(authentication);
-router.post("/", asyncHandler(HotelController.create));
+router.post("/post", asyncHandler(HotelController.post));
 
 export default router;

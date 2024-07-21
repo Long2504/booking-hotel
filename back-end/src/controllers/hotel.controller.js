@@ -2,7 +2,7 @@
 import HotelService from "../services/hotel.service.js";
 import { Created, SuccessResponse } from "../utils/access.response.js";
 class HotelController {
-    static create = async (req, res) => {
+    static post = async (req, res) => {
         new Created({
             message: "Create extension success",
             metaData: await HotelService.createAndPost(req.body),
@@ -19,6 +19,14 @@ class HotelController {
             message: "Get all hotel success",
             metaData: await HotelService.getAll(options),
         }).send(res);
+    };
+
+    static get = async (req, res) => {
+        const { id } = req.params;
+        new SuccessResponse({
+			message: "Get hotel success",
+			metaData: await HotelService.getDetail(id),
+		}).send(res);
     };
 }
 

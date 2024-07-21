@@ -2,7 +2,7 @@ import HotelExtensionModel from "../models/hotelExtension.model.js";
 import BaseService from "./base.service.js";
 
 class HotelExtensionService extends BaseService {
-	async createBulkHotelExtension(data, idHotel) {
+	async createBulkHotelExtension(extension, idHotel) {
 		const listData = [];
 		for (const key in extension) {
 			if (Object.hasOwnProperty.call(extension, key)) {

@@ -23,6 +23,10 @@ class HotelRoomModel extends BaseModel {
                     type: DataTypes.INTEGER,
                     allowNull: true,
                 },
+                occupancy: {
+                    type: DataTypes.INTEGER,
+                    allowNull: true,
+                },
                 description: {
                     type: DataTypes.STRING,
                     allowNull: true,
@@ -62,6 +66,10 @@ class HotelRoomModel extends BaseModel {
         this.hasMany(RoomsBedModel, {
             foreignKey: "hotelRoomId",
             as: "roomsBeds",
+        })
+        this.belongsTo(RoomsType, {
+            foreignKey: "roomTypeId",
+            as: "roomType",
         })
     }
 }
