@@ -14,9 +14,9 @@ function RoomHotel({ errors, setValue, register, control, getValues }) {
 		roomTypeId: "",
 		area: 0,
 		occupancy: 1,
-		bathrooms: 0,
+		numBathrooms: 0,
 		price: 0,
-		number: 1,
+		numBedrooms: 1,
 		images: [],
 	};
 	const { fields, append, remove } = useFieldArray({

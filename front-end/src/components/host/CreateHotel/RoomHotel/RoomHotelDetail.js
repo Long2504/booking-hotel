@@ -50,18 +50,18 @@ function RoomHotelDetail({
 
 	return (
 		<Collapse
-			className='room-hotel-host__content__container__item'
+			className="room-hotel-host__content__container__item"
 			defaultActiveKey={["1"]}
 			key={indexRoom}
 			expandIcon={expandIconCollapse}
 		>
 			<Panel
-				className='room-hotel-host__content__container__item__body'
+				className="room-hotel-host__content__container__item__body"
 				header={headerPanel()}
-				key='1'
+				key="1"
 			>
 				<Space
-					direction='vertical'
+					direction="vertical"
 					style={{
 						width: "100%",
 					}}
@@ -108,7 +108,7 @@ function RoomHotelDetail({
 								max={10}
 								setValue={setValue}
 								getValues={getValues}
-								name={`rooms.${indexRoom}.bathrooms`}
+								name={`rooms.${indexRoom}.numBathrooms`}
 								register={register}
 								error={errors?.bathrooms}
 							/>
@@ -116,7 +116,7 @@ function RoomHotelDetail({
 						<Col span={8}>
 							<VolumeHost
 								label={"Số lượng phòng"}
-								name={`rooms.${indexRoom}.number`}
+								name={`rooms.${indexRoom}.numBedrooms`}
 								min={1}
 								max={10}
 								setValue={setValue}
