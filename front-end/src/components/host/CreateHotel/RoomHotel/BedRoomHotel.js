@@ -2,11 +2,13 @@
 import VolumeHost from "../../common/Volume.host";
 import ButtonCore from "../../../common/button.core";
 import SelectCore from "../../../common/select.core";
+import bedTypeApi from "../../../../services/modules/bedType.service";
 
 //libs
 import { Space } from "antd";
 import { useFieldArray } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 function BedRoomHotel({
 	control,
@@ -16,28 +18,33 @@ function BedRoomHotel({
 	getValues,
 	indexRoom,
 }) {
-	const listBed = [
-		{
-			id: "0849ffcc-7adc-42a0-bd6c-86efa4bd22d4",
-			name: "Giường đôi",
-		},
-		{
-			id: "0b584c63-546b-4540-972f-93d038832865",
-			name: "Giường đơn",
-		},
-	];
-
-	const [listTypeBed, setListTypeBed] = useState(listBed);
+ 
+	const [listTypeBed, setListTypeBed] = useState([]);
 
 	const { fields, append, remove } = useFieldArray({
 		control,
 		name: `rooms.${indexRoom}.beds`,
 	});
 
+	useEffect(() => {
+		(async () => {
+			try {
+				const params = {
+					page: 1,
+					pageSize: 1000,
+				};
+				const {
+					metaData: { list },
+				} = await bedTypeApi.getList(params);
+				setListTypeBed(list);
+			} catch (error) {}
+		})();
+	}, []);
+
 	const handleAddBed = () => {
 		const newOptions = [];
 		const listBedCurrent = getValues(`rooms.${indexRoom}.beds`);
-		listBed.forEach((item) => {
+		listTypeBed.forEach((item) => {
 			if (!listBedCurrent?.some((bed) => bed?.bedTypeId === item?.id)) {
 				newOptions.push(item);
 			}
@@ -52,7 +59,7 @@ function BedRoomHotel({
 	};
 
 	return (
-		<Space direction='vertical' style={{ width: "100%" }}>
+		<Space direction="vertical" style={{ width: "100%" }}>
 			<p
 				style={{
 					fontWeight: 500,
@@ -107,7 +114,7 @@ function BedRoomHotel({
 				);
 			})}
 			{listTypeBed?.length > 0 && (
-				<ButtonCore onClick={() => handleAddBed()} type='primary' ghost>
+				<ButtonCore onClick={() => handleAddBed()} type="primary" ghost>
 					THÊM LOẠI GIƯỜNG KHÁC
 				</ButtonCore>
 			)}
