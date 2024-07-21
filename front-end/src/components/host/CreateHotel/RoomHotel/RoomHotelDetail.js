@@ -1,15 +1,16 @@
 //files
 import VolumeHost from "../../common/Volume.host";
-import listRoomHotel from "../../../../data/listRoomHotel.data";
 import SelectCore from "../../../common/select.core";
 import InputCore from "../../../common/input.core";
 import { expandIconCollapse } from "../../../common/expandIcon.core";
 import ButtonCore from "../../../common/button.core";
 import BedRoomHotel from "./BedRoomHotel";
+import roomTypeApi from "../../../../services/modules/roomType.service";
 
 //libs
 import { Collapse, Space, Divider, Row, Col } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 const { Panel } = Collapse;
 function RoomHotelDetail({
@@ -21,8 +22,23 @@ function RoomHotelDetail({
 	errors,
 	handleRemoveRoom,
 }) {
-	const listBedroomType = listRoomHotel;
+	const [listBedroomType, setListBedroomType] = useState([]);
 	const [roomType, setRoomType] = useState("");
+
+	useEffect(() => {
+		(async () => {
+			try {
+				const params = {
+					page: 1,
+					pageSize: 1000,
+				}
+				const {
+					metaData: { list },
+				} = await roomTypeApi.getList(params);
+				setListBedroomType(list);
+			} catch (error) {}
+		})();
+	}, []);
 
 	const headerPanel = () => {
 		if (indexRoom === 0) {
