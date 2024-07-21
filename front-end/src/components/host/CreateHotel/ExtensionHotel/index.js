@@ -1,29 +1,41 @@
-import { Space, Pagination } from "antd";
-import { useEffect, useState } from "react";
+//files
 import listExtensionHost from "../../../../data/listExtensionHost.data";
 import { extensionHotelHost } from "../../../../assets/images/index.image";
 import ExtensionItem from "./ExtensionItem";
+import extensionApi from "../../../../services/modules/extension.service";
+import { handleError } from "../../../../utils/common.utils";
+
+//libs
+import { Space, Pagination, message } from "antd";
+import { useEffect, useState } from "react";
+
 function ExtensionHotel({ errors, setValue }) {
 	const [currentPage, setCurrentPage] = useState(1);
-	const listExtension = listExtensionHost;
-	const totalPage = 30;
-	const a = {
-		"4b749464-a028-4eac-b9f4-4a5fe2289e6f": [
-			"061c8c5a-12a1-4e86-b91b-78077abe03f4",
-			"2a8fd76d-8392-495d-bf95-a0e967cf6f04",
-		],
-		"48bc0c63-b555-43c4-b613-e7b145e8609c": [
-			"12cffb45-1b3a-4be6-9311-1adbef43b230",
-			"dd835a4b-f9c6-43a7-8397-88e4d3444e50",
-		],
-		"1dd0665c-e938-4ce9-9e49-efbb2311d42d": [
-			"0aa72698-f033-4dbb-8e38-dc78f18d58dc",
-		],
-	};
-	const [selectedExtensions, setSelectedExtensions] = useState(a);
+	const [listExtension, setListExtension] = useState([]);
+	const [totalPage, setTotalPage] = useState(0);
+	const [messageApi, contextHolder] = message.useMessage();
+	const [selectedExtensions, setSelectedExtensions] = useState([]);
 	useEffect(() => {
-		setValue("extension", selectedExtensions);
-	})
+		if (selectedExtensions.length > 0) {
+			setValue("extension", selectedExtensions);
+		}
+		(async () => {
+			try {
+				const params = {
+					page: 1,
+					pageSize: 7,
+				};
+				const {
+					metaData: { list, total },
+				} = await extensionApi.getList(params);
+				setListExtension(list);
+				setTotalPage(total);
+			} catch (error) {
+				const { errorMessage } = handleError(error);
+				messageApi.error(errorMessage);
+			}
+		})();
+	}, [selectedExtensions, setValue, messageApi]);
 	const handleExtensionSelect = (data, extensionId) => {
 		setSelectedExtensions((prevState) => ({
 			...prevState,
@@ -32,19 +44,20 @@ function ExtensionHotel({ errors, setValue }) {
 		setValue("extension", selectedExtensions);
 	};
 	return (
-		<Space direction='vertical' className='extension-hotel-host'>
-			<div className='extension-hotel-host__title'>
-				<Space direction='vertical'>
+		<Space direction="vertical" className="extension-hotel-host">
+			{contextHolder}
+			<div className="extension-hotel-host__title">
+				<Space direction="vertical">
 					<h1>
 						Tất cả các tiện nghi và những vật dụng nhỏ bạn cung cấp.
 					</h1>
 					<p>Nhà bạn có sẵn những vật dụng và tiện nghi gì?</p>
 				</Space>
-				<img src={extensionHotelHost} alt='' />
+				<img src={extensionHotelHost} alt="" />
 			</div>
 			<Space
-				direction='vertical'
-				className='extension-hotel-host__content'
+				direction="vertical"
+				className="extension-hotel-host__content"
 			>
 				{listExtension?.map((item) => {
 					return (
