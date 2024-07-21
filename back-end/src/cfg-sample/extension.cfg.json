@@ -1,0 +1,1388 @@
+[
+	{
+		"id": "c6493c73-4b0e-487b-bde6-d4da438ad87d",
+		"name": "Ngôn ngữ sử dụng",
+		"description": ""
+	},
+	{
+		"id": "b08ab58a-eebc-4979-9961-1972eda14226",
+		"name": "Truy cập Internet",
+		"description": ""
+	},
+	{
+		"id": "e0da8eb5-cb55-48bb-81d7-b91105e9bc16",
+		"name": "Thư giãn & Vui chơi giải trí",
+		"description": ""
+	},
+	{
+		"id": "6160d191-49a2-4321-a201-6d3f5d82cd9f",
+		"name": "Độ sạch sẽ và an toàn",
+		"description": ""
+	},
+	{
+		"id": "26980e3a-3922-480f-a3cb-8675a7801677",
+		"name": "Ăn uống",
+		"description": ""
+	},
+	{
+		"id": "795f18b9-f72b-41d7-a591-c8b358163fb5",
+		"name": "Dịch vụ và tiện nghi",
+		"description": ""
+	},
+	{
+		"id": "52f3de72-c56a-4b90-9a8a-c0be11d4a41e",
+		"name": "Dành cho trẻ em",
+		"description": ""
+	},
+	{
+		"id": "9ab1adea-2bd1-43ed-a822-6e75f1418db6",
+		"name": "Dễ dàng tiếp cận",
+		"description": ""
+	},
+	{
+		"id": "fb92d053-434c-4f2b-9ef8-57be49ca9ee8",
+		"name": "Đi lại",
+		"description": ""
+	},
+	{
+		"id": "6a19d035-46f8-4108-82ab-0ccdd0f7bce7",
+		"name": "Trang bị trong mọi phòng",
+		"description": ""
+	},
+	{
+		"id": "e9c07913-f685-46c9-aafc-39dc4e513498",
+		"name": "Restaurant",
+		"description": ""
+	},
+	{
+		"id": "0bfc510c-5419-4819-b02b-4d142e732291",
+		"name": "Khả năng tiếp cận cho người khuyết tật",
+		"description": ""
+	},
+	{
+		"id": "a26f789b-62f9-4609-99ec-c2d8d4ab97b1",
+		"name": "Ngoài trời",
+		"description": "Cho du khách thấy những loại trải nghiệm ngoài trời họ có thể mong đợi"
+	},
+	{
+		"id": "be63d7b0-2e21-407d-b805-c3256a3e10fc",
+		"name": "Cho thuê dụng cụ thể thao",
+		"description": ""
+	},
+	{
+		"id": "4b749464-a028-4eac-b9f4-4a5fe2289e6f",
+		"name": "Giải trí",
+		"description": "Không phải lúc nào khách cũng muốn rời khỏi chỗ nghỉ, các tiện nghi này cho phép họ ở trong chỗ nghỉ và thấy vui"
+	},
+	{
+		"id": "5743fec5-262a-485d-b987-604e2c1c5da4",
+		"name": "Tiện nghi",
+		"description": ""
+	},
+	{
+		"id": "d19dec86-7ea2-4b85-8c80-41f4058b4e48",
+		"name": "Phòng tắm và vật dụng phòng tắm",
+		"description": ""
+	},
+	{
+		"id": "f40e6191-8cf8-4f84-9516-1a3352aec8b3",
+		"name": "Quần áo và Giặt ủi",
+		"description": ""
+	},
+	{
+		"id": "48bc0c63-b555-43c4-b613-e7b145e8609c",
+		"name": "Bếp",
+		"description": "Khách thường đặt nhà vì có bếp, hãy đảm bảo rằng quý đối tác cho du khách biết nên mong đợi gì trong không gian bếp"
+	},
+	{
+		"id": "4a68852b-8d8c-47a5-b49d-bf241a2d5b2d",
+		"name": "Gia đình",
+		"description": ""
+	},
+	{
+		"id": "6888c145-5e7d-4617-b2e2-ea3752d9c122",
+		"name": "Vật dụng an toàn và an ninh",
+		"description": ""
+	},
+	{
+		"id": "9f7b4eb6-cb5d-4fc6-aaa1-45b6a03d5168",
+		"name": "Thể thao trên cạn",
+		"description": ""
+	},
+	{
+		"id": "94d8b6b8-a544-4997-8176-43a4f144ba65",
+		"name": "Hoa Cau",
+		"description": ""
+	},
+	{
+		"id": "9c839f3a-efe3-44b3-8305-e8465078d8b4",
+		"name": "Iris Restaurant",
+		"description": ""
+	},
+	{
+		"id": "9854e689-0f93-4655-944f-e76ddb4e46fc",
+		"name": "KINGS RESTAURANT",
+		"description": ""
+	},
+	{
+		"id": "ef5c794f-923e-42d5-8359-3552ce48d698",
+		"name": "Zen Restaurant",
+		"description": ""
+	},
+	{
+		"id": "b0413509-17ee-4674-b85b-0e2eabea12d4",
+		"name": "Orchid",
+		"description": ""
+	},
+	{
+		"id": "565d31bf-718c-4e87-bd6d-b287b65b27b6",
+		"name": "Coi Xay Gio",
+		"description": ""
+	},
+	{
+		"id": "1dd0665c-e938-4ce9-9e49-efbb2311d42d",
+		"name": "Phòng tắm",
+		"description": "Cho khách biết (các) phòng tắm có đặt trưng gì"
+	},
+	{
+		"id": "9158ac8a-3bb3-4303-b920-2c156ab17e5a",
+		"name": "Độ an toàn và sạch sẽ",
+		"description": "Cho khách thấy rằng quý đối tác coi trọng sự an toàn và sức khỏe của họ với các tiện nghi này."
+	},
+	{
+		"id": "b4b0f7e1-e8fc-48ac-8121-391dcf350528",
+		"name": "Bố trí và nội thất",
+		"description": ""
+	},
+	{
+		"id": "c91dce00-a74b-46aa-a687-004e292ef910",
+		"name": "The Horizon Restaurant",
+		"description": ""
+	},
+	{
+		"id": "049fc7b2-d9c9-4070-9154-69603fe96171",
+		"name": "The Twilight",
+		"description": ""
+	},
+	{
+		"id": "0af68f52-4c13-44ef-9dcf-0b639a13871f",
+		"name": "Barefoot Restaurant",
+		"description": ""
+	},
+	{
+		"id": "52db14f5-5de2-4555-8ce0-82d7bc0a6029",
+		"name": "Buffalo Bar",
+		"description": ""
+	},
+	{
+		"id": "50620234-2819-43f9-a66c-3e4c1b70393f",
+		"name": "L_O_N_G BAR",
+		"description": ""
+	},
+	{
+		"id": "d9fa8871-582e-42b3-9d68-621b4e84a16f",
+		"name": "Citron",
+		"description": ""
+	},
+	{
+		"id": "454cba51-cc1a-4ba9-857b-9a3c3ae388b9",
+		"name": "La Maison 1888",
+		"description": ""
+	},
+	{
+		"id": "9600b09c-a916-4d70-82d9-d602667f8f70",
+		"name": "Bistecca",
+		"description": ""
+	},
+	{
+		"id": "0fc83998-4619-483b-b64c-69080a60550b",
+		"name": "Bơi lội & ngâm bồn",
+		"description": ""
+	},
+	{
+		"id": "be8f790f-708a-4a53-b75d-a62fe0b9fc95",
+		"name": "Cam Le restaurant",
+		"description": ""
+	},
+	{
+		"id": "17148f2d-44a5-4bc6-817a-7c053888937b",
+		"name": "Soho Restaurant",
+		"description": ""
+	},
+	{
+		"id": "a070af67-8fc7-4251-b137-ceefefc8ccb1",
+		"name": "Trico Restaurant",
+		"description": ""
+	},
+	{
+		"id": "52287c33-05c4-48d7-b3d6-a61928b208d8",
+		"name": "The World",
+		"description": ""
+	},
+	{
+		"id": "86658285-e768-40b5-8190-216945b2ffde",
+		"name": "Ginger & Lime",
+		"description": ""
+	},
+	{
+		"id": "772a040d-2943-4db5-a4f3-22cc56baef01",
+		"name": "Hoi An Beach Bar",
+		"description": ""
+	},
+	{
+		"id": "64be1b83-2cc1-462d-9696-2e90faffc086",
+		"name": "Table 88",
+		"description": ""
+	},
+	{
+		"id": "8a100542-71e6-4da1-911f-42c41043d26e",
+		"name": "The Grill",
+		"description": ""
+	},
+	{
+		"id": "77b1f0b4-8b02-416d-978f-ab16b826d22f",
+		"name": "La Plage",
+		"description": ""
+	},
+	{
+		"id": "c99aa8c2-654c-447f-b466-0e59fa9de9e5",
+		"name": "Luciana Restaurant",
+		"description": ""
+	},
+	{
+		"id": "4d7eaa25-335f-4175-9a02-e250ed3b9e8b",
+		"name": "Jupiter Restaurant",
+		"description": ""
+	},
+	{
+		"id": "369de756-23c3-4105-8e98-111c0afca4f1",
+		"name": "Rice Bowl",
+		"description": ""
+	},
+	{
+		"id": "b08d6a2a-4afa-4614-965c-dcf1bccd29b4",
+		"name": "Moomba",
+		"description": ""
+	},
+	{
+		"id": "c70913fc-33ca-4adb-b6c4-a840bc192ce0",
+		"name": "Market Place",
+		"description": ""
+	},
+	{
+		"id": "1e3c647e-2af0-406d-8cd5-fe7b3db73e49",
+		"name": "Golf Cafe",
+		"description": ""
+	},
+	{
+		"id": "b2bb51cb-6962-4205-857f-60e6f452a2c3",
+		"name": "Five",
+		"description": ""
+	},
+	{
+		"id": "7cb1edca-4fea-4c48-bf5e-797a7a0bb5b0",
+		"name": "Fresh",
+		"description": ""
+	},
+	{
+		"id": "49eeaba5-0118-42a9-b974-f6752ae8f9e1",
+		"name": "Green House",
+		"description": ""
+	},
+	{
+		"id": "b0425e50-bc18-4851-b8cf-bee15124d0dc",
+		"name": "Pool House",
+		"description": ""
+	},
+	{
+		"id": "441459e7-4e7c-4381-a7fe-392d5add4595",
+		"name": "Beach House",
+		"description": ""
+	},
+	{
+		"id": "ce9ed608-82fb-48db-898d-52edb5dde32a",
+		"name": "The Market Place",
+		"description": ""
+	},
+	{
+		"id": "6ca08ffe-531f-45e1-8e4c-195d0a9272e5",
+		"name": "Madame Son restaurant",
+		"description": ""
+	},
+	{
+		"id": "72380ec3-fbbb-422b-a1cb-6cecf69707ac",
+		"name": "Goji Kitchen + Bar",
+		"description": ""
+	},
+	{
+		"id": "73fac127-9ff3-4a5e-8c68-26e933352302",
+		"name": "Lang Co Restaurant",
+		"description": ""
+	},
+	{
+		"id": "8a4b0427-94e4-4ce6-a891-9ffbe02a3d6f",
+		"name": "Fish Ca",
+		"description": ""
+	},
+	{
+		"id": "8e6548cc-6365-4a51-9da1-5a3b737d6f1e",
+		"name": "Deli",
+		"description": ""
+	},
+	{
+		"id": "a6b27955-64c4-4476-8757-7fe87f0b37d1",
+		"name": "The Top Bar",
+		"description": ""
+	},
+	{
+		"id": "a001b490-3d55-424b-a6d1-7ddc5395cfd3",
+		"name": "Golden Square",
+		"description": ""
+	},
+	{
+		"id": "4c4fefeb-5640-4637-a844-6673ac02b692",
+		"name": "Belanga Bay",
+		"description": ""
+	},
+	{
+		"id": "2fe62452-d4c6-4408-a251-ce5d00813a1b",
+		"name": "Song Cong",
+		"description": ""
+	},
+	{
+		"id": "af3fe8f8-d390-485a-805d-35419471c214",
+		"name": "Kim Son Restaurant",
+		"description": ""
+	},
+	{
+		"id": "ccaa388a-426c-46e8-b3e4-7c1d67a00432",
+		"name": "Epice Restaurant",
+		"description": ""
+	},
+	{
+		"id": "6ef1ac8e-88a2-4f3e-95b6-d030125af5fb",
+		"name": "Azure Beach Lounge",
+		"description": ""
+	},
+	{
+		"id": "e49a963a-1e28-4b22-b8ec-8265d88bb18e",
+		"name": "The Pello Restaurant",
+		"description": ""
+	},
+	{
+		"id": "c8d2c286-83e6-4c73-a910-12b4d05b706f",
+		"name": "Bai Nam",
+		"description": ""
+	},
+	{
+		"id": "10c89204-0054-47d2-bd14-9b006654fae5",
+		"name": "Club House",
+		"description": ""
+	},
+	{
+		"id": "ee800ac5-54cf-4d96-a9d2-8ae9d0bb778c",
+		"name": "Tranquilos Restaurant and Bar",
+		"description": ""
+	},
+	{
+		"id": "4a21827f-2b75-486a-9e34-99d7c6a74c62",
+		"name": "Hay Hay Restaurant",
+		"description": ""
+	},
+	{
+		"id": "820f4e33-70af-4602-bdcd-a691fa02a28b",
+		"name": "B-Lounge Restaurant",
+		"description": ""
+	},
+	{
+		"id": "7d111b5c-69ed-42f7-8425-67869ed7d5b0",
+		"name": "Sitini Bar",
+		"description": ""
+	},
+	{
+		"id": "dfc7885a-cd2c-4137-8719-01daf15e1f7c",
+		"name": "Coffee Club",
+		"description": ""
+	},
+	{
+		"id": "1d149f2c-4d1a-40a9-b8f0-b397fe0ebfe5",
+		"name": "White Caps Restaurant",
+		"description": ""
+	},
+	{
+		"id": "b4302627-14c3-428f-9f34-f739feaf8335",
+		"name": "Dragon Bridge Restaurant",
+		"description": ""
+	},
+	{
+		"id": "eeb98b78-1363-49cc-a47e-3c3dd15c5ee6",
+		"name": "Han River Restaurant",
+		"description": ""
+	},
+	{
+		"id": "b52d3efe-55d6-4f76-be75-9217d1389add",
+		"name": "Babylon Garden 26",
+		"description": ""
+	},
+	{
+		"id": "e9974037-526f-44c2-a834-6a8aef1c327e",
+		"name": "NAM Restaurant",
+		"description": ""
+	},
+	{
+		"id": "30050f67-dcc5-462a-a53b-4f9a7a210e9f",
+		"name": "Bella Vista",
+		"description": ""
+	},
+	{
+		"id": "6c1b72f8-097f-4001-bb1b-b55c7b4f7dac",
+		"name": "S'Ngon",
+		"description": ""
+	},
+	{
+		"id": "e928a3b6-63ad-4032-b80a-057bfd7b0883",
+		"name": "La Crique",
+		"description": ""
+	},
+	{
+		"id": "81db1c71-fb88-4c98-9e47-f5c7880e988b",
+		"name": "LE TABLE",
+		"description": ""
+	},
+	{
+		"id": "96cfeacf-e057-4bdb-a3d4-7b78d452300c",
+		"name": "ROI TAPAS BAR",
+		"description": ""
+	},
+	{
+		"id": "09c21aeb-c4fb-4b5a-95da-aeddbdf11626",
+		"name": "LA TAVERNE BAR",
+		"description": ""
+	},
+	{
+		"id": "6f55a575-2bf1-49fe-8a8a-9c707c860e6f",
+		"name": "LA COTE D ZUR",
+		"description": ""
+	},
+	{
+		"id": "448efa15-ea30-4036-a237-0aecfffbee98",
+		"name": "Asagao",
+		"description": ""
+	},
+	{
+		"id": "cdae19e3-7d6b-45ba-bbfa-63ead3a80e00",
+		"name": "Hanatei",
+		"description": ""
+	},
+	{
+		"id": "0a55eb11-afb8-4f46-b92d-2d1baf32518e",
+		"name": "Blue Bay",
+		"description": ""
+	},
+	{
+		"id": "2e489d72-be57-4ded-8bae-8b14be5e7a90",
+		"name": "Sakura",
+		"description": ""
+	},
+	{
+		"id": "0549dcaf-f4e8-4e7a-9738-9f5a5a95bec2",
+		"name": "3",
+		"description": ""
+	},
+	{
+		"id": "427f2103-d77c-4e85-a2e2-74fb2cffae4c",
+		"name": "Blue Pearl",
+		"description": ""
+	},
+	{
+		"id": "49fbecaf-af18-4fbf-8bb5-438693f4e5e0",
+		"name": "Mon Chéri Restaurant",
+		"description": ""
+	},
+	{
+		"id": "11891a20-dfba-4386-b84e-aa48a3c909d5",
+		"name": "Lotus",
+		"description": ""
+	},
+	{
+		"id": "b78e3642-420e-4895-a7f9-d14c8c649905",
+		"name": "Bay View Restaurant",
+		"description": ""
+	},
+	{
+		"id": "15014ae3-1887-4419-b76e-c40c294f4aec",
+		"name": "Pavilion Restaurant",
+		"description": ""
+	},
+	{
+		"id": "25cc7e50-10cf-41d4-9dc5-230360417991",
+		"name": "Akoya Restaurant",
+		"description": ""
+	},
+	{
+		"id": "34dbc523-4923-48d7-bfb5-6a03802e791e",
+		"name": "The Square",
+		"description": ""
+	},
+	{
+		"id": "341e4b44-ba91-4b6b-ba5c-cf02aabbc8c5",
+		"name": "Le Marin Restauran",
+		"description": ""
+	},
+	{
+		"id": "7cf18d47-5eea-4a2d-ad3f-fc55377f015d",
+		"name": "Nhà Hàng Trăng Vàng",
+		"description": ""
+	},
+	{
+		"id": "ebb296e8-6dc7-435c-b51f-0933b4fd71fe",
+		"name": "Whisky Gallery",
+		"description": ""
+	},
+	{
+		"id": "2374f686-1d0c-4562-99e9-0c2d05b587a9",
+		"name": "Phuc Vien Restaurant",
+		"description": ""
+	},
+	{
+		"id": "164e35a8-0d5c-4e3b-9cd7-982318d6b8d3",
+		"name": "Century Restaurant",
+		"description": ""
+	},
+	{
+		"id": "5b15e2a1-7627-44e3-b797-76d15ea83b15",
+		"name": "Azalea Restaurant",
+		"description": ""
+	},
+	{
+		"id": "d8f6870c-64c2-4317-a92a-a7302b9d5ad9",
+		"name": "Red River",
+		"description": ""
+	},
+	{
+		"id": "516b503a-e1e6-475a-ae71-4c86b2730798",
+		"name": "Tim Ho Wan",
+		"description": ""
+	},
+	{
+		"id": "2cfa6cbe-b077-41d6-835d-aff84a8745af",
+		"name": "Belissimo",
+		"description": ""
+	},
+	{
+		"id": "7ac4bce0-064c-45a9-8d3a-c070abaf172f",
+		"name": "La soie de Hanoi",
+		"description": ""
+	},
+
+	{
+		"id": "29dc7058-bceb-4db9-a271-42ff5158d2cd",
+		"name": "Red Bean Restaurant",
+		"description": ""
+	},
+	{
+		"id": "b5456e3b-104b-417c-a3e8-61d7da51bae6",
+		"name": "Cafe du lac",
+		"description": ""
+	},
+	{
+		"id": "087082e5-0268-4b18-8b7b-d4b4e2dab637",
+		"name": "Saigon Restaurant",
+		"description": ""
+	},
+	{
+		"id": "9df33d7d-45f6-4e49-9325-f1a9147b3905",
+		"name": "Milan Restaurant",
+		"description": ""
+	},
+	{
+		"id": "382cedbc-4080-4842-a90a-7d377b7a000c",
+		"name": "Stellar Steakhouse",
+		"description": ""
+	},
+	{
+		"id": "1a88deb6-7402-47b6-bce7-1bbd174cb482",
+		"name": "3 Spoons",
+		"description": ""
+	},
+	{
+		"id": "0f9b4120-ec2f-45b8-9b10-c60605fba038",
+		"name": "The Hive Lounge",
+		"description": ""
+	},
+	{
+		"id": "885dc457-dd47-42a9-8cf8-0927f9bd848f",
+		"name": "Paon Restaurant",
+		"description": ""
+	},
+	{
+		"id": "4ffbf3d3-c0fa-4fbf-bc9d-700358cfc807",
+		"name": "New Vision Palace Restaurant",
+		"description": ""
+	},
+	{
+		"id": "1bbbcbbc-439f-450c-acf1-463085da83b0",
+		"name": "L'Heritage Restaurant",
+		"description": ""
+	},
+	{
+		"id": "32cc754b-bd9b-47d0-b56d-8a06e5b32a16",
+		"name": "Le Jardin",
+		"description": ""
+	},
+	{
+		"id": "7a4dc6eb-0536-452f-966b-8f08dda7b56b",
+		"name": "Fuji Restaurant",
+		"description": ""
+	},
+	{
+		"id": "81995558-73c5-4725-b0e1-649f8d99458c",
+		"name": "Arirang Restaurant",
+		"description": ""
+	},
+	{
+		"id": "222e2fa1-29b8-49da-bb22-02a313719f30",
+		"name": "Royal Rasol Restaurant",
+		"description": ""
+	},
+	{
+		"id": "89faf18a-aca3-4e3c-9308-0016ed8b203b",
+		"name": "OASIS",
+		"description": ""
+	},
+	{
+		"id": "46ec57a5-c43f-4c54-8d25-04f7cbb6a55f",
+		"name": "Mangosteen Restaurant",
+		"description": ""
+	},
+	{
+		"id": "c48e3113-2979-40e1-894b-ceae07c2b743",
+		"name": "Le Club Bar",
+		"description": ""
+	},
+	{
+		"id": "d010265b-90ec-4957-b4ee-7875420b9dc0",
+		"name": "Spicies Garden",
+		"description": ""
+	},
+	{
+		"id": "5f5c0b97-c6d9-45e7-bbfc-e8e67a94ce96",
+		"name": "Le Beaulieu",
+		"description": ""
+	},
+	{
+		"id": "1de29b35-160d-4a45-9002-1fd6da80669e",
+		"name": "Café Lautrec",
+		"description": ""
+	},
+	{
+		"id": "10645255-9c0d-40a5-aef1-3740337e64be",
+		"name": "Satine",
+		"description": ""
+	},
+	{
+		"id": "18015e2f-0ba8-40fb-815a-38e8497ed6ae",
+		"name": "Japanese Restaurant Kuretake",
+		"description": ""
+	},
+	{
+		"id": "bf339fa9-9f02-4f5c-bbc5-e8bebefca8e3",
+		"name": "Angel Palace Restaurant",
+		"description": ""
+	},
+	{
+		"id": "dd492215-b835-477c-a459-f135e92bc44c",
+		"name": "Gambetta Restaurant",
+		"description": ""
+	},
+	{
+		"id": "936586ad-bf97-4b34-9e0f-414fea56ee37",
+		"name": "Café Tivoli",
+		"description": ""
+	},
+	{
+		"id": "f7c3ac48-5f81-4163-b4b0-a83f9e8813f1",
+		"name": "Salmon Run Restaurant",
+		"description": ""
+	},
+	{
+		"id": "cfaa86fd-8bc9-41d5-a046-3fe86c862c59",
+		"name": "Gourmet Corner Restaurant",
+		"description": ""
+	},
+	{
+		"id": "463c4940-2ecc-49fc-9bef-e539958e46ba",
+		"name": "French Grill",
+		"description": ""
+	},
+	{
+		"id": "a434065d-1940-41ae-8421-7bf21c182478",
+		"name": "JW Café",
+		"description": ""
+	},
+	{
+		"id": "ecb5665d-f015-4ae4-9fc0-96021775bff9",
+		"name": "The Lounge - Lobby Lounge",
+		"description": ""
+	},
+	{
+		"id": "41908341-bdd8-467f-a085-dfac2074c11f",
+		"name": "Akira Back",
+		"description": ""
+	},
+	{
+		"id": "db8109f7-2de2-4d17-8794-5bc01a8fa571",
+		"name": "John Anthony Cantonese Grill & Dim Sum",
+		"description": ""
+	},
+	{
+		"id": "f465dee5-aaaf-4499-8b19-40e90ebf3ab9",
+		"name": "Unique Dining Hanoi",
+		"description": ""
+	},
+	{
+		"id": "25a19186-d029-487d-bf6c-985dbb524f41",
+		"name": "Fiji restaurant",
+		"description": ""
+	},
+	{
+		"id": "9624f848-2be1-481f-8719-a56bdf10beb2",
+		"name": "Jaspas",
+		"description": ""
+	},
+	{
+		"id": "73d908a0-181b-46af-a0e5-30a033f34fba",
+		"name": "Terrace Cafe",
+		"description": ""
+	},
+	{
+		"id": "d56ed3d9-0f5b-4922-8d29-55de328c8a8e",
+		"name": "Central Restaurant",
+		"description": ""
+	},
+	{
+		"id": "cc9fcb02-853d-4a27-b1c9-09f5890febaf",
+		"name": "The Garlik",
+		"description": ""
+	},
+	{
+		"id": "ef79eff1-97aa-40d6-a308-67bf313be34d",
+		"name": "Ninety Nine Lounge",
+		"description": ""
+	},
+	{
+		"id": "e31e51ca-b003-4574-9af4-287cf5b93bf1",
+		"name": "NINETY NINE",
+		"description": ""
+	},
+	{
+		"id": "c95d9fe9-a792-43c3-94f1-cb50283eb910",
+		"name": "Shushi World",
+		"description": ""
+	},
+	{
+		"id": "3a9f4f82-641c-4fcc-946a-d8fa059ba8dd",
+		"name": "Sky Restaurant",
+		"description": ""
+	},
+	{
+		"id": "5867bb43-7fe6-4b69-b5a2-696caf4114a6",
+		"name": "H Lounge & Cafe",
+		"description": ""
+	},
+	{
+		"id": "02418f15-350b-48c1-93fb-869b08328d3c",
+		"name": "Le Bourgeois Restaurant",
+		"description": ""
+	},
+	{
+		"id": "29fcbf3a-d04f-48a5-8386-4509bc36d076",
+		"name": "Continental Palace Restaurant",
+		"description": ""
+	},
+	{
+		"id": "0183a4e5-a9f7-4622-b87e-d99b738edd0f",
+		"name": "SaiGon Kitchen",
+		"description": ""
+	},
+	{
+		"id": "a90d00d4-ad8c-421c-8a33-84c6be00568e",
+		"name": "Blue Sky",
+		"description": ""
+	},
+	{
+		"id": "7693ff51-2b4b-4e75-983a-603f43935b46",
+		"name": "La Brasserie",
+		"description": ""
+	},
+	{
+		"id": "b4c2843a-add2-4e52-94b2-be1360df7a80",
+		"name": "Ming Court",
+		"description": ""
+	},
+	{
+		"id": "02e7f9c7-bf58-43f7-93dc-6e4bdb40b32b",
+		"name": "Chez-Nous Restaurant",
+		"description": ""
+	},
+	{
+		"id": "36f4ae49-a99d-4c82-8e61-8c883e811496",
+		"name": "Saigon Palace Restaurant",
+		"description": ""
+	},
+	{
+		"id": "2f22e215-8f9c-4ca6-81e7-1c1de4869034",
+		"name": "Paradise Restaurant",
+		"description": ""
+	},
+	{
+		"id": "bbb8226c-efe9-4d1a-9dac-5c6e1184a036",
+		"name": "Ngan Dinh Restaurant",
+		"description": ""
+	},
+	{
+		"id": "ee7f12f1-2a69-4ddf-899f-c0f6656f30d0",
+		"name": "An Dong Food Court",
+		"description": ""
+	},
+	{
+		"id": "a88188fc-5ac8-4965-a73c-651bd9fab8ac",
+		"name": "Starlight",
+		"description": ""
+	},
+	{
+		"id": "a512ff55-4951-4fe3-99a1-d095b4a3e7f9",
+		"name": "Le Cyclo",
+		"description": ""
+	},
+	{
+		"id": "66490efb-2e40-45d9-804c-7e1dd9b4503b",
+		"name": "Sil Restaurant",
+		"description": ""
+	},
+	{
+		"id": "9399fdf7-ede1-4aea-87e7-9707cd520bef",
+		"name": "The Nest Restaurant",
+		"description": ""
+	},
+	{
+		"id": "5f3ac8ba-f0ba-4667-b5a3-f9db87d8b2a6",
+		"name": "Bason Café",
+		"description": ""
+	},
+	{
+		"id": "f330fec2-21e6-4c78-823f-9de00c7abba3",
+		"name": "Bar Bleu",
+		"description": ""
+	},
+	{
+		"id": "8ac44596-5084-44c5-9d12-a39acb6393e3",
+		"name": "Duc Vuong Rooftop Bar & Restaurant",
+		"description": ""
+	},
+	{
+		"id": "5e8c58de-bd78-4dcb-8a38-7fc6f38a3621",
+		"name": "CHIC Restaurant & Bar",
+		"description": ""
+	},
+	{
+		"id": "20d3f607-f96a-4500-b80d-b528df3c743a",
+		"name": "GREAT BEAR RESTAURANT",
+		"description": ""
+	},
+	{
+		"id": "29d3ada9-28e7-4959-8d1f-998c4148a0e2",
+		"name": "Blue Cafe",
+		"description": ""
+	},
+	{
+		"id": "15c3e3f7-9f2a-4ab3-aaaf-8bb847fc3042",
+		"name": "Sushi World",
+		"description": ""
+	},
+	{
+		"id": "2b132ce1-3042-46a0-b6b1-446d670d32be",
+		"name": "Dim Tu Tac",
+		"description": ""
+	},
+	{
+		"id": "f3c2f332-a224-49d0-81ee-2c92bfcfe7c1",
+		"name": "Hong Kong Hot Pot",
+		"description": ""
+	},
+	{
+		"id": "17ec8a6d-2560-4257-9dc3-fd08c10c568d",
+		"name": "Nineteen Buffet Restaurant",
+		"description": ""
+	},
+	{
+		"id": "e0774961-207b-4744-bff9-c5b310f62c13",
+		"name": "Reflections Restaurant",
+		"description": ""
+	},
+	{
+		"id": "4e7eb818-60be-47dd-b476-54f31c57b3a3",
+		"name": "Swan Restaurant",
+		"description": ""
+	},
+	{
+		"id": "6119f12e-aae6-41f4-b905-c62ebfae5754",
+		"name": "Market 39",
+		"description": ""
+	},
+	{
+		"id": "6da30d83-0bb0-4976-ae07-94ef6a164d93",
+		"name": "Yu Chu",
+		"description": ""
+	},
+	{
+		"id": "e6653de7-c540-4e90-9c43-05bc587b00ac",
+		"name": "Basilico",
+		"description": ""
+	},
+	{
+		"id": "b76ec620-dc4b-4be7-8e6b-f46905298aca",
+		"name": "Smith Restaurant",
+		"description": ""
+	},
+	{
+		"id": "89e8c34a-97da-4515-b920-8cc9f2417ff0",
+		"name": "Cocochine Restaurant",
+		"description": ""
+	},
+	{
+		"id": "a8235c2b-777e-4684-bca7-c10fd15bfe11",
+		"name": "MOF",
+		"description": ""
+	},
+	{
+		"id": "f47c81b7-35f4-4753-be9b-8d5bedef0a2f",
+		"name": "On the 12th",
+		"description": ""
+	},
+	{
+		"id": "a624e634-3d36-402e-90fd-cb6f5d973b16",
+		"name": "Club Restaurant and Cafe",
+		"description": ""
+	},
+	{
+		"id": "e3a4aa19-884d-47e4-9878-7ecc62138453",
+		"name": "Lemongrass Restaurant",
+		"description": ""
+	},
+	{
+		"id": "d503fe2f-773c-4826-aac8-69f0ddd47672",
+		"name": "Buffet Gánh",
+		"description": ""
+	},
+	{
+		"id": "d9fde377-2be3-4f06-8c00-0a6118c8a29d",
+		"name": "Koruna Bar & Restaurant",
+		"description": ""
+	},
+	{
+		"id": "3025a702-90fa-434d-a3c8-cfc3a44b3e49",
+		"name": "Cocotte Bistro",
+		"description": ""
+	},
+	{
+		"id": "d56d7902-46d0-4adf-af76-543c440ac2dc",
+		"name": "Sanouva Restaurant",
+		"description": ""
+	},
+	{
+		"id": "13dcc975-67d0-45cf-85f9-8c7a0890458e",
+		"name": "Crystal Jade Palace",
+		"description": ""
+	},
+	{
+		"id": "74f6b7a3-48c8-4be0-b63e-42be3cf713a3",
+		"name": "Yoshino Restaurant",
+		"description": ""
+	},
+	{
+		"id": "bf184c8a-5cc8-4880-90ff-042a36664e61",
+		"name": "The Canvas",
+		"description": ""
+	},
+	{
+		"id": "21ba6c55-1a82-4d77-8459-496da7b6e094",
+		"name": "Ottimo House Trattoria",
+		"description": ""
+	},
+	{
+		"id": "80ac2e8b-988f-4750-9fab-23ba5751bd38",
+		"name": "La Piscine Càfe Restaurant",
+		"description": ""
+	},
+	{
+		"id": "b0043915-b24a-44ec-98e2-f3a4184c56e5",
+		"name": "Mango Restaurant",
+		"description": ""
+	},
+	{
+		"id": "446e83c2-ef73-4673-9a8d-1a99247d0478",
+		"name": "Yen Restaurant",
+		"description": ""
+	},
+	{
+		"id": "82452c58-057a-4077-b2f1-d28f37180e65",
+		"name": "Saigon Cafe",
+		"description": ""
+	},
+	{
+		"id": "a19e19c8-0f17-42d6-bd99-89854eb33c41",
+		"name": "Li Bai Restaurant",
+		"description": ""
+	},
+	{
+		"id": "6e202bce-2ac1-45fb-8b06-339cef11ce83",
+		"name": "GOURMET KITCHEN",
+		"description": ""
+	},
+	{
+		"id": "4b2a4b59-fa3b-471e-b4ee-09a8659902d3",
+		"name": "W&A BISTRO",
+		"description": ""
+	},
+	{
+		"id": "4fca8118-c2e5-4b77-86a4-8ce9014a0dc3",
+		"name": "JACID BAR",
+		"description": ""
+	},
+	{
+		"id": "a3540190-010f-4095-9b14-d71fef4d3792",
+		"name": "Bonjour Restaurant",
+		"description": ""
+	},
+	{
+		"id": "b2bbc537-80ef-4d44-a424-547699b37511",
+		"name": "LANTANA",
+		"description": ""
+	},
+	{
+		"id": "acd7ea6f-16a3-45ba-8c7c-199132a1a236",
+		"name": "Thu Bon",
+		"description": ""
+	},
+	{
+		"id": "7cf262d8-e6d8-4f74-bf3f-9f1077f40c46",
+		"name": "The Temple",
+		"description": ""
+	},
+	{
+		"id": "f354928c-3b03-4803-b092-4aa1fe1d88b4",
+		"name": "Red Bean",
+		"description": ""
+	},
+	{
+		"id": "01b1bc7e-7ee5-4dbe-a1bf-734700172ab9",
+		"name": "Botanic",
+		"description": ""
+	},
+	{
+		"id": "b064b6bf-ce2d-4ca6-bb62-998c73f522ec",
+		"name": "Euphoria Bar & Cafe",
+		"description": ""
+	},
+	{
+		"id": "89a2af3b-0490-4b41-a092-2d9661247783",
+		"name": "Eco-roof Bar",
+		"description": ""
+	},
+	{
+		"id": "47e30622-0198-48ba-9805-309d85705ae2",
+		"name": "The Soul Restaurant",
+		"description": ""
+	},
+	{
+		"id": "fa3e5b0b-9a46-499c-9a8e-22c946efda67",
+		"name": "RIVER BREEZE RESTAURANT",
+		"description": ""
+	},
+	{
+		"id": "f504994e-c44a-4593-8967-8fc5be8e24fa",
+		"name": "SUNSET GRILL RESTAURANT",
+		"description": ""
+	},
+	{
+		"id": "10a97e67-2af5-4f71-a619-277c479d98e2",
+		"name": "Lantana Restaurant",
+		"description": ""
+	},
+	{
+		"id": "ef17b191-4638-47c5-bbb5-55982b78ca9a",
+		"name": "Little Restaurant",
+		"description": ""
+	},
+	{
+		"id": "2b1f4038-4b99-471a-a8a1-30072bfebdb8",
+		"name": "Lantern Restaurant",
+		"description": ""
+	},
+	{
+		"id": "3fe55d54-200a-4df6-8001-561930fea4bb",
+		"name": "Madame Chau Restaurant",
+		"description": ""
+	},
+	{
+		"id": "81ec23d9-2ee0-48e1-97a4-56f7e693b219",
+		"name": "Mori Restaurant & Bar",
+		"description": ""
+	},
+	{
+		"id": "a8629687-76ca-4c2d-b039-feb685de4243",
+		"name": "Thanh Lich Restaurant",
+		"description": ""
+	},
+	{
+		"id": "412a43dd-b63d-4179-8aae-1030d10336e8",
+		"name": "Madam Trang",
+		"description": ""
+	},
+	{
+		"id": "be7773ba-2837-4104-8f3d-ba5553afa11a",
+		"name": "pub",
+		"description": ""
+	},
+	{
+		"id": "27b163b6-1985-4034-ba85-187a27195358",
+		"name": "Venus Restaurant",
+		"description": ""
+	},
+	{
+		"id": "def1e84d-979c-4a29-8115-f25e0e736108",
+		"name": "Sirius Bar",
+		"description": ""
+	},
+	{
+		"id": "27250efc-51e3-4554-89c1-34c4c7bd40d9",
+		"name": "Romance Restaurant",
+		"description": ""
+	},
+	{
+		"id": "8659eca8-9d69-4dfa-8eab-0186c94a0e44",
+		"name": "Lucky Restaurant",
+		"description": ""
+	},
+	{
+		"id": "ffac895b-a9fc-4904-86f3-8b3b67567e72",
+		"name": "Elegance Restaurant",
+		"description": ""
+	},
+	{
+		"id": "f53c7236-9c5d-4800-8bf0-8b492874bf2d",
+		"name": "Spice Viet",
+		"description": ""
+	},
+	{
+		"id": "4480f6b8-547c-4a59-a2e5-70891f25d23b",
+		"name": "Maison Trang",
+		"description": ""
+	},
+	{
+		"id": "e2d463e5-6d9f-4ca3-bbbf-90e85828baf5",
+		"name": "Rice Restaurant & Bar",
+		"description": ""
+	},
+	{
+		"id": "996d39fc-4fd5-4fe1-8637-4f3fddecac27",
+		"name": "Nam phương restaurant",
+		"description": ""
+	},
+	{
+		"id": "17ff559b-c80d-4b88-8610-5eb25e992e23",
+		"name": "Madam Chau",
+		"description": ""
+	},
+	{
+		"id": "4897bd49-cca7-45c1-a544-014844f3a9e7",
+		"name": "PERFUME RIVER RESTAURANT",
+		"description": ""
+	},
+	{
+		"id": "d6e56e1f-6c55-446c-9f73-92e29b140c6b",
+		"name": "Nhà hàng Hoa Sứ",
+		"description": ""
+	},
+	{
+		"id": "945ff3c1-ea32-48b2-b12f-d7af72619493",
+		"name": "An Cựu Restaurant",
+		"description": ""
+	},
+	{
+		"id": "0b99697d-65f8-45d8-b46d-6c48106a138c",
+		"name": "AROMA",
+		"description": ""
+	},
+	{
+		"id": "a015d1d5-9d1b-4dea-a11c-dcde7c31c3de",
+		"name": "Hue Purple",
+		"description": ""
+	},
+	{
+		"id": "726250f9-99c0-422a-b1b1-93b3701b0fd4",
+		"name": "Xavana 1",
+		"description": ""
+	},
+	{
+		"id": "a34f8b5e-f329-43a9-9142-62f95fca9b79",
+		"name": "Xavana 2",
+		"description": ""
+	},
+	{
+		"id": "e74f840c-4ea3-48be-8278-58ef4063662f",
+		"name": "Sea Gate 1",
+		"description": ""
+	},
+	{
+		"id": "7bd2ac63-f193-460b-a7f0-8d1bedfea486",
+		"name": "Sea Gate 2",
+		"description": ""
+	},
+	{
+		"id": "1979a284-faf4-4983-97b8-c960a3bcad09",
+		"name": "Dahlia",
+		"description": ""
+	},
+	{
+		"id": "3fab0980-ec54-4ac9-9586-bba397830f89",
+		"name": "Galina Restaurant",
+		"description": ""
+	},
+	{
+		"id": "4f9902c8-4c9f-4798-a5dd-2b0576c371ac",
+		"name": "Cookbook Café",
+		"description": ""
+	},
+	{
+		"id": "1613035e-9f8f-4616-9fa5-4e25da4f6ceb",
+		"name": "Opal restaurant",
+		"description": ""
+	},
+	{
+		"id": "00b3a42a-39a4-440a-aa8f-75e2e1050c8a",
+		"name": "Emerald restauranr",
+		"description": ""
+	},
+	{
+		"id": "d7b1e36f-f8a6-41ab-ab92-73494d6a4b48",
+		"name": "Feast Restaurant",
+		"description": ""
+	},
+	{
+		"id": "58598979-6fb5-4163-838f-64f7031b1074",
+		"name": "Steam n' Spice Restaurant",
+		"description": ""
+	},
+	{
+		"id": "e6743d11-c726-48ee-b979-c8ca75df7b90",
+		"name": "Dendro",
+		"description": ""
+	},
+	{
+		"id": "a1f16647-3e51-45c9-8a36-dd5fca2183b3",
+		"name": "Orchidea Restaurant",
+		"description": ""
+	},
+	{
+		"id": "a3054729-4c13-4282-8db2-8da2ddab9a3b",
+		"name": "Rosone Restaurant",
+		"description": ""
+	},
+	{
+		"id": "a1103440-d412-44a7-a7af-3757a5e9693f",
+		"name": "Terrace Bay",
+		"description": ""
+	},
+	{
+		"id": "486a0bb0-51d6-41e4-95e5-e116eddfa790",
+		"name": "Mistral Top View Restaurant",
+		"description": ""
+	},
+	{
+		"id": "778a7944-e61a-45d1-8968-0c8d2f8c2c34",
+		"name": "Salsa The Beach Club",
+		"description": ""
+	},
+	{
+		"id": "e7cb4c78-85cb-4154-834d-89a91cf589e4",
+		"name": "TRE Restaurant",
+		"description": ""
+	},
+	{
+		"id": "1f82406e-f005-4399-a3c6-82d67e20191c",
+		"name": "CASA MARINA",
+		"description": ""
+	},
+	{
+		"id": "e8d8bd96-9263-4efb-bdb1-a345937c0df9",
+		"name": "The Pine Kitchen",
+		"description": ""
+	},
+	{
+		"id": "a9b0d855-a261-4ad6-a389-e0a87ebf7dc1",
+		"name": "Salagane Restaurant",
+		"description": ""
+	},
+	{
+		"id": "4daa99bc-3bdc-466c-b434-d4d1b4db910e",
+		"name": "Royal Restaurant",
+		"description": ""
+	},
+	{
+		"id": "fe55549c-a85b-4e51-8983-7882772646c5",
+		"name": "Big Tree Bistro",
+		"description": ""
+	},
+	{
+		"id": "e834b2f3-411f-4dab-b650-b1fe69fa1dcd",
+		"name": "Vela Buffet & Restaurant",
+		"description": ""
+	},
+	{
+		"id": "6d9d2f17-3852-4554-9642-b2263a158f56",
+		"name": "Cafe Sambal",
+		"description": ""
+	},
+	{
+		"id": "5896b971-2da3-4e4c-a77e-dfd11d859afe",
+		"name": "Riviera",
+		"description": ""
+	},
+	{
+		"id": "8b7dc3f3-4ef7-4d1f-a662-4ce7e85d6647",
+		"name": "Rose",
+		"description": ""
+	},
+	{
+		"id": "eb471c23-d450-43eb-9ec3-4c12de4153e6",
+		"name": "Nhà hàng lầu 1",
+		"description": ""
+	},
+	{
+		"id": "e5605fa7-f188-435f-97ec-e376ccacd62a",
+		"name": "Vungtau Intourco",
+		"description": ""
+	},
+	{
+		"id": "5ca2a451-3f80-4a62-ad29-f6da008aeecf",
+		"name": "Sea Mountain Restaurant",
+		"description": ""
+	},
+	{
+		"id": "11f55c0d-2d0e-46bf-aa59-2689d0db6016",
+		"name": "Bánh Khọt Cô Ba",
+		"description": ""
+	},
+	{
+		"id": "fd241706-5b7f-4256-9c64-8530bc7978d8",
+		"name": "Frimier",
+		"description": ""
+	},
+	{
+		"id": "86101715-2d2e-4cca-b7fe-53c980cfccf5",
+		"name": "Primier",
+		"description": ""
+	}
+]

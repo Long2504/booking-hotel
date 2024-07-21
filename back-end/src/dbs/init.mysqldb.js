@@ -2,6 +2,7 @@
 import { Sequelize } from "sequelize";
 import config from "../configs/config.js";
 import ListModel from "./listModel.mysql.js";
+import initData from "../cfg/index.cfg.js";
 class MySqlDB {
     sequelize;
     constructor() {
@@ -23,6 +24,7 @@ class MySqlDB {
             this.initSequelize(this.sequelize);
             await this.sequelize.sync();
             await this.sequelize.authenticate();
+            await initData();
             console.log("Connection has been established successfully.");
             console.log(
                 `Number of active connections: ${await this.getNumberOfConnections()}`
@@ -37,6 +39,7 @@ class MySqlDB {
             model.init(sequelize);
         }
         for (const model of ListModel) {
+            
             model.associate();
         }
     }

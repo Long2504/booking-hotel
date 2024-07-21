@@ -32,6 +32,19 @@ const attributesUser = [
 ];
 
 class AuthService extends BaseService {
+
+	async initAuth(listAuth) {
+		try {
+			const count = await this.count();
+			if (count > 0) {
+				return;
+			}
+			await this.bulkCreate(listAuth);
+		} catch (error) {
+			console.log("🚀 ~ file: auth.service.js:44 ~ error:")
+		}
+	}
+
 	async signUp({ email, password }) {
 		/*
         1- check email exists

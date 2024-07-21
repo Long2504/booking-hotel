@@ -5,6 +5,18 @@ import BaseService from "./base.service.js";
 import { Op } from "sequelize";
 
 class ExtensionService extends BaseService {
+	async initExtensions(listExtension) {
+		try {
+			const count = await this.count();
+			if (count > 0) {
+				return;
+			}
+			return await this.model.bulkCreate(listExtension);
+		} catch (error) {
+			console.log("🚀 ~ file: extension.service.js:16 ~ error:");
+		}
+	}
+
 	async getAll(options) {
 		const whereCondition = {};
 		if (options.searchQuery) {
