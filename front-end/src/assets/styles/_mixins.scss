@@ -25,8 +25,11 @@
     color: $color;
 }
 
-@mixin text-ellipsis() {
-    white-space: nowrap;
+@mixin text-ellipsis($line : 1) {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    line-clamp: $line;
     overflow: hidden;
     text-overflow: ellipsis;
 }
