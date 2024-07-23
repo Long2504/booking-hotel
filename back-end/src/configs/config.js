@@ -7,6 +7,11 @@ const development = {
         refreshTokenExpires: process.env.DEV_REFRESH_TOKEN_EXPIRES || 60 * 60 * 24 * 7,
         urlBaseMedia: process.env.DEV_URL_BASE_MEDIA,
         clientId: process.env.DEV_GOOGLE_CLIENT_ID,
+        baseUrlPaypal: process.env.DEV_BASE_URL_PAYPAL,
+        paypalClientId: process.env.DEV_PAYPAL_CLIENT_ID,
+        paypalClientSecret: process.env.DEV_PAYPAL_CLIENT_SECRET,
+        emailServer: process.env.DEV_EMAIL_SERVER,
+        passEmailServer: process.env.DEV_PASS_EMAIL_SERVER,
     },
     db: {
         dialect: process.env.DEV_DB_DIALECT,
@@ -26,6 +31,11 @@ const production = {
         refreshTokenExpires: process.env.PRO_REFRESH_TOKEN_EXPIRES || 60 * 60 * 24 * 7,
         urlBaseMedia: process.env.PRO_URL_BASE_MEDIA,
         clientId: process.env.PRO_GOOGLE_CLIENT_ID,
+        baseUrlPaypal: process.env.PRO_BASE_URL_PAYPAL,
+        paypalClientId: process.env.PRO_PAYPAL_CLIENT_ID,
+        paypalClientSecret: process.env.PRO_PAYPAL_CLIENT_SECRET,
+        emailServer: process.env.PRO_EMAIL_SERVER,
+        passEmailServer: process.env.PRO_PASS_EMAIL_SERVER,
     },
     db: {
         dialect: process.env.PRO_DB_DIALECT,
