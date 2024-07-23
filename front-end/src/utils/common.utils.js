@@ -17,7 +17,7 @@ function generateRoute(AppRoutes, Route) {
 	});
 }
 
-function vietNamDong(money) {
+function vietNamDong(money = 0) {
 	return Intl.NumberFormat("vi", {
 		style: "currency",
 		currency: "VND",
@@ -45,6 +45,7 @@ function handleError(error) {
 }
 
 function generateAddress(provinceCode, districtCode, wardCode, street) {
+	if(!provinceCode || !districtCode || !wardCode || !street) return "";
 	const province = provinces.find(
 		(item) => item.value === provinceCode
 	).label;

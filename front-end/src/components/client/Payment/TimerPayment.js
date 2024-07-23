@@ -1,10 +1,14 @@
+//files
+import ButtonCore from "../../common/button.core";
 
 //libs
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 
 //icons
-import ClockCircleOutlined from "@ant-design/icons/lib/icons/ClockCircleOutlined";
+import { AiOutlineClockCircle } from "react-icons/ai";
+
+
 function TimerPayment() {
 	const [hours, setHours] = useState(0);
 	const [minutes, setMinutes] = useState(0);
@@ -23,22 +27,22 @@ function TimerPayment() {
 	}, []);
 
 	return (
-		<div className='timer-payment'>
-			<span className='timer-payment__text'>
+		<div className="timer-payment">
+			<span className="timer-payment__text">
 				Đang giữ giá. Đặt ngay để không vuột mất giá tốt
 			</span>
-			<ClockCircleOutlined className='timer-payment__icon' />
-			<div className='timer-payment__time'>
+			<AiOutlineClockCircle className="timer-payment__icon" />
+			<div className="timer-payment__time">
 				{showSemicolon ? <div>:</div> : null}
-				<div className='timer-payment__time__item'>{hours}:</div>
+				<div className="timer-payment__time__item">{hours}:</div>
 				{showSemicolon ? <div>:</div> : null}
-				<div className='timer-payment__time__item'>{minutes}:</div>
+				<div className="timer-payment__time__item">{minutes}:</div>
 				{showSemicolon ? <div>:</div> : null}
-				<div className='timer-payment__time__item'>{seconds}</div>
+				<div className="timer-payment__time__item">{seconds}</div>
 			</div>
-			<button className='timer-payment__btn'>
+			<ButtonCore type="primary" className="timer-payment__btn">
 				Tôi cần thêm thời gian
-			</button>
+			</ButtonCore>
 		</div>
 	);
 }

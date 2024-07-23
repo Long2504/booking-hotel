@@ -1,8 +1,15 @@
+
+//files
+import Box from "../../components/common/box.core";
+
+//libs
 import { Button, Empty, Space, Table, Modal, Pagination, Tag } from "antd";
 import { useState } from "react";
 import Search from "antd/es/input/Search";
+
+//icons
 import { RightOutlined } from "@ant-design/icons";
-import Box from "../../components/common/box.core";
+
 
 function ListBookingHostPage() {
 	const listHotelHaveRoomBooking = [];

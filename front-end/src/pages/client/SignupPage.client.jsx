@@ -3,10 +3,11 @@ import InputCore from "../../components/common/input.core";
 import signupFormSchema from "../../validate/signup.validate";
 import { handleError } from "../../utils/common.utils";
 import authApi from "../../redux/action/authAction.redux";
+import ButtonCore from "../../components/common/button.core";
 
 //libs
 import { GoogleLogin } from "@react-oauth/google";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
@@ -46,65 +47,71 @@ function SignupPage() {
 		});
 	};
 	return (
-		<div className='signup-client'>
+		<div className="signup-client">
 			{contextHolder}
-			<div className='signup-client__content'>
+			<div className="signup-client__content">
 				<h6 style={{ fontSize: 25, fontWeight: 500 }}>Sign up</h6>
 				<InputCore
 					label={"First name"}
 					placeholder={"First name"}
-					name='firstName'
+					name="firstName"
 					register={register}
 					error={errors.firstName}
 				/>
 				<InputCore
 					label={"Last name"}
 					placeholder={"Last name"}
-					name='lastName'
+					name="lastName"
 					register={register}
 					error={errors.lastName}
 				/>
 				<InputCore
 					label={"Email"}
 					placeholder={"Email"}
-					name='email'
+					name="email"
 					register={register}
 					error={errors.email}
 				/>
 				<InputCore
 					label={"Password"}
 					placeholder={"Password"}
-					name='password'
+					name="password"
 					register={register}
 					error={errors.password}
-					type='password'
+					type="password"
 				/>
 				<InputCore
 					label={"Confirm Password"}
 					placeholder={"Confirm Password"}
-					name='confirmPassword'
+					name="confirmPassword"
 					register={register}
 					error={errors.confirmPassword}
-					type='password'
+					type="password"
 				/>
 
-				<button
-					className='signup-client__content__submit'
+				<ButtonCore
+					className="signup-client__content__submit"
 					onClick={handleSubmit((data) => {
 						console.log(data);
 					})}
+					type="primary"
 				>
 					Sign Up
-				</button>
-				<div className='signup-client__content__login-with-gg'>
+				</ButtonCore>
+				<div className="signup-client__content__login-with-gg">
 					<GoogleLogin
 						onSuccess={responseGoogle}
 						onError={responseGoogleFailure}
 					/>
 				</div>
-				<div className='signup-client__content__btn-signin'>
-					Bạn đã có tài khoản <Link to='/signin'>Đăng nhập</Link>
-				</div>
+				<ButtonCore
+					className="signup-client__content__btn-signin"
+					onClick={() => navigate("/signin")}
+					type="primary"
+					ghost
+				>
+					Bạn đã có tài khoản? Đăng nhập
+				</ButtonCore>
 			</div>
 		</div>
 	);

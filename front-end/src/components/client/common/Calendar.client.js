@@ -1,13 +1,10 @@
 //libs
-import React, { useState } from "react";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 
 const { RangePicker } = DatePicker;
 
-function Calendar({ setFocus, filter }) {
-	const [value, setValue] = useState();
-
+function Calendar({ setFocus, value, setValue }) {
 	const onChangeDate = (val) => {
 		if (val) {
 			setValue(val);
@@ -29,8 +26,8 @@ function Calendar({ setFocus, filter }) {
 			onCalendarChange={(val) => setValue(val)}
 			onChange={onChangeDate}
 			disabledDate={disabledDate}
-			picker='date'
-			format='dddd, DD/MM/YYYY'
+			picker="date"
+			format="dddd, DD/MM/YYYY"
 			placeholder={["Ngày bắt đầu", "Ngày kết thúc"]}
 		/>
 	);

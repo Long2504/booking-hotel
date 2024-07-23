@@ -19,7 +19,6 @@ import {
 	generateAddress,
 	handleError,
 } from "../../utils/common.utils";
-import hotelApi from "../../services/modules/hotel.service";
 
 //libs
 import { message, Space, Steps } from "antd";
@@ -50,7 +49,6 @@ function CreateHotelHostPage() {
 		resolver: yupResolver(schemasForm[current]),
 		mode: "all",
 	});
-
 	const [checkedConfirm, setCheckedConfirm] = useState(false);
 	const [messageApi, contextHolder] = message.useMessage();
 

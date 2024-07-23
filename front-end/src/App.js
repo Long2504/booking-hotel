@@ -14,7 +14,6 @@ function App() {
 				token: {
 					colorPrimary: "rgb(83, 146, 249)",
 					borderRadius: 2,
-					// colorBgContainer: "#f6ffed",
 				},
 			}}
 		>

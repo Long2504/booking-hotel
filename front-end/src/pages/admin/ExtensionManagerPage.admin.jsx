@@ -66,10 +66,10 @@ function ExtensionManagerPage() {
 				setTotalPage(total);
 			} catch (error) {
 				const { errorMessage } = handleError(error);
-				message.error(errorMessage);
+				messageApi.error(errorMessage);
 			}
 		})();
-	}, [queryParams, isRender]);
+	}, [queryParams, isRender, messageApi]);
 
 	const onClickAdd = (isSub, extensionId = "") => {
 		const formData = {

@@ -5,7 +5,6 @@ import ButtonCore from "../../../common/button.core";
 
 //libs
 import { Space } from "antd";
-import { useEffect } from "react";
 import { useFieldArray } from "react-hook-form";
 
 function RoomHotel({ errors, setValue, register, control, getValues }) {

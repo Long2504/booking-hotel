@@ -1,5 +1,4 @@
 //files
-import listExtensionHost from "../../../../data/listExtensionHost.data";
 import { extensionHotelHost } from "../../../../assets/images/index.image";
 import ExtensionItem from "./ExtensionItem";
 import extensionApi from "../../../../services/modules/extension.service";
