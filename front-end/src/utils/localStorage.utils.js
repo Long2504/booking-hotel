@@ -15,4 +15,40 @@ function getKeyHeaderHost() {
 	return localStorage.getItem("keyHeaderHost");
 }
 
-export { setUserInfo, getUserInfo, setKeyHeaderHost, getKeyHeaderHost };
+function setInfoOrder(order) {
+	localStorage.setItem("infoOrder", JSON.stringify(order));
+}
+
+function getInfoOrder() {
+	const order = localStorage.getItem("infoOrder");
+	return order && order !== "undefined" ? JSON.parse(order) : {};
+}
+
+function removeInfoOrder() {
+	localStorage.removeItem("infoOrder");
+}
+
+function setOrderId(id) {
+	localStorage.setItem("orderId", id);
+}
+
+function getOrderId() {
+	return localStorage.getItem("orderId");
+}
+
+function removeOrderId() {
+	localStorage.removeItem("orderId");
+}
+
+export {
+	setUserInfo,
+	getUserInfo,
+	setKeyHeaderHost,
+	getKeyHeaderHost,
+	setInfoOrder,
+	getInfoOrder,
+	removeInfoOrder,
+	setOrderId,
+	getOrderId,
+	removeOrderId,
+};
