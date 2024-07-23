@@ -1,8 +1,8 @@
 // files
-import { dataPayment } from "../../../data/payment.data";
 import { vietNamDong } from "../../../utils/common.utils";
 import { noImage } from "../../../assets/images/index.image";
 import Box from "../../common/box.core";
+import { getInfoOrder } from "../../../utils/localStorage.utils";
 
 // libs
 import { Rate, Divider, Tooltip } from "antd";
@@ -15,23 +15,25 @@ import { PiUsersFill } from "react-icons/pi";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 
+
 function HotelDetailPayment() {
-	const { hotel, room, checkInDate, checkOutDate } = dataPayment;
+	const { hotel, room, checkInDate, checkOutDate, totalDays } =
+		getInfoOrder();
 	return (
-		<div className='hotel-detail-checkout'>
-			<Box className='hotel-detail-checkout__info hotel-detail-checkout__box'>
-				<div className='hotel-detail-checkout__info__img'>
+		<div className="hotel-detail-checkout">
+			<Box className="hotel-detail-checkout__info hotel-detail-checkout__box">
+				<div className="hotel-detail-checkout__info__img">
 					<img
 						src={
 							hotel?.images?.length > 0
 								? hotel?.images[0]
 								: noImage
 						}
-						alt=''
+						alt=""
 					/>
 				</div>
-				<div className='hotel-detail-checkout__info__content'>
-					<div className='hotel-detail-checkout__info__content__name'>
+				<div className="hotel-detail-checkout__info__content">
+					<div className="hotel-detail-checkout__info__content__name">
 						{hotel?.name}
 					</div>
 					<Rate
@@ -39,10 +41,10 @@ function HotelDetailPayment() {
 						defaultValue={hotel?.star}
 						disabled
 					/>
-					<p className='hotel-detail-checkout__info__content__address'>
+					<p className="hotel-detail-checkout__info__content__address">
 						{hotel?.address}
 					</p>
-					<div className='hotel-detail-checkout__info__content__excellent'>
+					<div className="hotel-detail-checkout__info__content__excellent">
 						<FaLocationDot
 							style={{
 								marginRight: "5px",
@@ -54,51 +56,49 @@ function HotelDetailPayment() {
 				</div>
 			</Box>
 
-			<Box className='hotel-detail-checkout__info-room hotel-detail-checkout__box'>
-				<div className='hotel-detail-checkout__info-room__date'>
+			<Box className="hotel-detail-checkout__info-room hotel-detail-checkout__box">
+				<div className="hotel-detail-checkout__info-room__date">
 					<span>
 						{dayjs(checkInDate).format("DD [tháng] M YYYY")} -{" "}
 						{dayjs(checkOutDate).format("DD [tháng] M YYYY")}
 					</span>
-					<span>{room?.totalDays} đêm</span>
+					<span>{totalDays} đêm</span>
 				</div>
-				<div className='hotel-detail-checkout__info-room__quantity'>
-					{room?.number} x {room?.roomType?.name}
+				<div className="hotel-detail-checkout__info-room__quantity">
+					{room?.numBedrooms} x {room?.roomType?.name}
 				</div>
-				<div className='hotel-detail-checkout__info-room__rating'>
-					<div className='hotel-detail-checkout__info-room__rating__box'>
+				<div className="hotel-detail-checkout__info-room__rating">
+					<div className="hotel-detail-checkout__info-room__rating__box">
 						{hotel?.star}
 					</div>
-					<div className='hotel-detail-checkout__info-room__rating__rev'>
+					<div className="hotel-detail-checkout__info-room__rating__rev">
 						<div>Vô cùng sạch sẽ</div>
 						<div>Từ 670 bài đánh giá</div>
 					</div>
 				</div>
 
-				<Divider
-					style={{ borderBottom: "1px solid rgb(221, 223, 226)" }}
-				/>
+				<Divider style={{ borderBottom: "1px solid #ccc" }} />
 
-				<div className='hotel-detail-checkout__info-room__room'>
-					<div className='hotel-detail-checkout__info-room__room__img'>
+				<div className="hotel-detail-checkout__info-room__room">
+					<div className="hotel-detail-checkout__info-room__room__img">
 						<img
 							src={
 								room?.images?.length > 0
 									? room?.images[0]
 									: noImage
 							}
-							alt=''
+							alt=""
 						/>
 					</div>
-					<div className='hotel-detail-checkout__info-room__room__content'>
-						<div className='hotel-detail-checkout__info-room__room__content__text'>
+					<div className="hotel-detail-checkout__info-room__room__content">
+						<div className="hotel-detail-checkout__info-room__room__content__text">
 							<FaUser />
 							<span>
-								{room?.number} phòng, {room?.peopleNumber} người
-								lớn
+								{room?.numBedrooms} phòng, {room?.peopleNumber}{" "}
+								người lớn
 							</span>
 						</div>
-						<div className='hotel-detail-checkout__info-room__room__content__text'>
+						<div className="hotel-detail-checkout__info-room__room__content__text">
 							<PiUsersFill />
 							<span>
 								Tối đa: {room?.occupancy} người, 1 trẻ em (0-11
@@ -107,10 +107,8 @@ function HotelDetailPayment() {
 						</div>
 					</div>
 				</div>
-				<Divider
-					style={{ borderBottom: "1px solid rgb(221, 223, 226)" }}
-				/>
-				<div className='hotel-detail-checkout__info-room__bottom'>
+				<Divider style={{ borderBottom: "1px solid #ccc" }} />
+				<div className="hotel-detail-checkout__info-room__bottom">
 					<MdVerifiedUser
 						style={{ color: "green", fontSize: "30px" }}
 					/>
@@ -121,10 +119,10 @@ function HotelDetailPayment() {
 				</div>
 			</Box>
 
-			<Box className='hotel-detail-checkout__advice hotel-detail-checkout__box'>
+			<Box className="hotel-detail-checkout__advice hotel-detail-checkout__box">
 				<MdLocalOffer style={{ color: "green", fontSize: "30px" }} />
-				<div className='hotel-detail-checkout__advice__text'>
-					<span className='hotel-detail-checkout__advice__text__title'>
+				<div className="hotel-detail-checkout__advice__text">
+					<span className="hotel-detail-checkout__advice__text__title">
 						Tuyệt quá Thanh à!{" "}
 					</span>
 					<span>
@@ -133,16 +131,16 @@ function HotelDetailPayment() {
 				</div>
 			</Box>
 
-			<Box className='hotel-detail-checkout__price hotel-detail-checkout__box'>
-				<div className='hotel-detail-checkout__price__top'>
-					<div className='hotel-detail-checkout__price__top__item'>
+			<Box className="hotel-detail-checkout__price hotel-detail-checkout__box">
+				<div className="hotel-detail-checkout__price__top">
+					<div className="hotel-detail-checkout__price__top__item">
 						<span>
-							Giá phòng ({room?.number} phòng x {room?.totalDays}{" "}
+							Giá phòng ({room?.numBedrooms} phòng x {totalDays}{" "}
 							đêm)
 						</span>
 						<span>{vietNamDong(room?.price)}</span>
 					</div>
-					<div className='hotel-detail-checkout__price__top__item'>
+					<div className="hotel-detail-checkout__price__top__item">
 						<span>Phí đặt trước</span>
 						<span
 							style={{
@@ -154,10 +152,10 @@ function HotelDetailPayment() {
 						</span>
 					</div>
 				</div>
-				<div className='hotel-detail-checkout__price__bottom'>
-					<div className='hotel-detail-checkout__price__bottom__price'>
-						<div className='hotel-detail-checkout__price__bottom__price__text'>
-							<span className='hotel-detail-checkout__price__bottom__price__text__title'>
+				<div className="hotel-detail-checkout__price__bottom">
+					<div className="hotel-detail-checkout__price__bottom__price">
+						<div className="hotel-detail-checkout__price__bottom__price__text">
+							<span className="hotel-detail-checkout__price__bottom__price__text__title">
 								Giá tiền
 							</span>
 							<Tooltip
@@ -174,7 +172,7 @@ function HotelDetailPayment() {
 										</p>
 									</div>
 								}
-								color='#fff'
+								color="#fff"
 								overlayInnerStyle={{
 									width: "400px",
 									padding: "10px",
@@ -190,16 +188,16 @@ function HotelDetailPayment() {
 								/>
 							</Tooltip>
 						</div>
-						<span className='hotel-detail-checkout__price__bottom__price__number'>
+						<span className="hotel-detail-checkout__price__bottom__price__number">
 							{vietNamDong(
 								room?.price *
-									room?.totalDays *
-									room?.number *
+									totalDays *
+									room?.numBedrooms *
 									1.1
 							)}
 						</span>
 					</div>
-					<div className='hotel-detail-checkout__price__bottom__advice'>
+					<div className="hotel-detail-checkout__price__bottom__advice">
 						<span>Giá đã bao gồm: </span>
 						<span>Thuế 8%, Phí dịch vụ 5%</span>
 					</div>

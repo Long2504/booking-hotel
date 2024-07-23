@@ -4,6 +4,7 @@ import StepPayment from "../../components/client/Payment/StepPayment";
 //libs
 import { Steps } from "antd";
 import { useState } from "react";
+
 function CheckoutPage() {
 	const [step, setStep] = useState(0);
 	return (
@@ -27,7 +28,7 @@ function CheckoutPage() {
 			</div>
 
 			<div className='checkout-page__container'>
-				<StepPayment step={step} />
+				<StepPayment step={step} updateStep={setStep} />
 			</div>
 		</div>
 	);

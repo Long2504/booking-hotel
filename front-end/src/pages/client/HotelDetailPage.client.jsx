@@ -1,22 +1,25 @@
 // files
-import hotelDetail from "../../data/hotel.data";
 import { vietNamDong } from "../../utils/common.utils";
 import RoomItem from "../../components/client/HotelDetail/RoomItem";
 import ExtensionItem from "../../components/client/HotelDetail/ExtensionItem";
 import ScrollUpNav from "../../components/client/common/ScrollUpNav.client";
 import ImageCore from "../../components/common/image.core";
 import Box from "../../components/common/box.core";
+import hotelApi from "../../services/modules/hotel.service";
 
 // libs
 import { Space, Divider, Rate, Col, Row, Image, Tabs, Modal } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import dayjs from "dayjs";
 
 //icons
 import { FaCheck, FaCamera } from "react-icons/fa";
-import hotelApi from "../../services/modules/hotel.service";
+import { setInfoOrder } from "../../utils/localStorage.utils";
 
 function HotelDetailPage() {
+	const { filter } = useSelector((state) => state.hotel);
 	const [hotel, setHotel] = useState({});
 	const navigate = useNavigate();
 	const [scroll, setScroll] = useState(0);
@@ -25,7 +28,7 @@ function HotelDetailPage() {
 			setScroll(window.scrollY);
 		});
 	});
-
+	const { id } = useParams();
 	useEffect(() => {
 		(async () => {
 			try {
@@ -33,9 +36,26 @@ function HotelDetailPage() {
 				setHotel(metaData);
 			} catch (error) {}
 		})();
-	}, []);
-	const { id } = useParams();
-	const linkToChekout = (room) => {
+	}, [id]);
+
+	const linkToCheckout = (room) => {
+		const data = {
+			hotel: {
+				id: hotel.id,
+				name: hotel.name,
+				address: hotel.address,
+				star: hotel?.star,
+				images: hotel?.images,
+			},
+			room: room,
+			checkInDate: filter.startDate,
+			checkOutDate: filter.endDate,
+			totalDays: dayjs(filter.endDate).diff(
+				dayjs(filter.startDate),
+				"day"
+			),
+		};
+		setInfoOrder(data);
 		navigate(`/checkout/${id}`);
 	};
 
@@ -62,10 +82,10 @@ function HotelDetailPage() {
 		right: 0,
 		width: "100%",
 		backgroundColor: "white",
-		boxShawdow: "0 3px 6px 0 rgba(0, 0, 0, .3)",
+		boxShawdow: "0 3px 6px 0 #0000004d",
 		padding: "0 20%",
 		border: "none",
-		borderBottom: "1px solid rgb(221, 223, 226)",
+		borderBottom: "1px solid #ccc",
 	};
 	const [clicked, setClicked] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -247,7 +267,7 @@ function HotelDetailPage() {
 							<RoomItem
 								key={index}
 								data={room}
-								linkToChekout={linkToChekout}
+								linkToCheckout={linkToCheckout}
 							/>
 						))}
 					</div>
