@@ -42,10 +42,6 @@
             padding: 10px;
             height: 50px;
 
-            &__search-icon {
-                color: #555;
-            }
-
             >input {
                 width: 100%;
                 border: none;
@@ -78,15 +74,12 @@
             width: 40%;
             margin: auto;
 
-            &__link {
-                color: #fff;
-
-                button {
-                    @include font(600, 20px, null,null);
-                    margin: 20px auto;
-                    @include size(100%, 50px);
-                }
+            button {
+                @include font(600, 20px, null, null);
+                margin: 20px auto;
+                @include size(100%, 50px);
             }
+
         }
     }
 }
