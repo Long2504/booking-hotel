@@ -44,6 +44,10 @@ class HotelModel extends BaseModel {
                     allowNull: true,
                     defaultValue: false,
                 },
+                priceAverage: {
+                    type: DataTypes.FLOAT,
+                    allowNull: true,
+                },
             },
             sequelize,
             {
