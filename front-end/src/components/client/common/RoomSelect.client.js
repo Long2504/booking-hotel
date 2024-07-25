@@ -6,10 +6,8 @@ import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 
-function RoomSelect({ setFocus }) {
+function RoomSelect({ setFocus, setPeople, setRoom, people, room }) {
 	const [open, setOpen] = useState(false);
-	const [people, setPeople] = useState(1);
-	const [room, setRoom] = useState(1);
 
 	const handleOpenChange = (nextOpen, info) => {
 		if (info.source === "trigger" || nextOpen) {
@@ -18,21 +16,39 @@ function RoomSelect({ setFocus }) {
 		}
 	};
 
+	const onChangePeople = (value) => {
+		if (value > 1) {
+			if (value < room) {
+				setRoom(value);
+			}
+			setPeople(value);
+		}
+	};
+
+	const onChangeRoom = (value) => {
+		if (value > 0) {
+			if (room === people) {
+				setPeople(value);
+			}
+			setRoom(value);
+		}
+	};
+
 	const items = [
 		{
 			key: "1",
 			label: (
-				<div className='room-selection__dropdown__item'>
+				<div className="room-selection__dropdown__item">
 					<p>Phòng</p>
-					<Space className='room-selection__dropdown__item__number'>
+					<Space className="room-selection__dropdown__item__number">
 						<FiMinusCircle
-							className='room-selection__dropdown__item__number__icon'
-							onClick={() => setRoom(room - 1)}
+							className="room-selection__dropdown__item__number__icon"
+							onClick={() => onChangeRoom(room - 1)}
 						/>
 						<div>{room}</div>
 						<FiPlusCircle
-							className='room-selection__dropdown__item__number__icon'
-							onClick={() => setRoom(room + 1)}
+							className="room-selection__dropdown__item__number__icon"
+							onClick={() => onChangeRoom(room + 1)}
 						/>
 					</Space>
 				</div>
@@ -41,38 +57,39 @@ function RoomSelect({ setFocus }) {
 		{
 			key: "2",
 			label: (
-				<div className='room-selection__dropdown__item'>
+				<div className="room-selection__dropdown__item">
 					<p>Số lượng người</p>
-					<Space className='room-selection__dropdown__item__number'>
+					<Space className="room-selection__dropdown__item__number">
 						<FiMinusCircle
-							className='room-selection__dropdown__item__number__icon'
-							onClick={() => setPeople(people - 1)}
+							className="room-selection__dropdown__item__number__icon"
+							onClick={() => onChangePeople(people - 1)}
 						/>
 						<div>{people}</div>
 						<FiPlusCircle
-							className='room-selection__dropdown__item__number__icon'
-							onClick={() => setPeople(people + 1)}
+							className="room-selection__dropdown__item__number__icon"
+							onClick={() => onChangePeople(people + 1)}
 						/>
 					</Space>
 				</div>
 			),
 		},
 	];
+	
 	return (
-		<div className='room-selection'>
+		<div className="room-selection">
 			<Dropdown
 				menu={{ items }}
 				overlayStyle={{ width: "280px" }}
-				placement='bottomCenter'
+				placement="bottomCenter"
 				arrow={{ pointAtCenter: true }}
-				className='room-selection__dropdown'
+				className="room-selection__dropdown"
 				trigger={["click"]}
 				autoAdjustOverflow={true}
 				onOpenChange={handleOpenChange}
 				open={open}
 			>
 				<div>
-					<Space className='room-selection__dropdown__title'>
+					<Space className="room-selection__dropdown__title">
 						<p>{room} phòng</p>
 						<p style={{ color: "#999" }}>{people} người</p>
 					</Space>

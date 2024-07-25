@@ -8,35 +8,42 @@ import hotelApi from "../../services/modules/hotel.service";
 import { Pagination } from "antd";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setFilterHotel } from "../../redux/slice/hotelSlice.redux";
 
 function DashboardPage() {
 	const [listHotel, setListHotel] = useState([]);
 	const [totalPage, setTotalPage] = useState(1);
 	const [queryParams, setQueryParams] = useSearchParams();
+	const [minMaxPrice, setMinMaxPrice] = useState([0, 0]);
+	const { filter } = useSelector((state) => state.hotel);
+
 	let loading = false;
 
 	useEffect(() => {
 		(async () => {
 			try {
-				const params = {
-					page: parseInt(queryParams.get("page")) || 1,
-					pageSize: 10,
-					searchQuery: queryParams.get("searchQuery") || "",
-				};
+				setQueryParams(filter);
+				const params = { ...filter, pageSize: 7 };
 				const {
-					metaData: { list, total },
+					metaData: { list, total, priceMax, priceMin },
 				} = await hotelApi.getList(params);
 				setListHotel(list);
+				setMinMaxPrice([priceMin, priceMax]);
 				setTotalPage(total);
 			} catch (error) {}
 		})();
-	}, []);
+	}, [filter, queryParams, setQueryParams]);
 
+	const dispatch = useDispatch();
+	const onChangePage = (page) => {
+		// setQueryParams({ page: page });
+		dispatch(setFilterHotel({ ...filter, page: page }));
+	}
 	return (
 		<div className="dashboard-page">
 			<div className="dashboard-page__left">
-				<DashboardLeft />
+				<DashboardLeft minMaxPrice={minMaxPrice} />
 			</div>
 			<div className="dashboard-page__right">
 				<div className="dashboard-page__right__content">
@@ -51,9 +58,7 @@ function DashboardPage() {
 						style={{ textAlign: "right", marginTop: "20px" }}
 						total={totalPage}
 						current={parseInt(queryParams.get("page")) || 1}
-						onChange={(page) => {
-							setQueryParams({ page: page });
-						}}
+						onChange={onChangePage}
 					/>
 				</div>
 			</div>
