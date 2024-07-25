@@ -11,16 +11,19 @@ function VolumeHost({
 	max = 100,
 	setValue,
 	getValues,
+	disabled=false,
 }) {
 	const registerInput = register ? register(name) : {};
 
 	const addVolume = () => {
+		if (disabled) return;
 		const currentValue = getValues(name);
 		const newValue = Math.min(max, currentValue + 1);
 		setValue(name, newValue);
 	};
 
 	const minusVolume = () => {
+		if (disabled) return;
 		const currentValue = getValues(name);
 		const newValue = Math.max(min, currentValue - 1);
 		setValue(name, newValue);
@@ -46,6 +49,7 @@ function VolumeHost({
 					type='number'
 					min={min}
 					max={max}
+					disabled={disabled}
 				/>
 				<PlusOutlined
 					className='volume-host__content__icon'
