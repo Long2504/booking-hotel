@@ -4,9 +4,10 @@ import publicApi from "../api/apiPublic.service";
 
 const hotelPrivateEndpoint = {
 	post: "hotel/post",
+	getListForHost: "hotel/host",
 };
 
-const hotelPublicEndpoint = 'hotel';
+const hotelPublicEndpoint = "hotel";
 
 const hotelApi = {
 	post: async (data) => {
@@ -21,13 +22,19 @@ const hotelApi = {
 		);
 	},
 
-	getById: async (id) => {
+	getById: async (id, params) => {
 		return await handleApiCall(() =>
-			publicApi.get(`${hotelPublicEndpoint}/${id}`)
+			publicApi.get(`${hotelPublicEndpoint}/${id}`, { params })
 		);
 	},
 
-
+	getListForHost: async (params) => {
+		return await handleApiCall(() =>
+			privateApi.get(hotelPrivateEndpoint.getListForHost, {
+				params,
+			})
+		);
+	},
 };
 
 export default hotelApi;
