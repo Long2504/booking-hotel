@@ -6,17 +6,17 @@ import ScrollUpNav from "../../components/client/common/ScrollUpNav.client";
 import ImageCore from "../../components/common/image.core";
 import Box from "../../components/common/box.core";
 import hotelApi from "../../services/modules/hotel.service";
+import { setInfoOrder } from "../../utils/localStorage.utils";
 
 // libs
 import { Space, Divider, Rate, Col, Row, Image, Tabs, Modal } from "antd";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 
 //icons
 import { FaCheck, FaCamera } from "react-icons/fa";
-import { setInfoOrder } from "../../utils/localStorage.utils";
 
 function HotelDetailPage() {
 	const { filter } = useSelector((state) => state.hotel);
@@ -29,14 +29,30 @@ function HotelDetailPage() {
 		});
 	});
 	const { id } = useParams();
+	const [searchParams, setSearchParams] = useSearchParams();
 	useEffect(() => {
 		(async () => {
 			try {
-				const { metaData } = await hotelApi.getById(id);
+				setSearchParams({
+					startDate: filter.startDate,
+					endDate: filter.endDate,
+					roomNumber: filter.peopleNumber,
+					peopleNumber: filter.peopleNumber,
+				});
+				const param = {
+					startDate:
+						searchParams.get("startDate") || filter.startDate,
+					endDate: searchParams.get("endDate") || filter.endDate,
+					roomNumber:
+						searchParams.get("roomNumber") || filter.roomNumber,
+					peopleNumber:
+						searchParams.get("peopleNumber") || filter.peopleNumber,
+				};
+				const { metaData } = await hotelApi.getById(id, param);
 				setHotel(metaData);
 			} catch (error) {}
 		})();
-	}, [id]);
+	}, [id, searchParams, filter, setSearchParams]);
 
 	const linkToCheckout = (room) => {
 		const data = {
