@@ -1,32 +1,75 @@
-
 //files
 import Box from "../../components/common/box.core";
+import bookingRoomApi from "../../services/modules/bookingRoom.service";
+import { handleError } from "../../utils/common.utils";
+import { expandIconTable } from "../../components/common/expandIcon.core";
+import FormBookingRoom from "../../components/host/BookingRoom";
+import { bookingRoomFormSchema } from "../../validate/booking-room.validate";
+import ButtonCore from "../../components/common/button.core";
 
 //libs
-import { Button, Empty, Space, Table, Modal, Pagination, Tag } from "antd";
-import { useState } from "react";
+import {
+	Empty,
+	Space,
+	Table,
+	Modal,
+	Pagination,
+	Tag,
+	message,
+} from "antd";
+import { useEffect, useState } from "react";
 import Search from "antd/es/input/Search";
-
-//icons
-import { RightOutlined } from "@ant-design/icons";
-
+import dayjs from "dayjs";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useSearchParams } from "react-router-dom";
+import showConfirmDelete from "../../components/admin/common/ConfirmDelete.admin";
 
 function ListBookingHostPage() {
-	const listHotelHaveRoomBooking = [];
+	const {
+		register,
+		control,
+		handleSubmit,
+		formState: { errors },
+		getValues,
+		setValue,
+	} = useForm({
+		resolver: yupResolver(bookingRoomFormSchema),
+		defaultValues: {
+			phone: "",
+			customerName: "",
+		},
+	});
+
+	const [listHotelHaveRoomBooking, setListHotelHaveRoomBooking] = useState(
+		[]
+	);
+	const [totalPage, setTotalPage] = useState(0);
+	const [queryParams, setQueryParams] = useSearchParams();
+	const [isRender, setIsRender] = useState(false);
+	const [messageApi, contextHolder] = message.useMessage();
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [formData, setFormData] = useState({
-		title: "",
-		data: {
-			hotelId: "",
-			startDate: "",
-			endDate: "",
-			roomId: "",
-			numberRoom: 0,
-			roomEmpty: 0,
-		},
-		status: "",
-	});
+
+	useEffect(() => {
+		(async () => {
+			try {
+				const params = {
+					page: parseInt(queryParams.get("page")) || 1,
+					pageSize: 10,
+					searchQuery: queryParams.get("searchQuery") || "",
+				};
+				const {
+					metaData: { list, total },
+				} = await bookingRoomApi.getListForHost(params);
+				setListHotelHaveRoomBooking(list);
+				setTotalPage(total);
+			} catch (error) {
+				const { errorMessage } = handleError(error);
+				messageApi.error(errorMessage);
+			}
+		})();
+	}, [queryParams, messageApi, isRender]);
 
 	const columns = [
 		Table.EXPAND_COLUMN,
@@ -53,25 +96,12 @@ function ListBookingHostPage() {
 			key: "createdAt",
 		},
 	];
-	const expandIcon = ({ expanded, record, onExpand }) => {
-		return (
-			<span
-				onClick={(e) => {
-					onExpand(record, e);
-					e.stopPropagation();
-				}}
-			>
-				<RightOutlined
-					className='expand-icon'
-					style={{
-						transform: expanded ? "rotate(90deg)" : "",
-					}}
-				/>
-			</span>
-		);
-	};
 
 	const expandedRowRender = (record) => {
+		const renderColor = {
+			SYSTEM: ["geekblue", "Website"],
+			HOTEL: ["green", "Tại khách sạn"],
+		};
 		const columns = [
 			{
 				title: "STT",
@@ -83,34 +113,30 @@ function ListBookingHostPage() {
 			},
 			{
 				title: "Tên loại phòng",
-				dataIndex: "room",
-				key: "name",
-				render: (data) => data?.roomType?.name,
+				dataIndex: "roomType",
+				key: "roomType",
+				render: (data) => data?.name,
 			},
 			{
 				title: "Email khách hàng",
-				dataIndex: "customer",
-				key: "customer",
-				render: (data) => data?.email,
+				dataIndex: "email",
+				key: "email",
 			},
 			{
 				title: "Số lượng phòng",
-				dataIndex: "numberRoom",
-				key: "numberRoom",
+				dataIndex: "numRooms",
+				key: "numRooms",
 				align: "center",
 			},
 			{
 				title: "Đặt tại",
-				dataIndex: "status",
-				key: "status",
+				dataIndex: "orderBy",
+				key: "orderBy",
 				align: "center",
 				render: (data) => {
-					let color = data === "system" ? "geekblue" : "green";
-					let content =
-						data === "system" ? "Website" : "Tại khách sạn";
 					return (
-						<Tag align='center' color={color}>
-							{content}
+						<Tag align="center" color={renderColor[data]?.[0]}>
+							{renderColor[data]?.[1]}
 						</Tag>
 					);
 				},
@@ -120,25 +146,38 @@ function ListBookingHostPage() {
 				dataIndex: "checkInDate",
 				key: "checkInDate",
 				align: "center",
+				render: (data) =>
+					dayjs(data).format("dddd, DD/MM/YYYY, HH:mm:ss"),
 			},
 			{
 				title: "Ngày check out",
 				dataIndex: "checkOutDate",
 				key: "checkOutDate",
 				align: "center",
+				render: (data) =>
+					dayjs(data).format("dddd, DD/MM/YYYY, HH:mm:ss"),
 			},
 			{
 				title: "",
 				key: "action",
 				render: (_, record) => {
-					if (record.status === "system") {
+					if (record.orderBy === "SYSTEM") {
 						return "";
 					}
 
 					return (
-						<Space size='middle'>
-							<Button>Chỉnh sửa</Button>
-							<Button>Xóa</Button>
+						<Space size="middle">
+							<ButtonCore
+								ghost
+								danger
+								onClick={() =>
+									showConfirmDelete(() =>
+										handleDelete(record.id)
+									)
+								}
+							>
+								Xóa
+							</ButtonCore>
 						</Space>
 					);
 				},
@@ -146,34 +185,66 @@ function ListBookingHostPage() {
 		];
 		return (
 			<>
-				{record?.trackingRooms?.length > 0 ? (
+				{record?.bookingRooms?.length > 0 ? (
 					<Table
 						columns={columns}
-						dataSource={record?.trackingRooms}
+						dataSource={record?.bookingRooms}
 						pagination={false}
 					/>
 				) : (
 					<Empty />
 				)}
-				<Button
-					type='primary'
-					style={{ marginTop: "10px", float: "right" }}
-				>
-					Thêm
-				</Button>
 			</>
 		);
 	};
 
+	const handleOkModal = async (data) => {
+		try {
+			setIsModalOpen(false);
+			await bookingRoomApi.createForHost(data);
+			messageApi.open({
+				type: "success",
+				content: "Tạo dữ liệu thành công thành công",
+			});
+			setIsRender(!isRender);
+		} catch (error) {
+			const { errorMessage } = handleError(error);
+			messageApi.error(errorMessage);
+		}
+	};
+
+	const handleDelete = async (id) => {
+		try {
+			await bookingRoomApi.deleteForHost(id);
+			messageApi.open({
+				type: "success",
+				content: "Xóa dữ liệu thành công",
+			});
+			setIsRender(!isRender);
+		} catch (error) {
+			const { errorMessage } = handleError(error);
+			messageApi.error(errorMessage);
+		}
+	};
+	
 	return (
-		<Box radius={5} className='list-room-booked' direction='vertical'>
-			<Space className='list-room-booked__header' direction='horizontal'>
+		<Box radius={5} className="list-room-booked" direction="vertical">
+			{contextHolder}
+			<Space className="list-room-booked__header" direction="horizontal">
 				<Search
-					placeholder='Nhập tên khách sạn'
-					size='large'
+					placeholder="Nhập tên khách sạn"
+					size="large"
 					enterButton
 					style={{ width: "300px", marginRight: "10px" }}
 				/>
+				<ButtonCore
+					type="primary"
+					ghost
+					onClick={() => setIsModalOpen(true)}
+					size="large"
+				>
+					Thêm
+				</ButtonCore>
 			</Space>
 			<Table
 				columns={columns}
@@ -182,18 +253,41 @@ function ListBookingHostPage() {
 					key: item.id,
 				}))}
 				expandable={{
-					expandIcon,
+					expandIcon: expandIconTable,
 					expandedRowRender,
 				}}
 				pagination={false}
 			/>
-			<Pagination style={{ textAlign: "right", marginTop: "20px" }} />
+			<Pagination
+				style={{ textAlign: "right", marginTop: "20px" }}
+				current={queryParams.get("page") || 1}
+				total={totalPage}
+				onChange={(page) => {
+					setQueryParams({
+						page: parseInt(page),
+						searchQuery: queryParams.get("searchQuery") || "",
+					});
+				}}
+			/>
 			<Modal
-				title={formData.title}
+				title={"Tạo lịch booking cho khách sạn"}
 				open={isModalOpen}
 				onCancel={() => setIsModalOpen(false)}
+				onOk={handleSubmit(handleOkModal)}
+				styles={{
+					header: {
+						textAlign: "center",
+						textTransform: "uppercase",
+					},
+				}}
 			>
-				<div>Modal</div>
+				<FormBookingRoom
+					register={register}
+					errors={errors}
+					control={control}
+					getValues={getValues}
+					setValue={setValue}
+				/>
 			</Modal>
 		</Box>
 	);
