@@ -48,6 +48,10 @@ class HotelModel extends BaseModel {
                     type: DataTypes.FLOAT,
                     allowNull: true,
                 },
+                location: {
+                    type: DataTypes.JSON,
+                    allowNull: true,
+                },
             },
             sequelize,
             {
