@@ -19,7 +19,7 @@ function OverviewHostPage() {
 	useEffect(() => {
 		const { email, displayName, photoUrl, phone } = userInfo;
 		if (email && displayName && photoUrl && phone) setCurrentStep(1);
-	});
+	}, [userInfo]);
 	const navigate = useNavigate();
 
 	const handleUpdateProfile = () => {

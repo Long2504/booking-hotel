@@ -2,8 +2,9 @@
 import { vietNamDong } from "../../../utils/common.utils";
 import Box from "../../common/box.core";
 import ImageCore from "../../common/image.core";
+import ButtonCore from "../../common/button.core";
 
-function RoomItem({ data, linkToChekout, checkView = false }) {
+function RoomItem({ data, linkToCheckout, checkView = false }) {
 	return (
 		<Box className="hotel-detail-page__list-room__container__room">
 			<p className="hotel-detail-page__list-room__container__room__name">
@@ -95,10 +96,12 @@ function RoomItem({ data, linkToChekout, checkView = false }) {
 					{checkView ? (
 						""
 					) : (
-						<div className="hotel-detail-page__list-room__container__room__content__action">
-							<button onClick={() => linkToChekout()}>
-								Đặt ngay
-							</button>
+						<div
+							className="hotel-detail-page__list-room__container__room__content__action"
+							onClick={() => linkToCheckout(data)}
+							type="primary"
+						>
+							<ButtonCore type="primary">Đặt ngay</ButtonCore>
 						</div>
 					)}
 				</div>
