@@ -1,0 +1,19 @@
+.form-booking-room {
+    width: 100%;
+
+    &__input {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            margin: 15px 0px 8px 0px;
+            @include font(500, null, null, rgba(0, 0, 0, 0.8));
+        }
+
+        &__date {
+            height: 40px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    }
+}
