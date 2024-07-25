@@ -1,0 +1,32 @@
+@url_dev=http://localhost:3055/api/private/booking-room
+@clientId=532bbe03-49e5-4315-8487-6fcb99726896
+@Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MjUxNzk3LCJleHAiOjE3MTkyNTIwMTN9.AUJojs729u86-2OEcmyp9m7KC2uKd6C6W4qISLmWL6c
+
+
+#### get all
+GET {{url_dev}}/host HTTP/1.1
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
+
+### get room is available by hotel id for host
+GET  {{url_dev}}/host/room-available?hotelId=f39f5dcf-ad9a-4fa6-94b9-6393e8c2bbb4&startDate=2024-07-23&endDate=2024-07-24 HTTP/1.1
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
+
+###create booking room hotel
+POST {{url_dev}}/host HTTP/1.1
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
+
+{
+  "numRooms": 2,
+  "checkOutDate": "2024-08-15T17:00:00.000Z",
+  "checkInDate": "2024-08-12T17:00:00.000Z",
+  "roomId": "23295964-3d86-4b21-a2b6-244a58689c2d",
+  "phone": "",
+  "customerName": "test",
+  "email": "devjs2504@gmail.com"
+}
