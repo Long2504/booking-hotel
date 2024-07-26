@@ -47,6 +47,23 @@ class BookingRoomController {
 			metaData: await BookingRoomService.deleteBookingRoomForHost(id),
 		}).send(res);
 	};
+
+	static getRoomAvailableHotelsForHost = async (req, res) => {
+		const options = {
+			checkInDate: req.query?.checkInDate,
+			checkOutDate: req.query?.checkOutDate,
+			searchQuery: req.query?.searchQuery,
+			page: req.query?.page ? parseInt(req.query?.page) : 1,
+			pageSize: req.query?.pageSize ? parseInt(req.query?.pageSize) : 10,
+		};
+		new SuccessResponse({
+			message: "Get room available hotels success",
+			metaData:
+				await BookingRoomService.getRoomAvailableHotelsForHost(
+					options
+				),
+		}).send(res);
+	};
 }
 
 export default BookingRoomController;

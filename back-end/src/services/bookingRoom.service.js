@@ -8,6 +8,7 @@ import RoomsTypeModel from "../models/roomType.model.js";
 import DbMySql from "../dbs/init.mysqldb.js";
 import { ORDER_BY } from "../models/enum.model.js";
 import hotelRoomService from "./hotelRoom.service.js";
+import HotelService from "./hotel.service.js";
 
 class BookingRoomService extends BaseService {
 	async getAllBookingRoomForHost(options) {
@@ -210,6 +211,83 @@ class BookingRoomService extends BaseService {
 				orderBy: ORDER_BY.HOTEL,
 			},
 		});
+	}
+
+	async getRoomAvailableHotelsForHost(options) {
+		let { checkInDate, checkOutDate } = options;
+		const whereCondition = {};
+		if (options.searchQuery) {
+			whereCondition.name = {
+				[Op.like]: `%${options.searchQuery}%`,
+			};
+		}
+		checkInDate = addHoursToDate(checkInDate, 12);
+		checkOutDate = addHoursToDate(checkOutDate, 12);
+		const { rows, count } = await HotelService.getAndCountAll({
+			where: whereCondition,
+			attributes: ["id", "name", "address", "createdAt"],
+			limit: options.pageSize,
+			offset: (options.page - 1) * options.pageSize,
+			include: [
+				{
+					model: HotelRoomModel,
+					as: "hotelRooms",
+					attributes: [
+						"id",
+						"numBedrooms",
+						"occupancy",
+						"area",
+						"price",
+						"numBathrooms",
+					],
+					include: [
+						{
+							required: false,
+							model: BookingRoomModel,
+							as: "bookingRooms",
+							attributes: ["numRooms", "bookingDate"],
+							where: {
+								checkInDate: {
+									[Op.lt]: checkOutDate,
+								},
+								checkOutDate: {
+									[Op.gt]: checkInDate,
+								},
+							},
+						},
+						{
+							model: RoomsTypeModel,
+							as: "roomType",
+							attributes: ["id", "name"],
+						},
+					],
+				},
+			],
+			distinct: true,
+		});
+		const roomAvailableHotels = rows.map((hotel) => {
+			const hotelRooms = hotel.hotelRooms.map((room) => {
+				if (room.bookingRooms.length === 0) {
+					return {
+						id: room.id,
+						numBedrooms: room.numBedrooms,
+						occupancy: room.occupancy,
+						name: room.roomType.name,
+						area: room.area,
+						price: room.price,
+						numBathrooms: room.numBathrooms,
+					};
+				}
+			});
+			return {
+				id: hotel.id,
+				name: hotel.name,
+				address: hotel.address,
+				createdAt: hotel.createdAt,
+				hotelRooms: hotelRooms,
+			};
+		});
+		return { list: roomAvailableHotels, total: count };
 	}
 }
 
