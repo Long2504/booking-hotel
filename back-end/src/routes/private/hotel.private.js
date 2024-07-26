@@ -11,5 +11,6 @@ const router = express.Router();
 router.use(authentication);
 router.post("/post", asyncHandler(HotelController.post));
 router.get("/host", asyncHandler(HotelController.getAllForHost));
+router.get("/admin", asyncHandler(HotelController.getAllForAdmin));
 
 export default router;

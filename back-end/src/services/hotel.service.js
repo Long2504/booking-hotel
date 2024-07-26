@@ -13,6 +13,7 @@ import HotelRoomService from "./hotelRoom.service.js";
 import subExtensionService from "./subExtension.service.js";
 import bookingRoomService from "./bookingRoom.service.js";
 import DbMySql from "../dbs/init.mysqldb.js";
+import UserModel from "../models/user.model.js";
 
 class HotelService extends BaseService {
 	async initHotel(listHotel) {
@@ -274,6 +275,42 @@ class HotelService extends BaseService {
 				"star",
 				"description",
 				"priceAverage",
+			],
+		};
+		const { count, rows } = await this.getAndCountAll(options);
+		return {
+			list: rows,
+			total: count,
+		};
+	}
+
+	async getAllForAdmin(options) {
+		const whereCondition = {};
+		whereCondition.idPost = true;
+		if (options.searchQuery) {
+			whereCondition.name = {
+				[Op.like]: `%${options.searchQuery}%`,
+			};
+		}
+		options = {
+			where: whereCondition,
+			limit: options.pageSize,
+			offset: (options.page - 1) * options.pageSize,
+			attributes: [
+				"id",
+				"name",
+				"address",
+				"star",
+				"description",
+				"priceAverage",
+				"createdAt",
+			],
+			include: [
+				{
+					model: UserModel,
+					as: "host",
+					attributes: ["id", "displayName"],
+				},
 			],
 		};
 		const { count, rows } = await this.getAndCountAll(options);

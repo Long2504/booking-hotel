@@ -59,6 +59,18 @@ class HotelController {
 			metaData: await HotelService.getAllForHost(userId, options),
 		}).send(res);
 	};
+
+	static getAllForAdmin = async (req, res) => {
+		const options = {
+			searchQuery: req.query?.searchQuery,
+			page: req.query?.page ? parseInt(req.query?.page) : 1,
+			pageSize: req.query?.pageSize ? parseInt(req.query?.pageSize) : 10,
+		};
+		new SuccessResponse({
+			message: "Get all hotel for admin success",
+			metaData: await HotelService.getAllForAdmin(options),
+		}).send(res);
+	};
 }
 
 export default HotelController;

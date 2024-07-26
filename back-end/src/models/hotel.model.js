@@ -68,6 +68,10 @@ class HotelModel extends BaseModel {
             foreignKey: "hotelId",
             as: "hotelRooms",
         });
+        this.belongsTo(UserModel, {
+            foreignKey: "hostId",
+            as: "host",
+        });
     }
 }
 
