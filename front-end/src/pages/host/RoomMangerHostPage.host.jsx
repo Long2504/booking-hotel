@@ -1,48 +1,59 @@
 //files
 import Box from "../../components/common/box.core";
+import bookingRoomApi from "../../services/modules/bookingRoom.service";
+import { expandIconTable } from "../../components/common/expandIcon.core";
+import { handleError, vietNamDong } from "../../utils/common.utils";
 
 //libs
-import { Empty, Space, Table, DatePicker, Pagination } from "antd";
-import { useState } from "react";
-
-//icons
-import { RightOutlined } from "@ant-design/icons";
+import { Empty, Space, Table, DatePicker, Pagination, message } from "antd";
+import { useEffect, useState } from "react";
+import dayjs from "dayjs";
+import { useSearchParams } from "react-router-dom";
 
 const { RangePicker } = DatePicker;
 function RoomManageHostPage() {
-	const listHotelHaveRoomEmpty = [];
-	const [dates, setDates] = useState([]);
-	const [hackValue, setHackValue] = useState();
-	const [value, setValue] = useState([]);
+	const [listHotelHaveRoomEmpty, setListHotelHaveRoomEmpty] = useState([]);
+	const [totalPage, setTotalPage] = useState(0);
+	const [queryParams, setQueryParams] = useSearchParams();
+	const [messageApi, contextHolder] = message.useMessage();
 
-	const onChangeDate = (val) => {
-		if (val) {
-			setValue(val);
-		} else {
-			setValue("");
-		}
-	};
-
-	const onCalendarChangeCustom = (val) => {
-		setDates(val);
-	};
+	useEffect(() => {
+		(async () => {
+			if (
+				!queryParams.get("checkInDate") ||
+				!queryParams.get("checkOutDate")
+			) {
+				messageApi.open({
+					type: "warning",
+					content: "Vui lòng chọn ngày checkIn và ngày checkOut ",
+				});
+				return;
+			}
+			const params = {
+				page: parseInt(queryParams.get("page") || 1),
+				pageSize: 10,
+				checkInDate: queryParams.get("checkInDate"),
+				checkOutDate: queryParams.get("checkOutDate"),
+			};
+			try {
+				const {
+					metaData: { list, total },
+				} = await bookingRoomApi.getRoomAvailableHotelsForHost(params);
+				setListHotelHaveRoomEmpty(list);
+				setTotalPage(total);
+				messageApi.open({
+					type: "success",
+					content: "Lấy dữ liệu thành công thành công",
+				});
+			} catch (error) {
+				const { errorMessage } = handleError(error);
+				messageApi.error(errorMessage);
+			}
+		})();
+	}, [queryParams, setQueryParams, messageApi]);
 
 	const disabledDate = (current) => {
-		if (!dates || dates.length === 0) {
-			return false;
-		}
-		const tooLate = dates[0] && current.diff(dates[0], "days") > 29;
-		const tooEarly = dates[1] && dates[1].diff(current, "days") > 29;
-		return tooEarly || tooLate;
-	};
-
-	const onOpenChange = (open) => {
-		if (open) {
-			setHackValue([]);
-			setDates([]);
-		} else {
-			setHackValue(undefined);
-		}
+		return current && current < dayjs().endOf("day");
 	};
 
 	const columns = [
@@ -61,12 +72,12 @@ function RoomManageHostPage() {
 		},
 		{
 			title: "Tổng số phòng trống",
-			dataIndex: "rooms",
-			key: "rooms",
+			dataIndex: "hotelRooms",
+			key: "hotelRooms",
 			align: "center",
 			render: (data) => {
 				return data.reduce((acc, item) => {
-					return acc + item?.number;
+					return acc + item?.numBedrooms;
 				}, 0);
 			},
 		},
@@ -81,23 +92,6 @@ function RoomManageHostPage() {
 			key: "createdAt",
 		},
 	];
-	const expandIcon = ({ expanded, record, onExpand }) => {
-		return (
-			<span
-				onClick={(e) => {
-					onExpand(record, e);
-					e.stopPropagation();
-				}}
-			>
-				<RightOutlined
-					className='expand-icon'
-					style={{
-						transform: expanded ? "rotate(90deg)" : "",
-					}}
-				/>
-			</span>
-		);
-	};
 
 	const expandedRowRender = (record) => {
 		const columns = [
@@ -111,9 +105,8 @@ function RoomManageHostPage() {
 			},
 			{
 				title: "Tên loại phòng",
-				dataIndex: "roomType",
+				dataIndex: "name",
 				key: "name",
-				render: (data) => data?.name,
 			},
 			{
 				title: "Diện tích",
@@ -123,17 +116,14 @@ function RoomManageHostPage() {
 				render: (data) => `${data} m²`,
 			},
 			{
-				title: "Giường",
-				dataIndex: "beds",
-				key: "beds",
-				render: (data) => {
-					return data?.map((item) => item?.bedType?.name).join(", ");
-				},
+				title: "Sức chứa",
+				dataIndex: "occupancy",
+				key: "occupancy",
 			},
 			{
 				title: "Số lượng phòng còn lại",
-				dataIndex: "number",
-				key: "number",
+				dataIndex: "numBedrooms",
+				key: "numBedrooms",
 				align: "center",
 			},
 			{
@@ -141,20 +131,21 @@ function RoomManageHostPage() {
 				dataIndex: "price",
 				key: "price",
 				align: "center",
+				render: (data) => vietNamDong(data),
 			},
 			{
 				title: "Phòng tắm",
-				dataIndex: "bathrooms",
-				key: "bathrooms",
+				dataIndex: "numBathrooms",
+				key: "numBathrooms",
 				align: "center",
 			},
 		];
 		return (
 			<>
-				{record?.rooms?.length > 0 ? (
+				{record?.hotelRooms?.length > 0 ? (
 					<Table
 						columns={columns}
-						dataSource={record?.rooms}
+						dataSource={record?.hotelRooms}
 						pagination={false}
 					/>
 				) : (
@@ -164,20 +155,56 @@ function RoomManageHostPage() {
 		);
 	};
 
+	const onChangeDate = async (val) => {
+		if (val === null) {
+			return;
+		}
+		const checkInDate = dayjs(val[0]).format("YYYY-MM-DD");
+		const checkOutDate = dayjs(val[1]).format("YYYY-MM-DD");
+		try {
+			const params = {
+				page: 1,
+				pageSize: 10,
+				checkInDate: checkInDate,
+				checkOutDate: checkOutDate,
+			};
+			setQueryParams(params);
+			const {
+				metaData: { list, total },
+			} = await bookingRoomApi.getRoomAvailableHotelsForHost(params);
+			setListHotelHaveRoomEmpty(list);
+			setTotalPage(total);
+			messageApi.open({
+				type: "success",
+				content: "Lấy dữ liệu thành công thành công",
+			});
+		} catch (error) {
+			const { errorMessage } = handleError(error);
+			messageApi.error(errorMessage);
+		}
+	};
+
+	const onchangePagination = (page) => {
+		const params = {
+			page: page || 1,
+			pageSize: 10,
+			checkInDate: queryParams.get("checkInDate"),
+			checkOutDate: queryParams.get("checkOutDate"),
+		};
+		setQueryParams(params);
+	};
+
 	return (
-		<Box radius={5} className='room-manager-host' direction='vertical'>
-			<Space className='room-manager-host__header' direction='horizontal'>
+		<Box radius={5} className="room-manager-host" direction="vertical">
+			{contextHolder}
+			<Space className="room-manager-host__header" direction="horizontal">
 				<label>Chọn ngày để xem số lượng phòng còn trống</label>
 				<RangePicker
-					className='form-manager-room__input__date'
-					value={hackValue || value}
-					onChange={onChangeDate}
+					className="form-manager-room__input__date"
 					disabledDate={disabledDate}
-					onCalendarChange={onCalendarChangeCustom}
-					onOpenChange={onOpenChange}
-					picker='date'
-					format='dddd, DD/MM/YYYY'
+					format="dddd, DD/MM/YYYY"
 					placeholder={["Ngày bắt đầu", "Ngày kết thúc"]}
+					onChange={onChangeDate}
 				/>
 			</Space>
 			<Table
@@ -187,12 +214,17 @@ function RoomManageHostPage() {
 					key: item.id,
 				}))}
 				expandable={{
-					expandIcon,
+					expandIcon: expandIconTable,
 					expandedRowRender,
 				}}
 				pagination={false}
 			/>
-			<Pagination style={{ textAlign: "right", marginTop: "20px" }} />
+			<Pagination
+				style={{ textAlign: "right", marginTop: "20px" }}
+				current={queryParams.get("page") || 1}
+				total={totalPage}
+				onChange={onchangePagination}
+			/>
 		</Box>
 	);
 }
