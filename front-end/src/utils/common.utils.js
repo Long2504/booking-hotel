@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { districts, provinces, wards } from "./dataAddress.utils";
 
 function generateRoute(AppRoutes, Route) {
@@ -45,7 +46,7 @@ function handleError(error) {
 }
 
 function generateAddress(provinceCode, districtCode, wardCode, street) {
-	if(!provinceCode || !districtCode || !wardCode || !street) return "";
+	if (!provinceCode || !districtCode || !wardCode || !street) return "";
 	const province = provinces.find(
 		(item) => item.value === provinceCode
 	).label;
@@ -106,6 +107,103 @@ function base64ToFile(base64String, fileName, mimeType) {
 	return file;
 }
 
+const renderDaysOfWeek = () => {
+	const startDate = dayjs().startOf("week").add(1, "days");
+	const daysOfWeek = [
+		"Chủ nhật",
+		"Thứ hai",
+		"Thứ ba",
+		"Thứ tư",
+		"Thứ năm",
+		"Thứ sáu",
+		"Thứ bảy",
+	];
+	const data = [];
+
+	for (let i = 0; i < 7; i++) {
+		const currentDate = startDate.clone().add(i, "days");
+		const dayOfWeek = new Date(currentDate.format("YYYY-MM-DD")).getDay();
+		data.push({
+			date: currentDate.format("YYYY-MM-DD"),
+			day: daysOfWeek[dayOfWeek],
+		});
+	}
+	return data;
+};
+
+const renderDaysOfMonth = () => {
+	const startDate = dayjs().startOf("month");
+	const daysOfMonth = [];
+	for (let i = 0; i < 31; i++) {
+		const currentDate = startDate.clone().add(i, "days");
+		daysOfMonth.push({ date: currentDate.format("YYYY-MM-DD") });
+	}
+	return daysOfMonth;
+};
+
+function handleBookingOfWeek(dataBookingOfWeek) {
+	const data = renderDaysOfWeek();
+	const result = data.map((item) => {
+		const index = dataBookingOfWeek?.find(
+			(booking) => booking?.date === item?.date
+		);
+		if (index) {
+			return {
+				...item,
+				booking: index?.bookings,
+			};
+		} else {
+			return {
+				...item,
+				booking: 0,
+			};
+		}
+	});
+	return result;
+}
+
+function handleRevenueOfWeek(dataRevenueOfWeek) {
+	const data = renderDaysOfWeek();
+	const result = data.map((item) => {
+		const index = dataRevenueOfWeek?.find(
+			(revenue) => revenue?.date === item?.date
+		);
+		if (index) {
+			return {
+				...item,
+				totalPrice: index?.totalPrice,
+			};
+		} else {
+			return {
+				...item,
+				totalPrice: 0,
+			};
+		}
+	});
+	return result;
+}
+
+function handleRevenueOfMonth(dataRevenueOfMonth) {
+	const data = renderDaysOfMonth();
+	const result = data.map((item) => {
+		const index = dataRevenueOfMonth?.find(
+			(revenue) => revenue?.date === item?.date
+		);
+		if (index) {
+			return {
+				...item,
+				totalPrice: index?.totalPrice,
+			};
+		} else {
+			return {
+				...item,
+				totalPrice: 0,
+			};
+		}
+	});
+	return result;
+}
+
 export {
 	generateRoute,
 	vietNamDong,
@@ -115,4 +213,7 @@ export {
 	getBase64,
 	fileToBase64,
 	base64ToFile,
+	handleBookingOfWeek,
+	handleRevenueOfWeek,
+	handleRevenueOfMonth,
 };
