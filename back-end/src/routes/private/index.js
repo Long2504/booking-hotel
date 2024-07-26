@@ -8,6 +8,7 @@ import routerRoomType from "./roomType.private.js";
 import routerHotel from "./hotel.private.js";
 import routerMedia from "./media.private.js";
 import routerBookingRoom from "./bookingRoom.private.js";
+import routerStatistic from "./statistics.private.js";
 const router = express.Router();
 
 router.use("/auth", routerAuth);
@@ -18,5 +19,6 @@ router.use("/room-type", routerRoomType);
 router.use("/hotel", routerHotel);
 router.use("/media", routerMedia);
 router.use("/booking-room", routerBookingRoom);
+router.use("/statistics", routerStatistic);
 
 export default router;
