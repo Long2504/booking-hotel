@@ -1,0 +1,11 @@
+@url_dev=http://localhost:3055/api/private/statistics
+@clientId=532bbe03-49e5-4315-8487-6fcb99726896
+@Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzJiYmUwMy00OWU1LTQzMTUtODQ4Ny02ZmNiOTk3MjY4OTYiLCJlbWFpbCI6ImxvbmdAZ21haWwuY29tIiwiaWF0IjoxNzE5MjUxNzk3LCJleHAiOjE3MTkyNTIwMTN9.AUJojs729u86-2OEcmyp9m7KC2uKd6C6W4qISLmWL6c
+
+
+#### get statistics dashboard admin
+GET {{url_dev}}/dashboard/admin HTTP/1.1
+Content-Type: application/json
+x-client-id: {{clientId}}
+Authorization:{{Authorization}}
+
