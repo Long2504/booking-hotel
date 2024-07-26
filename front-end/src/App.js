@@ -1,12 +1,29 @@
 //files
 import ClientLayout from "./layouts/ClientLayout";
 import AdminLayout from "./layouts/AdminLayout";
+import HostLayout from "./layouts/HostLayout";
 
 //libs
 import { Routes, Route } from "react-router-dom";
 import { ConfigProvider } from "antd";
-import HostLayout from "./layouts/HostLayout";
+import {
+	Chart as ChartJS,
+	ArcElement,
+	Tooltip,
+	Legend,
+	CategoryScale,
+	LinearScale,
+	BarElement,
+} from "chart.js";
 
+ChartJS.register(
+	ArcElement,
+	Tooltip,
+	Legend,
+	CategoryScale,
+	LinearScale,
+	BarElement
+);
 function App() {
 	return (
 		<ConfigProvider
@@ -17,11 +34,11 @@ function App() {
 				},
 			}}
 		>
-			<div className='Booking-hotel'>
+			<div className="Booking-hotel">
 				<Routes>
-					<Route path='/*' element={<ClientLayout />} />
-					<Route path='/admin/*' element={<AdminLayout />} />
-					<Route path='/host/*' element={<HostLayout />} />
+					<Route path="/*" element={<ClientLayout />} />
+					<Route path="/admin/*" element={<AdminLayout />} />
+					<Route path="/host/*" element={<HostLayout />} />
 				</Routes>
 			</div>
 		</ConfigProvider>
