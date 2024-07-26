@@ -1,0 +1,95 @@
+.dashboard-total-booking {
+    width: 49%;
+    padding: 20px;
+
+    &__body {
+        width: 100%;
+        margin-top: 10px;
+        @include flex(center, space-between);
+
+        &__left {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__right {
+            width: 65%;
+        }
+    }
+}
+
+.revenue-admin {
+    width: 49%;
+    padding: 20px;
+
+    &__body {
+        width: 100%;
+        margin-top: 10px;
+        @include flex(center, space-between);
+
+        &__left {
+            width: 35%;
+        }
+
+        &__right {
+            width: 65%;
+        }
+    }
+}
+
+.revenue-detail {
+    width: 60%;
+    padding: 20px;
+
+    &__title {
+
+        @include font(600, 18px, null, null);
+        margin: 10px 0px;
+    }
+
+    &__content {
+        width: 100%;
+        margin-top: 15px;
+
+        &__top {
+            @include flex(center, space-around);
+
+            &__item {
+                &__title {
+                    @include font(500, 14px, null, #8094ae);
+                }
+
+                &__percent-rise {
+                    color: #1ee0ac
+                }
+
+                &__percent-fall {
+                    color: #e85347;
+                }
+            }
+        }
+
+        &__center {
+            height: 400px;
+            @include flex(null, center);
+            margin-top: 20px
+        }
+    }
+
+}
+
+.dashboard-new-hotel {
+    width: 38%;
+    padding: 20px;
+
+    &__title {
+        font-size: 16px;
+        margin: 10px 0px 20px 0px;
+        @include flex(center, space-between);
+
+        a {
+            color: #1677ff;
+        }
+    }
+}
