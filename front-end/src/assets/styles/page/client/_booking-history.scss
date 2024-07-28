@@ -1,0 +1,121 @@
+.booking-history {
+    width: 100%;
+    min-height: 700px;
+    @include flex(null, center);
+    background-color: rgb(248, 247, 249);
+
+    &__nothing {
+        margin: auto;
+        @include flex(center, null);
+        flex-direction: column;
+
+        h3 {
+            margin: 80px 0px 60px 0px;
+            @include font(null,28px,null,rgba(0, 0, 0, 0.8))
+        }
+
+        h4 {
+            font-size: 25px;
+        }
+
+        p {
+            text-align: center;
+            @include font(600,20px,null,rgba(0, 0, 0, 0.8));
+            margin-top: 50px;
+        }
+
+        &__btn {
+            @include size(200px,40px);
+            @include font(null,16px,null,white);
+            letter-spacing: 0.5px;
+            margin: 60px 0px 40px 0px;
+            background-color: rgb(60, 100, 250);
+        }
+    }
+
+    &__content {
+        width: 70%;
+
+        h2 {
+            margin: 20px 0px 40px 0px;
+        }
+
+        &__list {
+            width: 100%;
+            @include flex(center,null);
+            flex-direction: column;
+
+            &__item {
+                width: 80%;
+                background: white;
+                box-shadow: -1px 1px 15px #b5b5b5, -10px -1px 10px #ffffff;
+                display: flex;
+                margin-bottom: 20px;
+                cursor: pointer;
+
+                img {
+                    width: 30%;
+                    max-height: 300px;
+                    object-fit: cover;
+                }
+
+                &__right {
+                    @include size(70%,300px);
+                    display: flex;
+                    flex-direction: column;
+                    padding: 20px;
+
+                    h3 {
+                        font-size: 20px;
+                    }
+
+                    &__address {
+                        color: $blue-client;
+                        span {
+
+                            cursor: pointer;
+                            @include text-ellipsis();
+                        }
+                    }
+
+                    &__quantity {
+                        @include font(500,18px,null,null);
+                    }
+
+                    &__date {
+                        color: $blue-client;
+                        @include flex(center, space-between);
+
+                        span {
+                            &:last-child {
+                                color: red;
+                            }
+                        }
+                    }
+
+                    &__booking-on {
+                        @include flex(center,null);
+                        @include font(500,14px,null,rgb(69,170,37))
+                    }
+
+                    &__price-room {
+                        @include flex(center, space-between);
+                        @include font(500,18px,null,null);
+
+                        span {
+                            &:last-child {
+                                margin-left: 40px;
+                                color: red;
+                            }
+                        }
+                    }
+
+                    &__total-price {
+                        @include flex(center, space-between);
+                        @include font(500,35px,null,red)
+                    }
+                }
+            }
+        }
+    }
+}
