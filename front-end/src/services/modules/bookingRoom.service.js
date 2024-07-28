@@ -7,6 +7,7 @@ const bookingRoomEndpoint = {
 	getRoomsIsAvailableByHotelIdForHost: "booking-room/host/room-available",
 	deleteForHost: "booking-room/host",
 	getRoomAvailableHotelsForHost: "booking-room/host/room-available-hotels",
+	getListForClient: "booking-room/client",
 };
 
 const bookingRoomApi = {
@@ -38,6 +39,11 @@ const bookingRoomApi = {
 			privateApi.get(bookingRoomEndpoint.getRoomAvailableHotelsForHost, {
 				params,
 			})
+		);
+	},
+	getListForClient: async (params) => {
+		return await handleApiCall(() =>
+			privateApi.get(bookingRoomEndpoint.getListForClient, { params })
 		);
 	},
 };

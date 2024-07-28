@@ -1,3 +1,4 @@
+import BookingHistory from "../pages/client/BookingHistory.client";
 import CheckoutPage from "../pages/client/CheckoutPage.client";
 import DashboardPage from "../pages/client/DashboardPage.client";
 import HotelDetailPage from "../pages/client/HotelDetailPage.client";
@@ -21,6 +22,10 @@ const routesClient = [
 	{
 		path: "checkout/:id",
 		element: <CheckoutPage />,
+	},
+	{
+		path: "/booking-history",
+		element: <BookingHistory />,
 	},
 	{
 		path: "/signin",
