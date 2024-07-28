@@ -58,10 +58,25 @@ class BookingRoomController {
 		};
 		new SuccessResponse({
 			message: "Get room available hotels success",
-			metaData:
-				await BookingRoomService.getRoomAvailableHotelsForHost(
-					options
-				),
+			metaData: await BookingRoomService.getRoomAvailableHotelsForHost(
+				options
+			),
+		}).send(res);
+	};
+
+	static getAllForClient = async (req, res) => {
+		const options = {
+			searchQuery: req.query?.searchQuery,
+			page: req.query?.page ? parseInt(req.query?.page) : 1,
+			pageSize: req.query?.pageSize ? parseInt(req.query?.pageSize) : 10,
+		};
+		const { userId } = req.keyStore;
+		new SuccessResponse({
+			message: "Get all booking success",
+			metaData: await BookingRoomService.getAllBookingForClient(
+				userId,
+				options
+			),
 		}).send(res);
 	};
 }

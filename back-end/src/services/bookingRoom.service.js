@@ -9,6 +9,7 @@ import DbMySql from "../dbs/init.mysqldb.js";
 import { ORDER_BY } from "../models/enum.model.js";
 import hotelRoomService from "./hotelRoom.service.js";
 import HotelService from "./hotel.service.js";
+import OrderModel from "../models/order.model.js";
 
 class BookingRoomService extends BaseService {
 	async getAllBookingRoomForHost(options) {
@@ -288,6 +289,56 @@ class BookingRoomService extends BaseService {
 			};
 		});
 		return { list: roomAvailableHotels, total: count };
+	}
+
+	async getAllBookingForClient(idClient, options) {
+		const whereCondition = {};
+		whereCondition.orderBy = ORDER_BY.SYSTEM;
+		if (options.searchQuery) {
+			whereCondition.name = {
+				[Op.like]: `%${options.searchQuery}%`,
+			};
+		}
+		const { rows, count } = await this.getAndCountAll({
+			where: whereCondition,
+			limit: options.pageSize,
+			offset: (options.page - 1) * options.pageSize,
+			attributes: [
+				"id",
+				"checkInDate",
+				"checkOutDate",
+				"numRooms",
+				"bookingDate",
+				"email",
+			],
+			include: [
+				{
+					model: HotelRoomModel,
+					as: "hotelRoom",
+					attributes: ["id", "numBedrooms", "occupancy", "price"],
+					include: [
+						{
+							model: RoomsTypeModel,
+							as: "roomType",
+							attributes: ["id", "name"],
+						},
+						DbMySql.sequelize.literal(`(
+                    SELECT id,name,JSON_EXTRACT(images) as 'image' from hotels
+                )`),
+						"hotel",
+					],
+				},
+				{
+					model: OrderModel,
+					as: "order",
+					attributes: ["id", "totalPrice", "paymentDate"],
+				},
+			],
+			distinct: true,
+			raw: true,
+		});
+
+		return { list: rows, total: count };
 	}
 }
 

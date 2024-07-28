@@ -2,6 +2,7 @@ import { DataTypes } from "sequelize";
 import BaseModel from "./base.model.js";
 import HotelRoomModel from "./hotelRoom.model.js";
 import { ORDER_BY } from "./enum.model.js";
+import OrderModel from "./order.model.js";
 
 const TABLE_NAME = "booking_rooms";
 
@@ -67,6 +68,10 @@ class BookingRoomModel extends BaseModel {
 		this.belongsTo(HotelRoomModel, {
 			foreignKey: "roomId",
 			as: "hotelRoom",
+		});
+		this.hasOne(OrderModel, {
+			foreignKey: "bookingRoomId",
+			as: "order",
 		});
 	}
 }
