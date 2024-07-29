@@ -3,6 +3,7 @@ import handleAsyncActions from "./common.redux";
 import authApi, {
 	handleRefreshAccessTokenFulfilled,
 	handleSigninFulfilled,
+	handleSignOutFulfilled,
 } from "../action/authAction.redux";
 
 //libs
@@ -29,6 +30,7 @@ const authSlice = createSlice({
 			authApi.signInByGoogle,
 			handleSigninFulfilled
 		);
+		handleAsyncActions(builder, authApi.signOut, handleSignOutFulfilled);
 	},
 });
 

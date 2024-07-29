@@ -1,6 +1,7 @@
 //files
+import privateApi from "../../services/api/apiPrivate.service";
 import publicApi from "../../services/api/apiPublic.service";
-import { setUserInfo } from "../../utils/localStorage.utils";
+import { removeUserInfo, setUserInfo } from "../../utils/localStorage.utils";
 
 //libs
 import { createAsyncThunk } from "@reduxjs/toolkit";
@@ -10,6 +11,7 @@ const authEndpoints = {
 	signin: "auth/sign-in",
 	signinByGoogle: "auth/sign-in-by-google",
 	refreshAccessToken: "auth/access-token",
+	signOut: "auth/sign-out",
 };
 
 const authApi = {
@@ -44,6 +46,10 @@ const authApi = {
 			return response;
 		}
 	),
+	signOut: createAsyncThunk("auth/signout", async () => {
+		const response = await privateApi.post(authEndpoints.signOut);
+		return response;
+	}),
 };
 
 const handleSigninFulfilled = (state, action) => {
@@ -65,5 +71,17 @@ const handleRefreshAccessTokenFulfilled = (state, action) => {
 	state.user = user;
 };
 
-export { handleSigninFulfilled, handleRefreshAccessTokenFulfilled };
+const handleSignOutFulfilled = (state) => {
+	state.accessToken = null;
+	state.isAuthenticated = false;
+	state.user = null;
+	Cookies.remove("refreshToken");
+	removeUserInfo();
+};
+
+export {
+	handleSigninFulfilled,
+	handleRefreshAccessTokenFulfilled,
+	handleSignOutFulfilled,
+};
 export default authApi;
