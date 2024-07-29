@@ -44,6 +44,15 @@ function removeOrderId() {
 	localStorage.removeItem("orderId");
 }
 
+function setIsAdmin(isAdmin) {
+	localStorage.setItem("isAdmin", JSON.stringify(isAdmin));
+}
+
+function getIsAdmin() {
+	const isAdmin = localStorage.getItem("isAdmin");
+	return isAdmin && isAdmin !== "undefined" ? JSON.parse(isAdmin) : null;
+}
+
 export {
 	setUserInfo,
 	getUserInfo,
@@ -56,4 +65,6 @@ export {
 	setOrderId,
 	getOrderId,
 	removeOrderId,
+	setIsAdmin,
+	getIsAdmin,
 };
