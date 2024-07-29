@@ -1,11 +1,14 @@
 //files
 import { logoMain } from "../../../assets/images/index.image";
 import { getUserInfo } from "../../../utils/localStorage.utils";
+import authApi from "../../../redux/action/authAction.redux";
+import { handleError } from "../../../utils/common.utils";
 
 //libs
 import { Link, useNavigate } from "react-router-dom";
 import { Header } from "antd/es/layout/layout";
-import { Avatar, Button, Dropdown, Space } from "antd";
+import { Avatar, Button, Dropdown, message, Space } from "antd";
+import { useDispatch } from "react-redux";
 
 //icons
 import { LuUser2 } from "react-icons/lu";
@@ -13,9 +16,28 @@ import { FaSortDown } from "react-icons/fa6";
 
 
 function HeaderClient() {
-
 	const userInfo = getUserInfo();
 	const navigate = useNavigate();
+
+	const dispatch = useDispatch();
+	const [messageApi, contextHolder] = message.useMessage();
+	const handleLogout = async () => {
+		try {
+			await dispatch(authApi.signOut()).unwrap();
+			messageApi.open({
+				type: "success",
+				content: "Đăng xuất thành công!",
+			})
+			navigate("/");
+		} catch (error) {
+			const { errorMessage } = handleError(error);
+			messageApi.open({
+				type: "error",
+				content: errorMessage,
+			});
+		}
+	};
+
 	const itemsDropdown = [
 		{
 			key: "1",
@@ -38,11 +60,12 @@ function HeaderClient() {
 		{
 			key: "4",
 			label: "Thoát",
-			onClick: () => {},
+			onClick: () => handleLogout(),
 		},
 	];
 	return (
 		<Header className="header-client">
+			{contextHolder}
 			<Link to="/">
 				<div className="header-client__left">
 					<img
