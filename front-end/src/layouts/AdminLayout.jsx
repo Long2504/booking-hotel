@@ -13,12 +13,26 @@ import { Routes, useLocation, Route, Navigate } from "react-router-dom";
 
 //icons
 import { IoHomeOutline } from "react-icons/io5";
+import SigninAdmin from "../pages/admin/SigninPage.admin";
+import { getIsAdmin } from "../utils/localStorage.utils";
 
 const { Content } = Layout;
 
 function AdminLayout() {
 	const [collapsed, setCollapsed] = useState(false);
 	const route = useLocation().pathname.split("/");
+	const check = getIsAdmin();
+	if (!check) {
+		return (
+			<Routes>
+				<Route path="/signin/*" element={<SigninAdmin />} />
+				<Route
+					element={<Navigate to="/admin/signin" replace />}
+					path="*"
+				></Route>
+			</Routes>
+		);
+	}
 	return (
 		<Layout style={{ minHeight: "100vh" }} hasSider={true}>
 			<SiderAdmin collapsed={collapsed} />
@@ -35,7 +49,7 @@ function AdminLayout() {
 					}}
 				>
 					<Breadcrumb
-						separator='>'
+						separator=">"
 						items={route.map((item, index) => {
 							if (index === 0) {
 								return {
@@ -50,8 +64,8 @@ function AdminLayout() {
 					<Routes>
 						{generateRoute(routesAdmin, Route)}
 						<Route
-							path='/'
-							element={<Navigate to='/admin/dashboard' />}
+							path="/"
+							element={<Navigate to="/admin/dashboard" />}
 						/>
 						<Route path={"*"} element={<NotFound />} />
 					</Routes>
