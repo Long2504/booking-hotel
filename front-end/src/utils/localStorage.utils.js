@@ -4,7 +4,11 @@ function setUserInfo(user) {
 
 function getUserInfo() {
 	const user = localStorage.getItem("user");
-	return user && user !== "undefined" ? JSON.parse(user) : {};
+	return user && user !== "undefined" ? JSON.parse(user) : null;
+}
+
+function removeUserInfo() {
+	localStorage.removeItem("user");
 }
 
 function setKeyHeaderHost(key) {
@@ -21,7 +25,7 @@ function setInfoOrder(order) {
 
 function getInfoOrder() {
 	const order = localStorage.getItem("infoOrder");
-	return order && order !== "undefined" ? JSON.parse(order) : {};
+	return order && order !== "undefined" ? JSON.parse(order) : null;
 }
 
 function removeInfoOrder() {
@@ -43,6 +47,7 @@ function removeOrderId() {
 export {
 	setUserInfo,
 	getUserInfo,
+	removeUserInfo,
 	setKeyHeaderHost,
 	getKeyHeaderHost,
 	setInfoOrder,
