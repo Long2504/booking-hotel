@@ -1,6 +1,6 @@
 //files
 import InputCore from "../../components/common/input.core";
-import signinFormSchema from "../../validate/signin.validate";
+import { signinClientFormSchema } from "../../validate/signin.validate";
 import ButtonCore from "../../components/common/button.core";
 import { handleError } from "../../utils/common.utils";
 import authApi from "../../redux/action/authAction.redux";
@@ -19,13 +19,13 @@ function SigninPage() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm({
-		resolver: yupResolver(signinFormSchema),
+		resolver: yupResolver(signinClientFormSchema),
 	});
 	const { loading } = useSelector((state) => state.auth);
 	const [messageApi, contextHolder] = message.useMessage();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	
+
 	const onSubmit = async (data) => {
 		try {
 			await dispatch(authApi.signIn(data)).unwrap();
@@ -60,9 +60,9 @@ function SigninPage() {
 		});
 	};
 	return (
-		<div className='signin-client'>
+		<div className="signin-client">
 			{contextHolder}
-			<div className='signin-client__content'>
+			<div className="signin-client__content">
 				<h6>Sign in</h6>
 				<InputCore
 					label={"Email"}
@@ -77,27 +77,27 @@ function SigninPage() {
 					name={"password"}
 					register={register}
 					error={errors.password}
-					type='password'
+					type="password"
 				/>
 
 				<ButtonCore
-					className='signin-client__content__submit'
+					className="signin-client__content__submit"
 					onClick={handleSubmit(onSubmit)}
 					size={["100%", "45px"]}
-					type='primary'
+					type="primary"
 					loading={loading}
 				>
 					Đăng nhập
 				</ButtonCore>
 				<Divider plain>đăng nhập với</Divider>
 
-				<div className='signin-client__content__login-with-gg'>
+				<div className="signin-client__content__login-with-gg">
 					<GoogleLogin
 						onSuccess={responseGoogle}
 						onError={responseGoogleFailure}
 					/>
 				</div>
-				<p className='signin-client__content__by-signing'>
+				<p className="signin-client__content__by-signing">
 					By signing in, I agree to Systems Inc. Terms of Use and
 					Privacy Policy.
 				</p>
