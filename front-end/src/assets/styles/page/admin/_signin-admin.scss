@@ -1,0 +1,29 @@
+.signin-admin {
+    background: linear-gradient(90deg, #7fa2d3, #1174a6);
+    @include size(100vw, 100vh);
+    overflow: hidden;
+
+    &__bg {
+        width: 25%;
+        padding: 30px;
+        background-color: white;
+        margin: 10% auto;
+
+        &__title {
+            @include font(500, 24px, null, null);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        &__button {
+            width: 100%;
+            @include flex(null, center);
+            margin-top: 40px;
+
+            button {
+                background-color: #1174a6;
+                color: white;
+            }
+        }
+    }
+}
