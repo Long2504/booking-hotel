@@ -19,13 +19,16 @@ import {
 	generateAddress,
 	handleError,
 } from "../../utils/common.utils";
+import mediaApi from "../../services/modules/media.service";
+import hotelApi from "../../services/modules/hotel.service";
 
 //libs
 import { message, Space, Steps } from "antd";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import mediaApi from "../../services/modules/media.service";
+import { useNavigate } from "react-router-dom";
+
 
 function CreateHotelHostPage() {
 	const [current, setCurrent] = useState(0);
@@ -51,6 +54,7 @@ function CreateHotelHostPage() {
 	});
 	const [checkedConfirm, setCheckedConfirm] = useState(false);
 	const [messageApi, contextHolder] = message.useMessage();
+	const navigate = useNavigate();
 
 	const listSteps = [
 		<DescriptionHotel
@@ -94,15 +98,27 @@ function CreateHotelHostPage() {
 		return;
 	};
 
-	const handleSaveAndExit = (data) => {
-		const address = generateAddress(
-			data.province,
-			data.district,
-			data.ward,
-			data.street
-		);
-		console.log(address);
-		console.log(data);
+	const handleSaveAndExit = async () => {
+		const data = getValues();
+		let address = "";
+		if(data.province && data.district && data.ward && data.street){
+			address = generateAddress(
+				data.province,
+				data.district,
+				data.ward,
+				data.street
+			);
+		}
+		try {
+			await hotelApi.createAndSaveDraft({
+				...data,
+				address: address,
+			});
+			navigate("/host/listings");
+		} catch (error) {
+			const { errorMessage } = handleError(error);
+			messageApi.error(errorMessage);
+		}
 	};
 
 	const handleUploadImgs = async (listImages) => {
@@ -178,14 +194,14 @@ function CreateHotelHostPage() {
 		}
 	};
 	return (
-		<div className='create-hotel-host'>
+		<div className="create-hotel-host">
 			{contextHolder}
-			<div className='create-hotel-host__steps'>
+			<div className="create-hotel-host__steps">
 				<Steps
-					className='create-hotel-host__steps__container'
+					className="create-hotel-host__steps__container"
 					progressDot
 					current={current}
-					direction='vertical'
+					direction="vertical"
 					items={[
 						{
 							title: "Thông tin cơ bản",
@@ -209,30 +225,30 @@ function CreateHotelHostPage() {
 				/>
 			</div>
 
-			<div className='create-hotel-host__content'>
-				<div className='create-hotel-host__content__center'>
+			<div className="create-hotel-host__content">
+				<div className="create-hotel-host__content__center">
 					{listSteps[current]}
 				</div>
-				<div className='create-hotel-host__content__bottom'>
-					<div className='create-hotel-host__content__bottom__left'>
+				<div className="create-hotel-host__content__bottom">
+					<div className="create-hotel-host__content__bottom__left">
 						<ButtonCore
-							type='text'
-							className='create-hotel-host__content__bottom__btn'
+							type="text"
+							className="create-hotel-host__content__bottom__btn"
 							style={{ color: "#1174a6" }}
-							onClick={handleSubmit(handleSaveAndExit)}
+							onClick={handleSaveAndExit}
 						>
 							LƯU VÀ THOÁT
 						</ButtonCore>
 					</div>
-					<Space className='create-hotel-host__content__bottom__right'>
+					<Space className="create-hotel-host__content__bottom__right">
 						{current !== 0 && (
 							<ButtonCore
-								type='primary'
+								type="primary"
 								style={{
 									backgroundColor: "#0c5478",
 									borderColor: "#0b4d6e",
 								}}
-								className='create-hotel-host__content__bottom__btn'
+								className="create-hotel-host__content__bottom__btn"
 								onClick={handlePrev}
 							>
 								TRƯỚC
@@ -240,26 +256,26 @@ function CreateHotelHostPage() {
 						)}
 						{current !== listSteps.length - 1 ? (
 							<ButtonCore
-								type='primary'
+								type="primary"
 								style={{
 									backgroundColor: "#0c5478",
 									borderColor: "#0b4d6e",
 									color: "#fff",
 								}}
-								className='create-hotel-host__content__bottom__btn'
+								className="create-hotel-host__content__bottom__btn"
 								onClick={handleNext}
 							>
 								TIẾP THEO
 							</ButtonCore>
 						) : (
 							<ButtonCore
-								type='primary'
+								type="primary"
 								style={{
 									backgroundColor: "#0c5478",
 									borderColor: "#0b4d6e",
 									color: "#fff",
 								}}
-								className='create-hotel-host__content__bottom__btn'
+								className="create-hotel-host__content__bottom__btn"
 								onClick={handleSubmit(handlePost)}
 							>
 								ĐĂNG

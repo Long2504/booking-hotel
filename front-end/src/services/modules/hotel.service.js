@@ -3,17 +3,25 @@ import privateApi from "../api/apiPrivate.service";
 import publicApi from "../api/apiPublic.service";
 
 const hotelPrivateEndpoint = {
-	post: "hotel/post",
+	createAndPost: "hotel/host/create-and-post",
+	createAndDraft: "hotel/host/create-and-draft",
 	getListForHost: "hotel/host",
+	getListDraftForHost: "hotel/host/draft",
 	getListForAdmin: "hotel/admin",
 };
 
 const hotelPublicEndpoint = "hotel";
 
 const hotelApi = {
-	post: async (data) => {
+	createAndPost: async (data) => {
 		return await handleApiCall(() =>
-			privateApi.post(hotelPrivateEndpoint.post, data)
+			privateApi.post(hotelPrivateEndpoint.createAndPost, data)
+		);
+	},
+
+	createAndSaveDraft: async (data) => {
+		return await handleApiCall(() =>
+			privateApi.post(hotelPrivateEndpoint.createAndDraft, data)
 		);
 	},
 
@@ -40,6 +48,14 @@ const hotelApi = {
 	getListForAdmin: async (params) => {
 		return await handleApiCall(() =>
 			privateApi.get(hotelPrivateEndpoint.getListForAdmin, {
+				params,
+			})
+		);
+	},
+
+	getListDraftForHost: async (params) => {
+		return await handleApiCall(() =>
+			privateApi.get(hotelPrivateEndpoint.getListDraftForHost, {
 				params,
 			})
 		);
