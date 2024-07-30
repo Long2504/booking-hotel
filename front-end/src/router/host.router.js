@@ -21,6 +21,10 @@ const routesHost = [
 				path: "create",
 				element: <CreateHotelHostPage />,
 			},
+			{
+				path: "create/:id",
+				element: <CreateHotelHostPage />,
+			},
 		],
 	},
 	{

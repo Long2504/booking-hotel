@@ -3,15 +3,21 @@ import Box from "../../common/box.core";
 import InputCore from "../../common/input.core";
 import SelectCore from "../../common/select.core";
 import { locationHotelHost } from "../../../assets/images/index.image";
+import { districts, provinces, wards } from "../../../utils/dataAddress.utils";
 
 //libs
 import { Space } from "antd";
 import { useState } from "react";
-import { districts, provinces, wards } from "../../../utils/dataAddress.utils";
 
 function LocationHotel({ register, control, errors }) {
-	const [codeProvince, setCodeProvince] = useState("");
-	const [codeDistrict, setCodeDistrict] = useState("");
+	const [codeProvince, setCodeProvince] = useState({
+		value: "",
+		label: "",
+	});
+	const [codeDistrict, setCodeDistrict] = useState({
+		value: "",
+		label: "",
+	});
 	return (
 		<Space direction='vertical' className='location-hotel-host'>
 			<div className='location-hotel-host__title'>

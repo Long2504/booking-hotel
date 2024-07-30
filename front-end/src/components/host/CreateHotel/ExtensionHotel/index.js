@@ -8,7 +8,7 @@ import { handleError } from "../../../../utils/common.utils";
 import { Space, Pagination, message } from "antd";
 import { useEffect, useState } from "react";
 
-function ExtensionHotel({ errors, setValue }) {
+function ExtensionHotel({ errors, setValue, getValues }) {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [listExtension, setListExtension] = useState([]);
 	const [totalPage, setTotalPage] = useState(0);
@@ -18,6 +18,12 @@ function ExtensionHotel({ errors, setValue }) {
 		if (selectedExtensions.length > 0) {
 			setValue("extension", selectedExtensions);
 		}
+		if (getValues("extension")) {
+			setSelectedExtensions(getValues("extension"));
+		}
+	}, [setValue, getValues, selectedExtensions]);
+	
+	useEffect(() => {
 		(async () => {
 			try {
 				const params = {
@@ -34,7 +40,8 @@ function ExtensionHotel({ errors, setValue }) {
 				messageApi.error(errorMessage);
 			}
 		})();
-	}, [selectedExtensions, setValue, messageApi]);
+	}, [messageApi]);
+
 	const handleExtensionSelect = (data, extensionId) => {
 		setSelectedExtensions((prevState) => ({
 			...prevState,

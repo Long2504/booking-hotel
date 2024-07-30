@@ -7,6 +7,7 @@ const hotelPrivateEndpoint = {
 	createAndDraft: "hotel/host/create-and-draft",
 	getListForHost: "hotel/host",
 	getListDraftForHost: "hotel/host/draft",
+	getDetailForHostDraft: "hotel/host/draft",
 	deleteHotelDraft: "hotel/host/draft",
 	getListForAdmin: "hotel/admin",
 };
@@ -23,6 +24,12 @@ const hotelApi = {
 	createAndSaveDraft: async (data) => {
 		return await handleApiCall(() =>
 			privateApi.post(hotelPrivateEndpoint.createAndDraft, data)
+		);
+	},
+
+	getDetailForHostDraft: async (id) => {
+		return await handleApiCall(() =>
+			privateApi.get(`${hotelPrivateEndpoint.getDetailForHostDraft}/${id}`)
 		);
 	},
 

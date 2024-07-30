@@ -9,7 +9,6 @@ import { Space } from "antd";
 import { useFieldArray } from "react-hook-form";
 import { useEffect, useState } from "react";
 
-
 function BedRoomHotel({
 	control,
 	errors,
@@ -18,9 +17,7 @@ function BedRoomHotel({
 	getValues,
 	indexRoom,
 }) {
- 
 	const [listTypeBed, setListTypeBed] = useState([]);
-
 	const { fields, append, remove } = useFieldArray({
 		control,
 		name: `rooms.${indexRoom}.beds`,

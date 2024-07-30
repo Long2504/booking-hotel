@@ -16,6 +16,7 @@ import {
 } from "../../validate/create-hotel.validate";
 import {
 	base64ToFile,
+	decodeAddress,
 	generateAddress,
 	handleError,
 } from "../../utils/common.utils";
@@ -24,11 +25,10 @@ import hotelApi from "../../services/modules/hotel.service";
 
 //libs
 import { message, Space, Steps } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
 
 function CreateHotelHostPage() {
 	const [current, setCurrent] = useState(0);
@@ -56,6 +56,32 @@ function CreateHotelHostPage() {
 	const [messageApi, contextHolder] = message.useMessage();
 	const navigate = useNavigate();
 
+	const { id } = useParams();
+
+	useEffect(() => {
+		(async () => {
+			if (id) {
+				const { metaData } = await hotelApi.getDetailForHostDraft(id);
+				setValue("id", metaData.id);
+				setValue("name", metaData.name);
+				setValue("star", metaData.star);
+				setValue("description", metaData.description);
+				if (metaData.address) {
+					const { provinceCode, districtCode, wardCode, street } =
+						decodeAddress(metaData.address);
+					setValue("province", provinceCode);
+					setValue("district", districtCode);
+					setValue("ward", wardCode);
+					setValue("street", street);
+				}
+				setValue("address", metaData.address);
+				setValue("images", metaData.images);
+				setValue("extension", metaData.extension);
+				setValue("rooms", metaData.rooms);
+			}
+		})();
+	}, [id, setValue]);
+
 	const listSteps = [
 		<DescriptionHotel
 			register={register}
@@ -63,7 +89,11 @@ function CreateHotelHostPage() {
 			control={control}
 		/>,
 		<LocationHotel register={register} errors={errors} control={control} />,
-		<ExtensionHotel errors={errors} setValue={setValue} />,
+		<ExtensionHotel
+			errors={errors}
+			setValue={setValue}
+			getValues={getValues}
+		/>,
 		<RoomHotel
 			errors={errors}
 			setValue={setValue}
@@ -101,7 +131,7 @@ function CreateHotelHostPage() {
 	const handleSaveAndExit = async () => {
 		const data = getValues();
 		let address = "";
-		if(data.province && data.district && data.ward && data.street){
+		if (data.province && data.district && data.ward && data.street) {
 			address = generateAddress(
 				data.province,
 				data.district,
@@ -178,13 +208,13 @@ function CreateHotelHostPage() {
 			address,
 			...data,
 		};
-		console.log(dataPost);
 		try {
-			// await hotelApi.post(dataPost);
+			await hotelApi.createAndPost(dataPost);
 			messageApi.open({
 				type: "success",
 				content: "Đăng tin thành công",
 			});
+			navigate("/host/listings");
 		} catch (error) {
 			const { errorMessage } = handleError(error);
 			messageApi.open({

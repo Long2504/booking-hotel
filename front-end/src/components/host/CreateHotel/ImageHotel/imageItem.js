@@ -27,7 +27,7 @@ function ImageItem({ title, description, urlList, indexRoom, setValue }) {
 		if (renderURL?.length > 0) {
 			setFileList(renderURL);
 		}
-	}, [urlList]);
+	}, [urlList, renderURL]);
 
 
 	const handlePreview = async (file) => {
@@ -41,6 +41,7 @@ function ImageItem({ title, description, urlList, indexRoom, setValue }) {
 	const handleChange = async ({ fileList: newFileList }) => {
 		setFileList(newFileList);
 		const newFileListCustom = newFileList.map(async (file) => {
+			console.log("🚀 ~ file: imageItem.js:44 ~ file:", file)
 			if (!file.url && !file.preview) {
 				return {
 					base64: await fileToBase64(file.originFileObj),
@@ -51,6 +52,7 @@ function ImageItem({ title, description, urlList, indexRoom, setValue }) {
 			return file;
 		});
 		const fileListTemp = await Promise.all(newFileListCustom);
+		console.log("🚀 ~ file: imageItem.js:55 ~ fileListTemp:", fileListTemp)
 		if (indexRoom !== undefined) {
 			setValue(`rooms.${indexRoom}.images`, fileListTemp);
 		} else {
