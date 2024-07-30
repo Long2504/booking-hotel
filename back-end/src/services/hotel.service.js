@@ -62,6 +62,37 @@ class HotelService extends BaseService {
 		return hotel;
 	}
 
+	async createAndSaveDraft(data) {
+		const {
+			name,
+			description,
+			address,
+			images,
+			star,
+			hostId,
+			extension,
+			rooms,
+		} = data;
+		const hotel = await this.create({
+			name,
+			description,
+			address,
+			images,
+			star,
+			hostId,
+			idPost: false,
+		});
+		await HotelExtensionService.createBulkHotelExtension(
+			extension,
+			hotel.id
+		);
+		if (rooms?.length > 0) {
+			await HotelRoomService.createBulkRoomForHotel(hotel.id, rooms);
+		}
+
+		return hotel;
+	}
+
 	async getAll(options) {
 		let whereCondition = {};
 
@@ -311,6 +342,39 @@ class HotelService extends BaseService {
 					as: "host",
 					attributes: ["id", "displayName"],
 				},
+			],
+		};
+		const { count, rows } = await this.getAndCountAll(options);
+		return {
+			list: rows,
+			total: count,
+		};
+	}
+
+	async getAllForHostDraft(hostId, options) {
+		if (!hostId) {
+			throw new BadRequestError("Id not found");
+		}
+
+		const whereCondition = {};
+		whereCondition.hostId = hostId;
+		whereCondition.idPost = false;
+		if (options.searchQuery) {
+			whereCondition.name = {
+				[Op.like]: `%${options.searchQuery}%`,
+			};
+		}
+		options = {
+			where: whereCondition,
+			limit: options.pageSize,
+			offset: (options.page - 1) * options.pageSize,
+			attributes: [
+				"id",
+				"name",
+				"address",
+				"star",
+				"description",
+				"priceAverage",
 			],
 		};
 		const { count, rows } = await this.getAndCountAll(options);

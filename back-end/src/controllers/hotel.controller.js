@@ -1,10 +1,21 @@
 import HotelService from "../services/hotel.service.js";
 import { Created, SuccessResponse } from "../utils/access.response.js";
 class HotelController {
-	static post = async (req, res) => {
+	static createAndPost = async (req, res) => {
 		new Created({
 			message: "Create extension success",
 			metaData: await HotelService.createAndPost(req.body),
+		}).send(res);
+	};
+
+	static createAndSaveDraft = async (req, res) => {
+		const hostId = req.keyStore.userId;
+		new Created({
+			message: "Create and save draft success",
+			metaData: await HotelService.createAndSaveDraft({
+				...req.body,
+				hostId,
+			}),
 		}).send(res);
 	};
 
@@ -69,6 +80,19 @@ class HotelController {
 		new SuccessResponse({
 			message: "Get all hotel for admin success",
 			metaData: await HotelService.getAllForAdmin(options),
+		}).send(res);
+	};
+
+	static getAllForHostDraft = async (req, res) => {
+		const options = {
+			searchQuery: req.query?.searchQuery,
+			page: req.query?.page ? parseInt(req.query?.page) : 1,
+			pageSize: req.query?.pageSize ? parseInt(req.query?.pageSize) : 10,
+		};
+		const { userId } = req.keyStore;
+		new SuccessResponse({
+			message: "Get all hotel for host draft success",
+			metaData: await HotelService.getAllForHostDraft(userId, options),
 		}).send(res);
 	};
 }
