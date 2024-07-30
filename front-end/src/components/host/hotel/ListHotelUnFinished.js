@@ -1,10 +1,15 @@
-import { Table, Pagination, Tag, Button, message } from "antd";
-import { Link, useSearchParams } from "react-router-dom";
+//files
 import Box from "../../common/box.core";
-import { useEffect, useState } from "react";
 import hotelApi from "../../../services/modules/hotel.service";
 import { handleError } from "../../../utils/common.utils";
 import ButtonCore from "../../common/button.core";
+import showConfirmDelete from "../../admin/common/ConfirmDelete.admin";
+
+//libs
+import { Table, Pagination, Tag, message } from "antd";
+import { Link, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 
 function ListHotelUnfinished() {
 	const columns = [
@@ -39,7 +44,6 @@ function ListHotelUnfinished() {
 						color="processing"
 						style={{
 							fontSize: 16,
-							
 						}}
 					>
 						Hoàn thành
@@ -51,16 +55,24 @@ function ListHotelUnfinished() {
 			title: "",
 			key: "action-delete",
 			render: (_, record) => (
-				<ButtonCore ghost danger>
+				<ButtonCore
+					ghost
+					danger
+					onClick={() =>
+						showConfirmDelete(() => handleDelete(record.id))
+					}
+				>
 					Xóa
 				</ButtonCore>
 			),
 		},
 	];
+
 	const [listHotel, setListHotel] = useState([]);
 	const [totalPage, setTotalPage] = useState(0);
 	const [queryParams, setQueryParams] = useSearchParams();
 	const [messageApi, contextHolder] = message.useMessage();
+	const [isRender, setIsRender] = useState(false);
 
 	useEffect(() => {
 		(async () => {
@@ -80,13 +92,27 @@ function ListHotelUnfinished() {
 				messageApi.error(errorMessage);
 			}
 		})();
-	}, [queryParams, messageApi]);
+	}, [queryParams, messageApi, isRender]);
 
 	const onChangePage = (page) => {
 		setQueryParams({
 			page: parseInt(page),
 			searchQuery: queryParams.get("searchQuery") || "",
 		});
+	};
+
+	const handleDelete = async (id) => {
+		try {
+			await hotelApi.deleteHotelDraft(id);
+			messageApi.open({
+				type: "success",
+				content: "Xóa dữ liệu thành công",
+			});
+			setIsRender(!isRender);
+		} catch (error) {
+			const { errorMessage } = handleError(error);
+			messageApi.error(errorMessage);
+		}
 	};
 	return (
 		<Box border={false}>
