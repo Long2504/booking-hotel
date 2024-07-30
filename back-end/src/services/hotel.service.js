@@ -1,4 +1,4 @@
-import { Op, Sequelize } from "sequelize";
+import { Op, Sequelize, where } from "sequelize";
 import BedsTypeModel from "../models/bedsType.model.js";
 import ExtensionModel from "../models/extension.model.js";
 import HotelModel from "../models/hotel.model.js";
@@ -91,6 +91,18 @@ class HotelService extends BaseService {
 		}
 
 		return hotel;
+	}
+
+	async deleteDraft(id, hostId) {
+		const hotel = await this.getById(id, {
+			where: {
+				idPost: false,
+			},
+		});
+		if (hotel.hostId !== hostId) {
+			throw new BadRequestError("You are not owner of this hotel");
+		}
+		await this.removeById(id);
 	}
 
 	async getAll(options) {

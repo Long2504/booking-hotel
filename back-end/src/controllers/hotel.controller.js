@@ -19,6 +19,15 @@ class HotelController {
 		}).send(res);
 	};
 
+	static deleteDraft = async (req, res) => {
+		const { id } = req.params;
+		const hostId = req.keyStore.userId;
+		new SuccessResponse({
+			message: "Delete draft success",
+			metaData: await HotelService.deleteDraft(id, hostId),
+		}).send(res);
+	};
+
 	static getAll = async (req, res) => {
 		const options = {
 			searchQuery: req.query?.searchQuery,
