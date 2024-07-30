@@ -69,6 +69,10 @@ class BaseService {
         })
     }
 
+    async remove(options) {
+        return this.model.destroy(options);
+    }
+
     async delete(options) {
         return this.model.destroy(options);
     }

@@ -29,9 +29,9 @@ class HotelRoomService extends BaseService {
 				hotelId,
 			});
 			const arrBedPromise = beds.map(async (bed) => {
-				const { numBeds, bedTypeId } = bed;
+				const { quantity, bedTypeId } = bed;
 				await RoomBedService.create({
-					numBeds,
+					numBeds: quantity,
 					bedId: bedTypeId,
 					hotelRoomId: roomCreate.id,
 				});
@@ -96,6 +96,25 @@ class HotelRoomService extends BaseService {
 			}
 		});
 		return result;
+	}
+
+	async deleteBulkRoomForHotel(hotelId) {
+		const data = await this.getAll({
+			where: {
+				hotelId,
+			},
+			attributes: ["id"],
+		});
+		const arrPromise = data.map(async (room) => {
+			await RoomBedService.deleteBulkRoomBed(room.id);
+		});
+		await Promise.all(arrPromise);
+		await this.remove({
+			where: {
+				hotelId,
+			},
+			force: true,
+		});
 	}
 }
 

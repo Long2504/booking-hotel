@@ -35,6 +35,7 @@ class HotelService extends BaseService {
 
 	async createAndPost(data) {
 		const {
+			id,
 			name,
 			description,
 			address,
@@ -44,15 +45,33 @@ class HotelService extends BaseService {
 			extension,
 			rooms,
 		} = data;
-		const hotel = await this.create({
-			name,
-			description,
-			address,
-			images,
-			star,
-			hostId,
-			idPost: true,
-		});
+		let hotel;
+		if(id) {
+			hotel = await this.updateById(id, {
+				name,
+				description,
+				address,
+				images,
+				star,
+				hostId,
+				idPost: true,
+			});
+			await HotelExtensionService.deleteBulkHotelExtension(
+				id
+			);
+			await HotelRoomService.deleteBulkRoomForHotel(id);
+		}
+		else {			
+			hotel = await this.create({
+				name,
+				description,
+				address,
+				images,
+				star,
+				hostId,
+				idPost: true,
+			});
+		}
 		await HotelExtensionService.createBulkHotelExtension(
 			extension,
 			hotel.id
@@ -64,6 +83,7 @@ class HotelService extends BaseService {
 
 	async createAndSaveDraft(data) {
 		const {
+			id,
 			name,
 			description,
 			address,
@@ -73,15 +93,30 @@ class HotelService extends BaseService {
 			extension,
 			rooms,
 		} = data;
-		const hotel = await this.create({
-			name,
-			description,
-			address,
-			images,
-			star,
-			hostId,
-			idPost: false,
-		});
+		let hotel;
+		if (id) {
+			hotel = await this.updateById(id, {
+				name,
+				description,
+				address,
+				images,
+				star,
+				hostId,
+				idPost: false,
+			});
+			await HotelExtensionService.deleteBulkHotelExtension(id);
+			await HotelRoomService.deleteBulkRoomForHotel(id);
+		} else {
+			hotel = await this.create({
+				name,
+				description,
+				address,
+				images,
+				star,
+				hostId,
+				idPost: false,
+			});
+		}
 		await HotelExtensionService.createBulkHotelExtension(
 			extension,
 			hotel.id
@@ -102,7 +137,10 @@ class HotelService extends BaseService {
 		if (hotel.hostId !== hostId) {
 			throw new BadRequestError("You are not owner of this hotel");
 		}
+
 		await this.removeById(id);
+		await HotelExtensionService.deleteBulkHotelExtension(id);
+		await HotelRoomService.deleteBulkRoomForHotel(id);
 	}
 
 	async getAll(options) {
@@ -291,6 +329,100 @@ class HotelService extends BaseService {
 		hotel.hotelRooms = hotel.hotelRooms.map((hotelRoom) => {
 			hotelRoom.dataValues.numBedrooms = options?.roomNumber || 1;
 		});
+		return hotel;
+	}
+
+	async getDetailForHostDraft(id, hostId) {
+		if (!id || !hostId) {
+			throw new BadRequestError("Id not found");
+		}
+		const whereCondition = {
+			id: id,
+			hostId: hostId,
+			idPost: false,
+		};
+		const hotel = await this.get({
+			where: whereCondition,
+			attributes: [
+				"id",
+				"name",
+				"description",
+				"address",
+				"images",
+				"star",
+			],
+			include: [
+				{
+					model: HotelExtensionModel,
+					as: "hotelExtensions",
+					attributes: ["id", "subExtensions"],
+					include: [
+						{
+							model: ExtensionModel,
+							as: "extension",
+							attributes: ["id", "name"],
+						},
+					],
+				},
+				{
+					model: HotelRoomModel,
+					as: "hotelRooms",
+					attributes: {
+						exclude: [
+							"hotelId",
+							"roomTypeId",
+							"updatedAt",
+							"deletedAt",
+						],
+					},
+					include: [
+						{
+							model: RoomsTypeModel,
+							as: "roomType",
+							attributes: ["id", "name"],
+						},
+						{
+							model: RoomsBedModel,
+							as: "roomsBeds",
+							attributes: ["id", "numBeds"],
+							include: {
+								model: BedsTypeModel,
+								as: "bedType",
+								attributes: ["id", "name"],
+							},
+						},
+					],
+				},
+			],
+		});
+
+		const extension = {};
+		hotel.hotelExtensions.forEach((hotelExtension) => {
+			extension[hotelExtension.extension.id] =
+				hotelExtension.subExtensions;
+		});
+		hotel.dataValues.extension = extension;
+		delete hotel.dataValues.hotelExtensions;
+		const rooms = [];
+		hotel.hotelRooms.forEach((hotelRoom) => {
+			rooms.push({
+				area: hotelRoom.area,
+				occupancy: hotelRoom.occupancy,
+				numBathrooms: hotelRoom.numBathrooms,
+				numBedrooms: hotelRoom.numBedrooms,
+				price: hotelRoom.price,
+				images: hotelRoom.images,
+				roomTypeId: hotelRoom.roomType.id,
+				beds: hotelRoom.roomsBeds.map((roomBed) => {
+					return {
+						quantity: roomBed.numBeds,
+						bedTypeId: roomBed.bedType.id,
+					};
+				}),
+			});
+		});
+		hotel.dataValues.rooms = rooms;
+		delete hotel.dataValues.hotelRooms;
 		return hotel;
 	}
 

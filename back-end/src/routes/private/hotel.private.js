@@ -21,6 +21,8 @@ router.post(
 
 router.delete("/host/draft/:id", asyncHandler(HotelController.deleteDraft));
 
+router.get("/host/draft/:id", asyncHandler(HotelController.getDetailForHostDraft));       
+
 router.get("/host/draft", asyncHandler(HotelController.getAllForHostDraft));
 
 router.get("/admin", asyncHandler(HotelController.getAllForAdmin));

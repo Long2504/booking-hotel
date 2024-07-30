@@ -2,9 +2,10 @@ import HotelService from "../services/hotel.service.js";
 import { Created, SuccessResponse } from "../utils/access.response.js";
 class HotelController {
 	static createAndPost = async (req, res) => {
+		const hostId = req.keyStore.userId;
 		new Created({
 			message: "Create extension success",
-			metaData: await HotelService.createAndPost(req.body),
+			metaData: await HotelService.createAndPost({ ...req.body, hostId }),
 		}).send(res);
 	};
 
@@ -25,6 +26,15 @@ class HotelController {
 		new SuccessResponse({
 			message: "Delete draft success",
 			metaData: await HotelService.deleteDraft(id, hostId),
+		}).send(res);
+	};
+
+	static getDetailForHostDraft = async (req, res) => {
+		const { id } = req.params;
+		const hostId = req.keyStore.userId;
+		new SuccessResponse({
+			message: "Get detail for host draft success",
+			metaData: await HotelService.getDetailForHostDraft(id, hostId),
 		}).send(res);
 	};
 

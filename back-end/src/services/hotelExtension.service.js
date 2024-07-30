@@ -16,6 +16,15 @@ class HotelExtensionService extends BaseService {
 		}
 		return await this.bulkCreate(listData);
 	}
+
+	async deleteBulkHotelExtension(hotelId) {
+		return await this.remove({
+			where: {
+				hotelId,
+			},
+			force: true,
+		});
+	}
 }
 
 export default new HotelExtensionService(HotelExtensionModel);
